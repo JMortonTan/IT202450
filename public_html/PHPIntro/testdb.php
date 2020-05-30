@@ -1,9 +1,6 @@
 <?php
 require("config.php");
 
-echo($dbhost);
-
-/*
 $connection_string = "mysql:host=$dbhost;dbname=$dbdatabase;charset=utf8mb4";
 try{
 	$db = new PDO($connection_string, $dbuser, $dbpass);
@@ -21,5 +18,4 @@ try{
 catch (Exception $e){
 	echo $e->getMessage();
 }
-*/
 ?>
