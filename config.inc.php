@@ -30,7 +30,7 @@ $i++;
 $cfg['Servers'][$i]['auth_type'] = 'cookie';
 /* Server parameters */
 //The DB Dyno should create this entry for you, if not add a Config Var to Heroku with this name and pass the DB connection string
-$cleardb_url      = parse_url(getenv("mysql://avltoj7ucg39wtjv:wt2pykrbi4f8csb1@phtfaw4p6a970uc0.cbetxkdyhwsb.us-east-1.rds.amazonaws.com:3306/x82bmuolex5esj0x"));
+$cleardb_url      = parse_url(getenv("JAWSDB_URL"));
 $cleardb_server   = $cleardb_url["host"];
 $cleardb_username = $cleardb_url["user"];
 $cleardb_password = $cleardb_url["pass"];
