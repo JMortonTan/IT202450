@@ -24,7 +24,7 @@ if(isset($_POST["register"])){
         if($password == $cpassword){
             //echo "<div>Passwords Match</div>";
             require("config.php");
-            $connection_string = "mysqli:host=$dbhost;dbname=$dbdatabase;charset=utf8mb4";
+            $connection_string = "mysql:host=$dbhost;dbname=$dbdatabase;charset=utf8mb4";
             try{
                 $db = new PDO($connection_string, $dbuser, $dbpass);
                 $stmt = $db->prepare("INSERT INTO Users (email, password VALUES(:email, :password))");
