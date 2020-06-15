@@ -34,8 +34,12 @@ if(isset($_POST["register"])){
             echo "You need to provide an email.";
             $validFlag = false;
         }
-        if(!isset($_POST["password"]) || !isset($_POST["cpassword"]) == ''){
+        if(!isset($_POST["password"])){
             echo "You need to provide a password.";
+            $validFlag = false;
+        }
+        if(!isset($_POST["cpassword"]) == ''){
+            echo "You need to confirm the password.";
             $validFlag = false;
         }
 

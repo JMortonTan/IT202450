@@ -23,6 +23,7 @@ if(isset($_POST["login"])){
     if(isset($_POST["password"]) && isset($_POST["email"])){
         $password = $_POST["password"];
         $email = $_POST["email"];
+        
         //require("config.php");
         $connection_string = "mysql:host=$dbhost;dbname=$dbdatabase;charset=utf8mb4";
         try{
@@ -51,11 +52,11 @@ if(isset($_POST["login"])){
                         header("Location: home.php");
                     }
                     else{
-                        echo "<div>Invalid password! Check again.</div>";
+                        echo "<div>Your username or password was invalid. Check your input and try again.</div>";
                     }
                 }
                 else{
-                    echo "<div>Invalid user</div>";
+                    echo "<div>Your username or password was invalid. Check your input and try again.</div>";
                 }
             }
         }
