@@ -14,14 +14,14 @@ form {
     text-align: center;
 }
 
-li {
-    float: left;
-}
-
-#menu{
+nav{
     display: block;
     color: black;
-    text-align: center;
     padding: 13px;
     text-decoration: none;
+    float: left;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 4%;
+    text-align: center;
 }
