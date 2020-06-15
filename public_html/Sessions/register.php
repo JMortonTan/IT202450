@@ -43,7 +43,7 @@ if(isset($_POST["register"])){
             $validFlag = false;
         }
 
-        if($password == $cpassword && $validFlag){
+        if($validFlag && $password == $cpassword){
             //echo "<div>Passwords Match</div>";
             //require("config.php");
             $connection_string = "mysql:host=$dbhost;dbname=$dbdatabase;charset=utf8mb4";
