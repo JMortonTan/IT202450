@@ -19,3 +19,5 @@ if (ini_get("session.use_cookies")) {
     );
 }
 ?>
+
+<?php header("Location: home.php"); ?>
