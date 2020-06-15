@@ -2,7 +2,7 @@
     <title>Bank</title>
     <link rel="stylesheet" type="text/css" href="style.css"
 </head>
-<nav>
+<nav id="menu">
     <ul>
         <li><a href="home.php">Home</a></li>
         <li><a href="login.php">Login</a></li>

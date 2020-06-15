@@ -51,13 +51,12 @@ if(isset($_POST["login"])){
                         header("Location: home.php");
                     }
                     else{
-                        echo "<div>Invalid password!</div>";
+                        echo "<div>Invalid password! Check again.</div>";
                     }
                 }
                 else{
                     echo "<div>Invalid user</div>";
                 }
-                //echo "<div>Successfully registered!</div>";
             }
         }
         catch (Exception $e){
