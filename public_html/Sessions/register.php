@@ -30,15 +30,15 @@ if(isset($_POST["register"])){
         $validFlag = true;
 
         //Validate Input
-        if(!isset($_POST["email"])){
+        if("" == trim($_POST['email'])){
             echo "You need to provide an email.";
             $validFlag = false;
         }
-        if(!isset($_POST["password"])){
+        if("" == trim($_POST['password'])){
             echo "You need to provide a password.";
             $validFlag = false;
         }
-        if(!isset($_POST["cpassword"]) == ''){
+        if("" == trim($_POST['cpassword'])){
             echo "You need to confirm the password.";
             $validFlag = false;
         }
