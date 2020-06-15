@@ -23,9 +23,19 @@ include("header.php");
 //Show user confirm
 if(isset($_POST["register"])){
     if(isset($_POST["password"]) && isset($_POST["cpassword"]) && isset($_POST["email"])){
+
         $password = $_POST["password"];
         $cpassword = $_POST["cpassword"];
         $email = $_POST["email"];
+
+        //Validate Input
+        if(!isset($email) == ''){
+            echo "You need to provide an email.";
+        }
+        if(!isset($password) == ''){
+            echo "You need to provide a password.";
+        }
+
         if($password == $cpassword){
             //echo "<div>Passwords Match</div>";
             //require("config.php");
