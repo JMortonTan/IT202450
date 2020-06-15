@@ -5,6 +5,7 @@
 <nav id="menu">
     <ul>
         <li><a href="home.php">Home</a></li>
+        <li><a href="accounts.php">My Accounts</a></li>
         <li><a href="login.php">Login</a></li>
         <li><a href="register.php">Registration</a></li>
         <li><a href="logout.php">Logout</a></li>

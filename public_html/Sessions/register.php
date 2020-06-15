@@ -27,16 +27,19 @@ if(isset($_POST["register"])){
         $password = $_POST["password"];
         $cpassword = $_POST["cpassword"];
         $email = $_POST["email"];
+        $validFlag = true;
 
         //Validate Input
         if(!isset($email) == ''){
             echo "You need to provide an email.";
+            $validFlag = false;
         }
         if(!isset($password) == ''){
             echo "You need to provide a password.";
+            $validFlag = false;
         }
 
-        if($password == $cpassword){
+        if($password == $cpassword && $validFlag){
             //echo "<div>Passwords Match</div>";
             //require("config.php");
             $connection_string = "mysql:host=$dbhost;dbname=$dbdatabase;charset=utf8mb4";
@@ -60,7 +63,7 @@ if(isset($_POST["register"])){
                 echo $e->getMessage();
             }
             }
-        else {
+        elseif($validFlag) {
             echo "<div>Passwords don't match</div>";
         }
     }
