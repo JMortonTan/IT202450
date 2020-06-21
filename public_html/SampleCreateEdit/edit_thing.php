@@ -1,9 +1,9 @@
 <?php
 require("config.php");
+//Need try catch but omitted for testing
 $connection_string = "mysql:host=$dbhost;dbname=$dbdatabase;charset=utf8mb4";
 $db = new PDO($connection_string, $dbuser, $dbpass);
-//Need try catch here, omitted to be condensed
-$thingID = -1;
+$thingId = -1;
 $result = array();
 function get($arr, $key){
     if(isset($arr[$key])){
@@ -11,7 +11,7 @@ function get($arr, $key){
     }
     return "";
 }
-if(isset($_GET["thingID"])){
+if(isset($_GET["thingId"])){
     $thingId = $_GET["thingId"];
     $stmt = $db->prepare("SELECT * FROM Things where id = :id");
     $stmt->execute([":id"=>$thingId]);
@@ -24,10 +24,10 @@ else{
 
 <form method="POST">
     <label for="thing">Thing Name
-        <input type="text" id="thing" name="name" value="<?php echo get($result,"name");?>" />
+        <input type="text" id="thing" name="name" value="<?php echo get($result, "name");?>" />
     </label>
     <label for="q">Quantity
-        <input type="number" id="q" name="quantity" value="<?php echo get($result,"quantity");?>"/>
+        <input type="number" id="q" name="quantity" value="<?php echo get($result, "quantity");?>" />
     </label>
     <input type="submit" name="updated" value="Update Thing"/>
 </form>
@@ -51,10 +51,10 @@ if(isset($_POST["updated"])){
             else{
                 echo var_export($result, true);
                 if ($result){
-                    echo "Successfully inserted new thing: " . $name;
+                    echo "Successfully updated thing: " . $name;
                 }
                 else{
-                    echo "Error inserting record";
+                    echo "Error updating record";
                 }
             }
         }
