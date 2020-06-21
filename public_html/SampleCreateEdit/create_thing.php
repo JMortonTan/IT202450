@@ -15,7 +15,7 @@ include("header.php")
 <?php
 if(isset($_POST["created"])){
     $name = $_POST["name"];
-    $quanitty = $_POST["quantity"];
+    $quantity = $_POST["quantity"];
     if(!empty($name) && !empty($quantity)){
         //proceed
         require(config.php);
