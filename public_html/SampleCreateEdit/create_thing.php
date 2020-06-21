@@ -1,13 +1,9 @@
-<?php
-include("header.php")
-?>
-<h4>Login</h4>
 <form method="POST">
     <label for="thing">Thing Name
-    <input type="text" id="thing" name="name"/>
+        <input type="text" id="thing" name="name" />
     </label>
     <label for="q">Quantity
-    <input type="number" id="q" name="quantity" autocomplete="off"/>
+        <input type="number" id="q" name="quantity" />
     </label>
     <input type="submit" name="created" value="Create Thing"/>
 </form>
@@ -17,12 +13,11 @@ if(isset($_POST["created"])){
     $name = $_POST["name"];
     $quantity = $_POST["quantity"];
     if(!empty($name) && !empty($quantity)){
-        //proceed
-        require(config.php);
+        require("config.php");
         $connection_string = "mysql:host=$dbhost;dbname=$dbdatabase;charset=utf8mb4";
         try{
             $db = new PDO($connection_string, $dbuser, $dbpass);
-            $stmt = $db->prepare("INSERT INTO THINGS (name, quantity) VALUES (:name, :quantity)");
+            $stmt = $db->prepare("INSERT INTO Things (name, quantity) VALUES (:name, :quantity)");
             $result = $stmt->execute(array(
                 ":name" => $name,
                 ":quantity" => $quantity
@@ -49,7 +44,4 @@ if(isset($_POST["created"])){
         echo "Name and quantity must not be empty.";
     }
 }
-
-
-
 ?>
