@@ -4,7 +4,7 @@ include("header.php")
 <h4>Login</h4>
 <form method="POST">
     <label for="thing">Thing Name
-    <input type="thing" id="thing" name="thing"/>
+    <input type="text" id="thing" name="name"/>
     </label>
     <label for="q">Quantity
     <input type="number" id="q" name="quantity" autocomplete="off"/>
