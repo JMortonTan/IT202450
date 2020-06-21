@@ -1,9 +1,9 @@
 <?php
-    include("header.php");
-    //session_start();
-    echo "Welcome to IT202 Bank, " . $_SESSION["user"]["email"];
+include("header.php");
+//session_start();
 ?>
 <h4>Home</h4>
 <?php
-echo "Welcome! " . $_SESSION["user"]["email"];
+echo "Welcome to IT202 Bank!" . $_SESSION["user"]["email"];
 ?>
+
