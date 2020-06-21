@@ -1,6 +1,8 @@
 <?php
 require("config.php");
 //Need try catch but omitted for testing
+//NOTE: One trick is to user header() to redirect back to the form so it pulls the latest updates from the table.
+//Plus this helps/protects against multiple form submissions (accidental or purposeful)
 $connection_string = "mysql:host=$dbhost;dbname=$dbdatabase;charset=utf8mb4";
 $db = new PDO($connection_string, $dbuser, $dbpass);
 $thingId = -1;
