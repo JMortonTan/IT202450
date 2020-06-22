@@ -46,6 +46,7 @@ if(isset($_POST["created"])){
         else{
             if ($result){
                 echo "Successfully created account: " . $account_number;
+                echo "Account Type: " . $account_type;
             }
             else{
                 echo "Error creating account";
