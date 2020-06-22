@@ -22,6 +22,7 @@
 
     **Validate input, Account Number 12 integers,<br>
     **Validate input, Account type 1-2-3.<br>
+    <br><br>
 </div>
 
 <?php
@@ -43,7 +44,6 @@ if(isset($_POST["created"])){
             echo var_export($e, true);
         }
         else{
-            echo var_export($result, true);
             if ($result){
                 echo "Successfully created account: " . $account_number;
             }
