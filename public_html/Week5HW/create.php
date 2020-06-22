@@ -19,7 +19,7 @@
     Enter 1 for Checking<br>
     Enter 2 for Savings<br>
     Enter 3 for Loan<br>
-    **Need to change to dropdown menu**<br>
+
     **Validate input, Account Number 12 integers,<br>
     **Validate input, Account type 1-2-3.<br>
 </div>
