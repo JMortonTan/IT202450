@@ -33,26 +33,28 @@ if(isset($_POST["edited"])){
     if(!empty($account_type) && !empty($account_number)){
         require("common.inc.php");
         $db = getDB();
+        try {
+            $stmt = $db->prepare("UPDATE Accounts set account_type=:account_type where account_number=:account_number");
+            $result = $stmt->execute(array(
+                ":account_type" => $account_type,
+                ":account_number" => $account_number
+            ));
 
-        $stmt = $db->prepare("UPDATE Accounts set account_type=:account_type where account_number=:account_number");
-        $result = $stmt->execute(array(
-            ":account_type" => $account_type,
-        ));
-
-
-        //Error Handling
-        $e = $stmt->errorInfo();
-        if($e[0] != "00000"){
-            echo var_export($e, true);
+            //Error Handling
+            $e = $stmt->errorInfo();
+            if ($e[0] != "00000") {
+                echo var_export($e, true);
+            } else {
+                if ($result) {
+                    echo "Successfully edited account: " . $account_number;
+                    echo "Account Type is now: " . $account_type;
+                } else {
+                    echo "Error updating account";
+                }
+            }
         }
-        else{
-            if ($result){
-                echo "Successfully edited account: " . $account_number;
-                echo "Account Type is now: " . $account_type;
-            }
-            else{
-                echo "Error updating account";
-            }
+        catch (Exception $e){
+            echo $e->getMessage();
         }
     }
     else{
