@@ -2,7 +2,7 @@ CREATE TABLE Accounts(
     /*Internal (Primary Key)*/
     id int AUTO_INCREMENT,
     /*World account is 12 '0's*/
-    account_number varchar(12) NOT NULL,
+    account_number varchar(12) NOT NULL UNIQUE,
     /*Joined with Users table (Foreign Key)*/
     user_id int,
     /*Value 1: Checking, Value 2: Savings, Value 3: Loan*/
