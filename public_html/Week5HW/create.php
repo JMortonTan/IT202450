@@ -8,14 +8,14 @@
     <input type="submit" name="created" value="Open Account"/>
 </form>
 <div>
-    **Account Type need to be automatically generated
-    ...Perhaps using hash based on user_id?  Perhaps not secure?
-
-    In Account Type:
-    Enter 1 for Checking
-    Enter 2 for Savings
-    Enter 3 for Loan
-    **Need to change to dropdown menu**
+    **Account Type need to be automatically generated<br>
+    ...Perhaps using hash based on user_id?  Perhaps not secure?<br>
+    <br>
+    In Account Type:<br>
+    Enter 1 for Checking<br>
+    Enter 2 for Savings<br>
+    Enter 3 for Loan<br>
+    **Need to change to dropdown menu**<br>
 </div>
 
 <?php
