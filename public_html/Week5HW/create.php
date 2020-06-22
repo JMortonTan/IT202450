@@ -3,7 +3,11 @@
         <input type="text" id="acc_number" name="account_number" />
     </label>
     <label for="Account_Type">Account Type
-        <input type="number" id="acc_type" name="account_type" />
+        <select type="number" id="acc_type" name="account_type">
+            <option value=1>Checking</option>
+            <option value=2>Checking</option>
+            <option value=3>Checking</option>
+        </select>
     </label>
     <input type="submit" name="created" value="Open Account"/>
 </form>
