@@ -27,19 +27,16 @@
 
 <?php
 if(isset($_POST["edited"])){
-    $account_number = $_POST["account_number"];
-    $account_type = $_POST["account_type"];
     $ready_flag = false;
-
+    $account_type = $_POST["account_type"];
     //Check if the account number exists. If not, return.
     if(isset($_GET["account_number"])){
-        $account_number = $_GET["thingId"];
+        $account_number = $_GET["account_number"];
         $stmt = $db->prepare("SELECT * FROM Accounts where account_number = :account_number");
         $stmt->execute([":account_number"=>$account_number]);
         $result = $stmt->fetch(PDO::FETCH_ASSOC);
         $ready_flag = true;
     }
-
     else{
         echo "The account number you have provided is invalid.";
     }
