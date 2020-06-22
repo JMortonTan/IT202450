@@ -5,8 +5,8 @@
     <label for="Account_Type">Account Type
         <select type="number" id="acc_type" name="account_type">
             <option value=1>Checking</option>
-            <option value=2>Checking</option>
-            <option value=3>Checking</option>
+            <option value=2>Savings</option>
+            <option value=3>Loan</option>
         </select>
     </label>
     <input type="submit" name="created" value="Open Account"/>
