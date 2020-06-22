@@ -27,8 +27,9 @@
 
 <?php
 if(isset($_POST["edited"])){
-    $ready_flag = false;
+    $account_number = $_POST["account_number"];
     $account_type = $_POST["account_type"];
+    
     //Check if the account number exists. If not, return.
     if(isset($_GET["account_number"])){
         $account_number = $_GET["account_number"];
@@ -41,7 +42,7 @@ if(isset($_POST["edited"])){
         echo "The account number you have provided is invalid.";
     }
 
-    if(!empty($account_type) && $ready_flag){
+    if(!empty($account_type) && !empty($account_number)){
         require("common.inc.php");
         $db = getDB();
 
