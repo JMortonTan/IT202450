@@ -16,13 +16,15 @@
     Enter 2 for Savings<br>
     Enter 3 for Loan<br>
     **Need to change to dropdown menu**<br>
+    **Validate input, Account Number 12 integers,<br>
+    **Validate input, Account type 1-2-3.<br>
 </div>
 
 <?php
 if(isset($_POST["created"])){
     $account_number = $_POST["account_number"];
     $account_type = $_POST["account_type"];
-    if(!empty($name) && !empty($quantity)){
+    if(!empty($account_number) && !empty($account_type)){
         require("common.inc.php");
         $db = getDB();
 
