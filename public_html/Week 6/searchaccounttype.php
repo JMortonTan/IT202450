@@ -33,6 +33,7 @@ if(isset($search) && $search != 0) {
             echo $search;
             echo $order;
             $stmt = getDB()->prepare($query);
+            echo $stmt;
             $stmt->execute(array(
                 ":search" => $search,
                 ":selectorder" => $order
@@ -50,6 +51,7 @@ if(isset($search) && $search == 0) {
     if (isset($query) && !empty($query)) {
         try {
             $stmt = getDB()->prepare($query);
+            echo $stmt;
             $stmt->execute(array(
                 ":selectorder" => $order
             ));
