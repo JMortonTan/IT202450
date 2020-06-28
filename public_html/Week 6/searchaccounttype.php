@@ -1,7 +1,9 @@
 <?php
 $search = "";
-if(isset($_POST["search"])){
+$order = "";
+if(isset($_POST["search"] && isset($_POST["order"]))){
     $search = $_POST["search"];
+    $order = $_POST["order"];
 }
 ?>
 <form method="POST">
@@ -13,8 +15,14 @@ if(isset($_POST["search"])){
             <option value=0>All</option>
         </select>
     </label>
-    <input type="submit" value="Search Ascending"/>
-    <input type="submit" value="Search Descending"/>
+    <label for="Order">Order
+        <select type="text" id="order" name="search" required>
+            <option value="ASC">Ascending</option>
+            <option value="DSC">Descending</option>
+        </select>
+    </label>
+
+    <input type="submit" value="Search"/>
 </form>
 <?php
 if(isset($search) && $search != 0) {
@@ -24,7 +32,7 @@ if(isset($search) && $search != 0) {
         try {
             $stmt = getDB()->prepare($query);
             //Note: With a LIKE query, we must pass the % during the mapping
-            $stmt->execute([":search"=>$search]);
+            $stmt->execute([":search"=>$search,":selectorder"=>$order]);
             //Note the fetchAll(), we need to use it over fetch() if we expect >1 record
             $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
         } catch (Exception $e) {
@@ -38,7 +46,7 @@ if(isset($search) && $search == 0) {
     if (isset($query) && !empty($query)) {
         try {
             $stmt = getDB()->prepare($query);
-            $stmt->execute();
+            $stmt->execute([":selectorder"=>$order]);
             $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
         } catch (Exception $e) {
             echo $e->getMessage();
