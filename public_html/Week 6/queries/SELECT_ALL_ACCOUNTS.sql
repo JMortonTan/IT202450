@@ -1,2 +1,2 @@
 SELECT * FROM Accounts
-ORDER BY balance (:selectorder);
+ORDER BY balance :selectorder;
