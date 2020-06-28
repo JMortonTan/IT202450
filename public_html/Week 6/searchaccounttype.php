@@ -1,7 +1,7 @@
 <?php
 $search = "";
 $order = "";
-if(isset($_POST["search"] && isset($_POST["order"]))){
+if(isset($_POST["search"])){
     $search = $_POST["search"];
     $order = $_POST["order"];
 }
@@ -16,7 +16,7 @@ if(isset($_POST["search"] && isset($_POST["order"]))){
         </select>
     </label>
     <label for="Order">Order
-        <select type="text" id="order" name="search" required>
+        <select type="text" id="order" name="order" required>
             <option value="ASC">Ascending</option>
             <option value="DSC">Descending</option>
         </select>
