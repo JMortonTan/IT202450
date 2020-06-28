@@ -1,6 +1,7 @@
 <?php
 require("common.inc.php");
 $query = file_get_contents(_DIR_ . "/queries/SELECT_ALL_ACCOUNTS.sql");
+echo "Hello";
 if(isset($query) && !empty($query)){
     try{
         echo "Sending query";
