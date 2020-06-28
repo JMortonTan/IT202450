@@ -1,10 +1,8 @@
 <?php
 require("common.inc.php");
 $query = file_get_contents(__DIR__ . "/queries/SELECT_ALL_ACCOUNTS.sql");
-echo "Hello";
 if(isset($query) && !empty($query)){
     try{
-        echo "Sending query";
         $stmt = getDB()->prepare($query);
         //No arguments, since results not being filtered.
         $stmt->execute();
@@ -24,8 +22,8 @@ if(isset($query) && !empty($query)){
     <ul>
         <?php foreach($results as $row):?>
             <li>
-                <?php echo get($row, "name")?>
-                <?php echo get($row, "quantity");?>
+                <?php echo get($row, "account_number")?>
+                <?php echo get($row, "account_type");?>
             </li>
         <?php endforeach;?>
     </ul>
