@@ -6,7 +6,7 @@ if(isset($_POST["search"])){
 ?>
 <form method="POST">
     <label for="Account_Type">Account Type
-        <select type="number" id="acc_type" name="account_type" required>
+        <select type="number" id="acc_type" name="search" required>
             <option value=1>Checking</option>
             <option value=2>Savings</option>
             <option value=3>Loan</option>
