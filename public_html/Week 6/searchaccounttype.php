@@ -27,13 +27,20 @@ if(isset($_POST["search"])){
 <?php
 if(isset($search) && $search != 0) {
     require("common.inc.php");
-    $query = file_get_contents(__DIR__ . "/queries/SEARCH_TABLE_ACCOUNTS_ACCOUNTTYPE.sql");
+    switch($order):
+        case 'ASC':
+            $query = file_get_contents(__DIR__ . "/queries/SEARCH_TABLE_ACCOUNTS_ACCOUNTTYPE_ASC.sql");
+            break;
+        case 'DESC':
+            $query = file_get_contents(__DIR__ . "/queries/SEARCH_TABLE_ACCOUNTS_ACCOUNTTYPE_DESC.sql");
+            break;
+    endswitch;
     if (isset($query) && !empty($query)) {
         try {
             echo $search;
             echo $order;
             $stmt = getDB()->prepare($query);
-            $stmt->execute([":search"=>$search, ":sort"=>$order]);
+            $stmt->execute([":search"=>$search]);
             $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
             echo "We tried to search this type!";
         } catch (Exception $e) {
@@ -43,11 +50,18 @@ if(isset($search) && $search != 0) {
 }
 if(isset($search) && $search == 0) {
     require("common.inc.php");
-    $query = file_get_contents(__DIR__ . "/queries/SELECT_ALL_ACCOUNTS.sql");
+    switch($order):
+        case 'ASC':
+            $query = file_get_contents(__DIR__ . "/queries/SEARCH_ALL_ACCOUNTS_ASC.sql");
+            break;
+        case 'DESC':
+            $query = file_get_contents(__DIR__ . "/queries/SEARCH_ALL_ACCOUNTS_DESC.sql");
+            break;
+    endswitch;
     if (isset($query) && !empty($query)) {
         try {
             $stmt = getDB()->prepare($query);
-            $stmt->execute([":sort"=>$order]);
+            $stmt->execute();
             $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
             echo "We tried to search all types!";
         } catch (Exception $e) {
