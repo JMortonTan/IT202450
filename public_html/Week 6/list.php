@@ -20,8 +20,8 @@ if(isset($query) && !empty($query)){
 <?php if(isset($results)):?>
     <p>Here are your results:</p>
     <table>
-        <th>Account Number</th>
-        <th>Account Type</th>
+        <th>Account #</th>
+        <th>Type</th>
         <?php foreach($results as $row):?>
         <tr>
             <td>
@@ -39,6 +39,9 @@ if(isset($query) && !empty($query)){
                         break;
                     case 3:
                         echo "Loan";
+                        break;
+                    default:
+                        echo "There is an error";
                         break;
                 };?>
             </td>

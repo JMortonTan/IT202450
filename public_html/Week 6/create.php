@@ -1,9 +1,11 @@
-<form method="POST">
+<!--Client side validation-->
+<script src="js/script.js"></script>
+<form method="POST" onsubmit ="return validate(this);">
     <label for="Account">Account Number
-        <input type="text" id="acc_number" name="account_number" />
+        <input type="text" id="acc_number" name="account_number" required/>
     </label>
     <label for="Account_Type">Account Type
-        <select type="number" id="acc_type" name="account_type">
+        <select type="number" id="acc_type" name="account_type" required>
             <option value=1>Checking</option>
             <option value=2>Savings</option>
             <option value=3>Loan</option>
