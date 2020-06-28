@@ -5,12 +5,14 @@ if(isset($_POST["search"])){
 }
 ?>
 <form method="POST">
-    <p>Select a type of account to search: </p>
-    <select type="number" id="acc_type" name="account_type" required>
-        <option value=1>Checking</option>
-        <option value=2>Savings</option>
-        <option value=3>Loan</option>
-    </select type="submit" value="Search">
+    <label for="Account_Type">Account Type
+        <select type="number" id="acc_type" name="account_type" required>
+            <option value=1>Checking</option>
+            <option value=2>Savings</option>
+            <option value=3>Loan</option>
+        </select>
+    </label>
+    <input type="submit" value="Search"/>
 </form>
 <?php
 if(isset($search)) {
