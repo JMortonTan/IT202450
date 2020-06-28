@@ -13,13 +13,13 @@ if(isset($_POST["search"])){
             <option value=1>Checking</option>
             <option value=2>Savings</option>
             <option value=3>Loan</option>
-            <option value=0>All</option>
+            <option selected="selected" value=0>All</option>
         </select>
     </label>
     <label for="Order">Balance Sort
         <select type="text" id="order" name="order" required>
             <option value="ASC">Ascending</option>
-            <option value="DESC">Descending</option>
+            <option selected="selected" value="DESC">Descending</option>
         </select>
     </label>
     <input type="submit" value="Search"/>
@@ -42,7 +42,6 @@ if(isset($search) && $search != 0) {
             $stmt = getDB()->prepare($query);
             $stmt->execute([":search"=>$search]);
             $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
-            echo "We tried to search this type!";
         } catch (Exception $e) {
             echo $e->getMessage();
         }
@@ -63,7 +62,6 @@ if(isset($search) && $search == 0) {
             $stmt = getDB()->prepare($query);
             $stmt->execute();
             $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
-            echo "We tried to search all types!";
         } catch (Exception $e) {
             echo $e->getMessage();
         }
