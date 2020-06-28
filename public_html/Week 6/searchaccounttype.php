@@ -10,9 +10,11 @@ if(isset($_POST["search"])){
             <option value=1>Checking</option>
             <option value=2>Savings</option>
             <option value=3>Loan</option>
+            <option value='*'>All</option>
         </select>
     </label>
-    <input type="submit" value="Search"/>
+    <input type="submit" value="Search Ascending"/>
+    <input type="submit" value="Search Descending"/>
 </form>
 <?php
 if(isset($search)) {
