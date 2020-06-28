@@ -1,1 +1,1 @@
-SELECT * FROM Accounts ORDER BY balance :sort;
+SELECT * FROM Accounts ORDER BY balance ASC;
