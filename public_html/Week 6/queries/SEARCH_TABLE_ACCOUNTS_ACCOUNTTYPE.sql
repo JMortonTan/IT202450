@@ -1,1 +1,1 @@
-SELECT * FROM Accounts WHERE account_type=(:search)
+SELECT * FROM Accounts WHERE account_type LIKE CONCAT(:search)
