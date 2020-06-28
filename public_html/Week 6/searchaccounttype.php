@@ -9,7 +9,7 @@ if(isset($_POST["search"])){
 
 <form method="POST">
     <label for="Account_Type">Account Type
-        <select type="number" id="acc_type" name="search" required>
+        <select type="number" id="search" name="search" required>
             <option value=1>Checking</option>
             <option value=2>Savings</option>
             <option value=3>Loan</option>
@@ -30,6 +30,8 @@ if(isset($search) && $search != 0) {
     $query = file_get_contents(__DIR__ . "/queries/SEARCH_TABLE_ACCOUNTS_ACCOUNTTYPE.sql");
     if (isset($query) && !empty($query)) {
         try {
+            echo $search;
+            echo $order;
             $stmt = getDB()->prepare($query);
             $stmt->execute(array(
                 ":search" => $search,
