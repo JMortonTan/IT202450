@@ -22,8 +22,19 @@ if(isset($query) && !empty($query)){
     <ul>
         <?php foreach($results as $row):?>
             <li>
-                <?php echo get($row, "account_number")?>
-                <?php echo get($row, "account_type");?>
+                <?php echo "Account Number: ";?>
+                <?php echo get($row, "account_number");?>
+                <?php echo "Type: ";?>
+                <?php
+                $type_holder = get($row, "account_type");
+                switch ($type_holder) {
+                    case 1:
+                        echo "Checking";
+                    case 2:
+                        echo "Savings";
+                    case 3:
+                        echo "Loan";
+                };?>
             </li>
         <?php endforeach;?>
     </ul>
