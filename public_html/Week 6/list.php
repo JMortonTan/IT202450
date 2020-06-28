@@ -19,12 +19,15 @@ if(isset($query) && !empty($query)){
 
 <?php if(isset($results)):?>
     <p>Here are your results:</p>
-    <ul>
+    <table>
+        <th>Account Number</th>
+        <th>Account Type</th>
         <?php foreach($results as $row):?>
-            <li>
-                <?php echo "Account Number: ";?>
+        <tr>
+            <td>
                 <?php echo get($row, "account_number");?>
-                <?php echo "Type: ";?>
+            </td>
+            <td>
                 <?php
                 $type_holder = get($row, "account_type");
                 switch ($type_holder) {
@@ -38,9 +41,10 @@ if(isset($query) && !empty($query)){
                         echo "Loan";
                         break;
                 };?>
-            </li>
+            </td>
+        </tr>
         <?php endforeach;?>
-    </ul>
+    </table>
 <?php else:?>
     <p>Your query did not return results</p>
 <?php endif;?>
