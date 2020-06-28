@@ -30,10 +30,13 @@ if(isset($query) && !empty($query)){
                 switch ($type_holder) {
                     case 1:
                         echo "Checking";
+                        break;
                     case 2:
                         echo "Savings";
+                        break;
                     case 3:
                         echo "Loan";
+                        break;
                 };?>
             </li>
         <?php endforeach;?>
