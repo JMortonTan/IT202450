@@ -18,8 +18,8 @@ if(isset($_POST["search"])){
     </label>
     <label for="Order">Balance Sort
         <select type="text" id="order" name="order" required>
-            <option value="ASC">Ascending</option>
-            <option selected="selected" value="DESC">Descending</option>
+            <option selected="selected" value="ASC">Ascending</option>
+            <option value="DESC">Descending</option>
         </select>
     </label>
     <input type="submit" value="Search"/>
@@ -37,8 +37,6 @@ if(isset($search) && $search != 0) {
     endswitch;
     if (isset($query) && !empty($query)) {
         try {
-            echo $search;
-            echo $order;
             $stmt = getDB()->prepare($query);
             $stmt->execute([":search"=>$search]);
             $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
