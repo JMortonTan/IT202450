@@ -33,10 +33,7 @@ if(isset($search) && $search != 0) {
             echo $search;
             echo $order;
             $stmt = getDB()->prepare($query);
-            $stmt->execute(array(
-                ":search"=>$search,
-                ":selectorder"=>$order
-            ));
+            $stmt->execute([":search"=>$search,":sort"=>$order]);
             $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
             echo "We tried to search this type!";
         } catch (Exception $e) {
@@ -50,9 +47,7 @@ if(isset($search) && $search == 0) {
     if (isset($query) && !empty($query)) {
         try {
             $stmt = getDB()->prepare($query);
-            $stmt->execute(array(
-                ":selectorder"=>$order
-            ));
+            $stmt->execute([":sort"=>$order]);
             $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
             echo "We tried to search all types!";
         } catch (Exception $e) {
