@@ -1,1 +1,1 @@
-SELECT * FROM Accounts WHERE account_type=2;
+SELECT * FROM Accounts WHERE account_type= (CAST(:search) AS INT);
