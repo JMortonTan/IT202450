@@ -52,10 +52,10 @@ if(isset($search) && $search == 0) {
     require("common.inc.php");
     switch($order):
         case 'ASC':
-            $query = file_get_contents(__DIR__ . "/queries/SEARCH_ALL_ACCOUNTS_ASC.sql");
+            $query = file_get_contents(__DIR__ . "/queries/SELECT_ALL_ACCOUNTS_ASC.sql");
             break;
         case 'DESC':
-            $query = file_get_contents(__DIR__ . "/queries/SEARCH_ALL_ACCOUNTS_DESC.sql");
+            $query = file_get_contents(__DIR__ . "/queries/SELECT_ALL_ACCOUNTS_DESC.sql");
             break;
     endswitch;
     if (isset($query) && !empty($query)) {
