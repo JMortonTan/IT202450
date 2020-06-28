@@ -31,12 +31,10 @@ if(isset($search) && $search != 0) {
     if (isset($query) && !empty($query)) {
         try {
             $stmt = getDB()->prepare($query);
-            //Note: With a LIKE query, we must pass the % during the mapping
             $stmt->execute(array(
                 ":search" => $search,
                 ":selectorder" => $order
             ));
-            //Note the fetchAll(), we need to use it over fetch() if we expect >1 record
             $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
             echo "We tried to search this type!";
         } catch (Exception $e) {
