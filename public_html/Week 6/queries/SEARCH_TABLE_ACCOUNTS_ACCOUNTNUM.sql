@@ -1,1 +1,1 @@
-SELECT * FROM Accounts where account_number like CONCAT('%', :search, '%')
+SELECT * FROM Accounts WHERE account_number LIKE CONCAT('%', :search, '%')
