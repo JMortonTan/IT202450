@@ -6,6 +6,7 @@ if(isset($_POST["search"])){
     $order = $_POST["order"];
 }
 ?>
+
 <form method="POST">
     <label for="Account_Type">Account Type
         <select type="number" id="acc_type" name="search" required>
@@ -15,13 +16,12 @@ if(isset($_POST["search"])){
             <option value=0>All</option>
         </select>
     </label>
-    <label for="Order">Order
+    <label for="Order">Balance Sort
         <select type="text" id="order" name="order" required>
             <option value="ASC">Ascending</option>
             <option value="DSC">Descending</option>
         </select>
     </label>
-
     <input type="submit" value="Search"/>
 </form>
 <?php
@@ -38,6 +38,7 @@ if(isset($search) && $search != 0) {
             ));
             //Note the fetchAll(), we need to use it over fetch() if we expect >1 record
             $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
+            echo "We tried to search this type!";
         } catch (Exception $e) {
             echo $e->getMessage();
         }
@@ -53,6 +54,7 @@ if(isset($search) && $search == 0) {
                 ":selectorder" => $order
             ));
             $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
+            echo "We tried to search all types!";
         } catch (Exception $e) {
             echo $e->getMessage();
         }
