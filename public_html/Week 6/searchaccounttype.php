@@ -19,7 +19,7 @@ if(isset($_POST["search"])){
     <label for="Order">Balance Sort
         <select type="text" id="order" name="order" required>
             <option value="ASC">Ascending</option>
-            <option value="DSC">Descending</option>
+            <option value="DESC">Descending</option>
         </select>
     </label>
     <input type="submit" value="Search"/>
