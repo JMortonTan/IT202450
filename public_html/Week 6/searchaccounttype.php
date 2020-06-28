@@ -60,6 +60,7 @@ if(isset($search) && $search == 0) {
     <table>
         <th>Account #</th>
         <th>Type</th>
+        <th>Balance</th>
         <?php foreach($results as $row):?>
             <tr>
                 <td>
@@ -82,6 +83,9 @@ if(isset($search) && $search == 0) {
                             echo "There is an error";
                             break;
                     };?>
+                </td>
+                <td>
+                    <?php echo get($row, "balance");?>
                 </td>
             </tr>
         <?php endforeach;?>
