@@ -10,14 +10,14 @@ if(isset($_POST["search"])){
             <option value=1>Checking</option>
             <option value=2>Savings</option>
             <option value=3>Loan</option>
-            <option value='*'>All</option>
+            <option value=0>All</option>
         </select>
     </label>
     <input type="submit" value="Search Ascending"/>
     <input type="submit" value="Search Descending"/>
 </form>
 <?php
-if(isset($search)) {
+if(isset($search) && $search != 0) {
     require("common.inc.php");
     $query = file_get_contents(__DIR__ . "/queries/SEARCH_TABLE_ACCOUNTS_ACCOUNTTYPE.sql");
     if (isset($query) && !empty($query)) {
@@ -26,6 +26,19 @@ if(isset($search)) {
             //Note: With a LIKE query, we must pass the % during the mapping
             $stmt->execute([":search"=>$search]);
             //Note the fetchAll(), we need to use it over fetch() if we expect >1 record
+            $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        } catch (Exception $e) {
+            echo $e->getMessage();
+        }
+    }
+}
+if(isset($search) && $search == 0) {
+    require("common.inc.php");
+    $query = file_get_contents(__DIR__ . "/queries/SELECT_ALL_ACCOUNTS.sql");
+    if (isset($query) && !empty($query)) {
+        try {
+            $stmt = getDB()->prepare($query);
+            $stmt->execute();
             $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
         } catch (Exception $e) {
             echo $e->getMessage();
