@@ -1,15 +1,15 @@
 .menu > ul {
     list-style-type: none;
-    margin: 0;
+    margin: auto;
     padding: 0;
     overflow: hidden;
     background-color: #101044;
     display: inline-block;
     width: 100%;
-    vertical-align: middle;
 }
 .menu > ul > li {
     float: left;
+    margin: auto;
 }
 .menu > ul > li > a {
     display: block;
@@ -17,6 +17,7 @@
     text-align: center;
     padding: 11px;
     text-decoration: none;
+    margin: auto;
 }
 
 .logo {
