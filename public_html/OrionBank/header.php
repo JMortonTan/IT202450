@@ -11,10 +11,10 @@ $logged_in = Common::is_logged_in(false);
     <ul>
         <li><a href="home.php">Home</a></li>
         <?php if($logged_in):?>
-            <li><a href="register.php">Registration</a></li>
+            <li><a href="logout.php">Logout</a></li>
         <?php endif; ?>
         <?php if(!$logged_in):?>
-            <li><a href="logout.php">Logout</a></li>
+            <li><a href="register.php">Registration</a></li>
         <?php endif; ?>
 
     </ul>
