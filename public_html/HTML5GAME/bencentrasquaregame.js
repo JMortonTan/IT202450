@@ -51,17 +51,34 @@ var id = null;
 canvas.addEventListener('keydown', function(event) {
     event.preventDefault();
     console.log(event.key, event.keyCode);
-    if (event.keyCode === 40) { // DOWN
-        down = true;
+    if (poison === false) {
+        if (event.keyCode === 40) { // DOWN
+            down = true;
+        }
+        if (event.keyCode === 38) { // UP
+            up = true;
+        }
+        if (event.keyCode === 37) { // LEFT
+            left = true;
+        }
+        if (event.keyCode === 39) { // RIGHT
+            right = true;
+        }
     }
-    if (event.keyCode === 38) { // UP
-        up = true;
-    }
-    if (event.keyCode === 37) { // LEFT
-        left = true;
-    }
-    if (event.keyCode === 39) { // RIGHT
-        right = true;
+
+    if (poison === true) {
+        if (event.keyCode === 40) { // DOWN
+            up = true;
+        }
+        if (event.keyCode === 38) { // UP
+            down = true;
+        }
+        if (event.keyCode === 37) { // LEFT
+            right = true;
+        }
+        if (event.keyCode === 39) { // RIGHT
+            left = true;
+        }
     }
 });
 
