@@ -1,39 +1,19 @@
-#logo {
-    max-width: 20%;
-    height:auto;
+.logo {
+    display: inline-block;
+    vertical-align: top;
+    width: 50px;
+    height: 50px;
+    margin-right: 20px;
+    margin-top: 15px;
 }
 
-input {
-    background-color: beige;
-}
-
-label {
-    border: none;
-}
-
-form {
-    width: 80%;
-    margin-left: auto;
-    margin-right: auto;
-    margin-top: 5%;
-    text-align: center;
-}
-
-nav ul {
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
-    overflow: hidden;
-    background-color: dimgrey;
-}
-nav li {
-    float: left;
-}
-nav li a {
-    display: block;
-    color: white;
-    text-align: center;
-    padding: 11px;
+.menu {
+    color: black;
+    font-size: 16px;
+    font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
     text-decoration: none;
+    line-height: 70px;
+    padding: 5px 15px;
+    opacity: 0.7;
+    display:inline-block;
 }
-

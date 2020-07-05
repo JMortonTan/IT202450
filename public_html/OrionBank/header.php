@@ -3,20 +3,19 @@
     <link rel="stylesheet" type="text/css" href="style.css"
 </head>
 
-<img src="media/Logo.png" id="logo" alt="Orion Bank">
-<nav id="menu">
+<nav class="menu">
+    <img class="logo" src="media/logo.png" alt="Orion Bank">
     <?php
+    echo '<li><a href="home.php">Home</a></li>';
+    if(isset($_SESSION)):
+        echo '<li><a href="logout.php">Logout</a></li>';
+    endif;
+    if(!isset($_SESSION)):
+        echo '<li><a href="register.php">Registration</a></li>';
+    endif;
     ?>
-    <ul>
-        <li><a href="home.php">Home</a></li>
-        <li><a href="register.php">Registration</a></li>
-        <?php if(isset($_SESSION)):?>
-            <li><a href="logout.php">Logout</a></li>
-        <?php endif;?>
-    </ul>
 </nav>
 
 <?php
 require("config.php");
-session_start();
 ?>
