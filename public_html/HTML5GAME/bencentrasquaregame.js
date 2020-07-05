@@ -15,6 +15,9 @@ var score = 0;
 var chain = 0;
 var poison = false;
 
+// Lucky Event
+var chance = 0;
+
 // Properties for your square
 var x = 50; // X position
 var y = 100; // Y position
@@ -123,7 +126,7 @@ function menu() {
     context.fillStyle = '#000000';
     context.font = '36px Arial';
     context.textAlign = 'center';
-    context.fillText('Collect the Square!', canvas.width / 2, canvas.height / 4);
+    context.fillText('Collect the Target!', canvas.width / 2, canvas.height / 4);
     context.font = '24px Arial';
     context.fillText('Click to Start', canvas.width / 2, canvas.height / 2);
     context.font = '18px Arial'
@@ -257,6 +260,19 @@ function draw() {
     // Draw the anti-target
     context.fillStyle = '#FF0000';
     context.fillRect(antitargetX, antitargetY, antitargetLength, antitargetLength);
+
+    // Extra target?
+    chance = Math.floor(Math.random() * 20)
+    switch(chance) {
+        case 0:
+            // Draw the target
+            context.fillStyle = '#228B22';
+            context.fillRect(targetX, targetY, targetLength, targetLength);
+        case 1:
+            // Draw the anti-target
+            context.fillStyle = '#FF0000';
+            context.fillRect(antitargetX, antitargetY, antitargetLength, antitargetLength);
+    }
 
     // Draw the score and time remaining
     context.fillStyle = '#000000';
