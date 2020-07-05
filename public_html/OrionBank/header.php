@@ -13,11 +13,8 @@ require("config.php");
     <ul>
         <li><img src="media/Logo.png" id="logo" alt="Orion Bank"></li>
         <li><a href="home.php">Home</a></li>
-        <li><a href="accounts.php">My Accounts</a></li>
-        <li><a href="login.php">Login</a></li>
         <li><a href="register.php">Registration</a></li>
         <?php if(isset($_SESSION)):?>
-            <li><a href="accounts.php">My Accounts</a></li>
             <li><a href="logout.php">Logout</a></li>
         <?php endif;?>
     </ul>
