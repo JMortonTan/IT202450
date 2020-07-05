@@ -4,14 +4,14 @@
 </head>
 
 <nav class="menu">
-    <img class="logo" src="media/logo.png" alt="Orion Bank">
+    <img class="logo" src="media/Logo.png" alt="Orion Bank">
     <?php
-    echo '<li><a href="home.php">Home</a></li>';
+    echo '<a href="home.php">Home</a>';
     if(isset($_SESSION)):
-        echo '<li><a href="logout.php">Logout</a></li>';
+        echo '<li><a href="logout.php">Logout</a>';
     endif;
     if(!isset($_SESSION)):
-        echo '<li><a href="register.php">Registration</a></li>';
+        echo '<a href="register.php">Registration</a>';
     endif;
     ?>
 </nav>
