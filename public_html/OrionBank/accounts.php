@@ -8,15 +8,18 @@ print $_SESSION["user"]["id"];
 $search = $_SESSION["user"]["id"];
 
 if(isset($search)) {
+    echo "The first if statement is executing  <br>";
     require("includes/common.inc.php");
     $query = file_get_contents(__DIR__ . "/queries/SEARCH_TABLE_ACCOUNTS_ACCOUNTID.sql");
     if (isset($query) && !empty($query)) {
+        echo "The query statement is executing  <br>";
         try {
             $stmt = getDB()->prepare($query);
             //Note: With a LIKE query, we must pass the % during the mapping
             $stmt->execute([":search"=>$search]);
             //Note the fetchAll(), we need to use it over fetch() if we expect >1 record
             $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
+            echo "The try statement is executing  <br>";
         } catch (Exception $e) {
             echo $e->getMessage();
         }
