@@ -1,4 +1,7 @@
-
+#logo {
+    max-width: 15%;
+    height:auto;
+}
 
 input {
     background-color: beige;
@@ -34,7 +37,3 @@ nav li a {
     text-decoration: none;
 }
 
-#logo {
-    max-width: 25%;
-    height:auto;
-}
