@@ -255,7 +255,8 @@ function draw() {
 
     // Draw the score and time remaining
     if (poison) {
-        context.fillStyle = '#00FF00';
+        context.fillStyle = '#228B22';
+        context.fillText('You are poisoned!', 10, 100)
     }
     else {
         context.fillStyle = '#000000';
