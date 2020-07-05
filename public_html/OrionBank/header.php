@@ -1,12 +1,15 @@
 <head>
-    <title>Bank</title>
+    <title>Orion Bank</title>
     <link rel="stylesheet" type="text/css" href="style.css"
 </head>
+
 <?php
 require("config.php");
-session_start();
 ?>
+
 <nav id="menu">
+    <?php
+    ?>
     <ul>
         <li><img src="media/Logo.png" id="logo" alt="Orion Bank"></li>
         <li><a href="home.php">Home</a></li>
@@ -19,5 +22,3 @@ session_start();
         <?php endif;?>
     </ul>
 </nav>
-
-
