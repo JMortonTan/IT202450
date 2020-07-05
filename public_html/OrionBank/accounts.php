@@ -59,5 +59,6 @@ if(isset($search)) {
         <?php endforeach;?>
     </table>
 <?php else:?>
-    <p>You have not opened an account!</p>
+    <p>You have not opened an account!</p><br>
+    <a href="openaccount.php">Open an account today!</a>
 <?php endif;?>
