@@ -59,5 +59,5 @@ if(isset($search)) {
         <?php endforeach;?>
     </table>
 <?php else:?>
-    <p>Your query did not return results</p>
+    <p>You have not opened an account!</p>
 <?php endif;?>
