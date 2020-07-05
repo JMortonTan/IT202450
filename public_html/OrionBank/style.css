@@ -3,13 +3,13 @@
     margin: 0;
     padding: 0;
     overflow: hidden;
-    background-color: dimgrey;
+    background-color: #101044;
     display: inline-block;
 }
-.menu > li {
+.menu > ul > li {
     float: left;
 }
-.menu > li a {
+.menu > ul > li > a {
     display: block;
     color: white;
     text-align: center;
