@@ -1,20 +1,20 @@
 .logo {
     display: inline-block;
     vertical-align: top;
-    width: 50px;
-    height: 50px;
+    width: 80px;
+    height: 80x;
     margin-right: 20px;
-    margin-top: 15px;
+    margin-top: 0px;
 }
 
 .menu {
     background-color: rebeccapurple;
+    color: black;
     font-size: 16px;
     font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
     text-decoration: none;
     line-height: 70px;
     padding: 5px 15px;
-    opacity: 0.7;
 }
 
 .menu > a {
