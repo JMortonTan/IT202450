@@ -243,18 +243,18 @@ function draw() {
 
     // Draw the square
     context.fillStyle = '#0000FF';
+    context.rotate(30 * Math.PI/180);
     context.fillRect(x, y, sideLength, sideLength);
-    context.rotate(3)
 
     // Draw the target
     context.fillStyle = '#228B22';
+    context.rotate(30 * Math.PI/180);
     context.fillRect(targetX, targetY, targetLength, targetLength);
-    context.rotate(3)
 
     // Draw the anti-target
     context.fillStyle = '#FF0000';
+    context.rotate(30 * Math.PI/180);
     context.fillRect(antitargetX, antitargetY, antitargetLength, antitargetLength);
-    context.rotate(3)
 
     // Draw the score and time remaining
     if (poison) {
