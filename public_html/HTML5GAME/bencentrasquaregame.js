@@ -11,6 +11,10 @@ var context = canvas.getContext('2d');
 // Your score
 var score = 0;
 
+// Chain
+var chain = 0;
+var poison = false;
+
 // Properties for your square
 var x = 50; // X position
 var y = 100; // Y position
@@ -64,18 +68,36 @@ canvas.addEventListener('keydown', function(event) {
 // Listen for keyup events
 canvas.addEventListener('keyup', function(event) {
     event.preventDefault();
-    console.log(event.key, event.keyCode);
-    if (event.keyCode === 40) { // DOWN
-        down = false;
+    if (poison = false) {
+        console.log(event.key, event.keyCode);
+        if (event.keyCode === 40) { // DOWN
+            down = false;
+        }
+        if (event.keyCode === 38) { // UP
+            up = false;
+        }
+        if (event.keyCode === 37) { // LEFT
+            left = false;
+        }
+        if (event.keyCode === 39) { // RIGHT
+            right = false;
+        }
     }
-    if (event.keyCode === 38) { // UP
-        up = false;
-    }
-    if (event.keyCode === 37) { // LEFT
-        left = false;
-    }
-    if (event.keyCode === 39) { // RIGHT
-        right = false;
+
+    if (poison = true) {
+        console.log(event.key, event.keyCode);
+        if (event.keyCode === 40) { // DOWN
+            up = false;
+        }
+        if (event.keyCode === 38) { // UP
+            down = false;
+        }
+        if (event.keyCode === 37) { // LEFT
+            right = false;
+        }
+        if (event.keyCode === 39) { // RIGHT
+            left = false;
+        }
     }
 });
 
@@ -173,8 +195,15 @@ function draw() {
             score++;
             // Increase the player speed
             speed++;
-            // Give player more time
-            countdown++;
+            // Update Chain count
+            chain++;
+            // Cure poison
+            poison = false;
+            if (chain = 3) {
+                //Reset chain
+                chain = 0;
+                countdown++;
+            }
         }
     }
     // Collide with the antitarget
@@ -186,6 +215,13 @@ function draw() {
             score--;
             // Decrease the player speed
             speed--;
+            // Update Chain count
+            chain--;
+        }
+        if (chain = -3) {
+            //Reset chain
+            chain = 0;
+            poison = true;
         }
     }
 
