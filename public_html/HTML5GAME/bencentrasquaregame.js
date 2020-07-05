@@ -172,7 +172,9 @@ function erase() {
     if (poison) {
         context.fillStyle = '#00FF00';
     }
-    context.fillStyle = '#FFFFFF';
+    else {
+        context.fillStyle = '#FFFFFF';
+    }
     context.fillRect(0, 0, 600, 400);
 }
 
