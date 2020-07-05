@@ -69,7 +69,7 @@ canvas.addEventListener('keydown', function(event) {
 canvas.addEventListener('keyup', function(event) {
     event.preventDefault();
     console.log(event.key, event.keyCode);
-    if (poison = false) {
+    if (poison === false) {
         if (event.keyCode === 40) { // DOWN
             down = false;
         }
@@ -84,7 +84,7 @@ canvas.addEventListener('keyup', function(event) {
         }
     }
 
-    if (poison = true) {
+    if (poison === true) {
         if (event.keyCode === 40) { // DOWN
             up = false;
         }
@@ -198,7 +198,7 @@ function draw() {
             chain++;
             // Cure poison
             poison = false;
-            if (chain = 3) {
+            if (chain === 3) {
                 //Reset chain
                 chain = 0;
                 countdown++;
@@ -217,7 +217,7 @@ function draw() {
             // Update Chain count
             chain--;
         }
-        if (chain = -3) {
+        if (chain === -3) {
             //Reset chain
             chain = 0;
             poison = true;
@@ -237,7 +237,7 @@ function draw() {
     context.fillRect(antitargetX, antitargetY, antitargetLength, antitargetLength);
 
     // Draw the score and time remaining
-    if (poison = true) {
+    if (poison) {
         context.fillStyle = '#00FF00';
     }
     else {
