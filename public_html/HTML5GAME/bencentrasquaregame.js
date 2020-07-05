@@ -68,8 +68,8 @@ canvas.addEventListener('keydown', function(event) {
 // Listen for keyup events
 canvas.addEventListener('keyup', function(event) {
     event.preventDefault();
+    console.log(event.key, event.keyCode);
     if (poison = false) {
-        console.log(event.key, event.keyCode);
         if (event.keyCode === 40) { // DOWN
             down = false;
         }
@@ -85,7 +85,6 @@ canvas.addEventListener('keyup', function(event) {
     }
 
     if (poison = true) {
-        console.log(event.key, event.keyCode);
         if (event.keyCode === 40) { // DOWN
             up = false;
         }
