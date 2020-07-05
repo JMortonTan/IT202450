@@ -1,3 +1,6 @@
+<?php
+session_start()
+?>
 <head>
     <title>Orion Bank</title>
     <link rel="stylesheet" type="text/css" href="style.css"
