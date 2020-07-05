@@ -261,19 +261,6 @@ function draw() {
     context.fillStyle = '#FF0000';
     context.fillRect(antitargetX, antitargetY, antitargetLength, antitargetLength);
 
-    // Extra target?
-    chance = Math.floor(Math.random() * 20)
-    switch(chance) {
-        case 0:
-            // Draw the target
-            context.fillStyle = '#228B22';
-            context.fillRect(targetX, targetY, targetLength, targetLength);
-        case 1:
-            // Draw the anti-target
-            context.fillStyle = '#FF0000';
-            context.fillRect(antitargetX, antitargetY, antitargetLength, antitargetLength);
-    }
-
     // Draw the score and time remaining
     context.fillStyle = '#000000';
     context.font = '24px Arial';
