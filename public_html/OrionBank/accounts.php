@@ -4,20 +4,12 @@ include("header.php");
 <h4>My Accounts</h4>
 
 <?php
-$search = "";
-if(isset($_POST["search"])){
-    $search = $_POST["search"];
-}
-?>
-<form method="POST">
-    <input type="text" name="search" placeholder="Search for an Account"
-           value="<?php echo $search;?>"/>
-    <input type="submit" value="Search"/>
-</form>
-<?php
+print $_SESSION["user"]["first_name"];
+$search = $_SESSION["user"]["id"];
+
 if(isset($search)) {
-    require("common.inc.php");
-    $query = file_get_contents(__DIR__ . "/queries/SEARCH_TABLE_ACCOUNTS_ACCOUNTNUM.sql");
+    require("includes/common.inc.php");
+    $query = file_get_contents(__DIR__ . "/queries/SEARCH_TABLE_ACCOUNTS_ACCOUNTID.sql");
     if (isset($query) && !empty($query)) {
         try {
             $stmt = getDB()->prepare($query);
