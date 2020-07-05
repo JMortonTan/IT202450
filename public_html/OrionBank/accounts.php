@@ -10,6 +10,7 @@ $search = $_SESSION["user"]["id"];
 if(isset($search)) {
     echo "The first if statement is executing  <br>";
     require("includes/common.inc.php");
+    echo "Require statement success  <br>";
     $query = file_get_contents("queries/SEARCH_TABLE_ACCOUNTS_ACCOUNTID.sql");
     print $query;
     if (isset($query) && !empty($query)) {
