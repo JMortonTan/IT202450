@@ -1,0 +1,33 @@
+input {
+    background-color: beige;
+}
+
+label {
+    border: none;
+}
+
+form {
+    width: 80%;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 5%;
+    text-align: center;
+}
+
+nav ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: dimgrey;
+}
+nav li {
+    float: left;
+}
+nav li a {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 11px;
+    text-decoration: none;
+}
