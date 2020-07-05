@@ -219,6 +219,7 @@ function draw() {
                 //Reset chain
                 chain = 0;
                 countdown++;
+                context.fillText('Time +1!', 10, 100)
             }
         }
     }
