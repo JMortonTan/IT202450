@@ -219,7 +219,6 @@ function draw() {
                 //Reset chain
                 chain = 0;
                 countdown++;
-                context.fillText('Time +1!', 10, 100)
             }
         }
     }
@@ -245,14 +244,17 @@ function draw() {
     // Draw the square
     context.fillStyle = '#0000FF';
     context.fillRect(x, y, sideLength, sideLength);
+    context.rotate(3)
 
     // Draw the target
     context.fillStyle = '#228B22';
     context.fillRect(targetX, targetY, targetLength, targetLength);
+    context.rotate(3)
 
     // Draw the anti-target
     context.fillStyle = '#FF0000';
     context.fillRect(antitargetX, antitargetY, antitargetLength, antitargetLength);
+    context.rotate(3)
 
     // Draw the score and time remaining
     if (poison) {
@@ -268,6 +270,7 @@ function draw() {
     context.fillText('Score: ' + score, 10, 24);
     context.fillText('Time Remaining: ' + countdown, 10, 50);
     context.fillText('Speed: ' + speed, 10, 75)
+
     // End the game or keep playing
     if (countdown <= 0) {
         endGame();
