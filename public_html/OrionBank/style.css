@@ -8,12 +8,19 @@
 }
 
 .menu {
-    color: black;
+    background-color: rebeccapurple;
     font-size: 16px;
     font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
     text-decoration: none;
     line-height: 70px;
     padding: 5px 15px;
     opacity: 0.7;
-    display:inline-block;
+}
+
+.menu > a {
+    display: inline-block;
+    vertical-align: top;
+    margin-right: 20px;
+    height: 80px;        /* if you want it to take the full height of the bar */
+    line-height: 80px;    /* if you want it vertically middle of the navbar */
 }
