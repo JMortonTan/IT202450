@@ -5,8 +5,8 @@ include("header.php");
 <?php
 echo '<p>Welcome to Orion Bank!</p>';
 if($logged_in){
-    echo $_SESSION["user"]["email"];
-    echo 'You are logged in';
+    print $_SESSION["user"]["first_name"] . " " . $_SESSION["user"]["last_name"];
+    print 'You are logged in';
 } else {
     include 'login.php';
 }
