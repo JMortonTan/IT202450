@@ -205,6 +205,7 @@ function draw() {
     context.textAlign = 'left';
     context.fillText('Score: ' + score, 10, 24);
     context.fillText('Time Remaining: ' + countdown, 10, 50);
+    context.fillText('Speed: ' + speed, 10, 75)
     // End the game or keep playing
     if (countdown <= 0) {
         endGame();
