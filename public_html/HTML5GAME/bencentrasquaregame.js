@@ -169,6 +169,9 @@ function moveTarget() {
 
 // Clear the canvas
 function erase() {
+    if (poison) {
+        context.fillStyle = '#00FF00';
+    }
     context.fillStyle = '#FFFFFF';
     context.fillRect(0, 0, 600, 400);
 }
@@ -244,33 +247,26 @@ function draw() {
     // Draw the square
     context.fillStyle = '#0000FF';
     context.rotate(30 * Math.PI/180);
-    context.fillRect(x, y, sideLength, sideLength);
 
     // Draw the target
     context.fillStyle = '#228B22';
     context.rotate(30 * Math.PI/180);
-    context.fillRect(targetX, targetY, targetLength, targetLength);
 
     // Draw the anti-target
     context.fillStyle = '#FF0000';
     context.rotate(30 * Math.PI/180);
-    context.fillRect(antitargetX, antitargetY, antitargetLength, antitargetLength);
 
     // Draw the score and time remaining
-    if (poison) {
-        context.fillStyle = '#228B22';
-        context.fillText('You are poisoned!', 10, 100)
-    }
-    else {
-        context.fillStyle = '#000000';
-    }
-
+    context.fillStyle = '#000000';
     context.font = '24px Arial';
     context.textAlign = 'left';
     context.fillText('Score: ' + score, 10, 24);
     context.fillText('Time Remaining: ' + countdown, 10, 50);
     context.fillText('Speed: ' + speed, 10, 75)
-
+    if (poison) {
+        context.fillText('You are poisoned!', 10, 100)
+    }
+    
     // End the game or keep playing
     if (countdown <= 0) {
         endGame();
