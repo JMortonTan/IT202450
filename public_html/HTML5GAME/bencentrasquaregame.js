@@ -173,6 +173,8 @@ function draw() {
             score++;
             // Increase the player speed
             speed++;
+            // Give player more time
+            countdown++;
         }
     }
     // Collide with the antitarget
