@@ -28,6 +28,11 @@ var targetX = 0;
 var targetY = 0;
 var targetLength = 25;
 
+// Properties for the antitarget square
+var antitargetX = 0;
+var antitargetY = 0;
+var antitargetLength = 25;
+
 // Determine if number a is within the range b to c (exclusive)
 function isWithin(a, b, c) {
     return (a > b && a < c);
@@ -119,6 +124,9 @@ function endGame() {
 function moveTarget() {
     targetX = Math.round(Math.random() * canvas.width - targetLength);
     targetY = Math.round(Math.random() * canvas.height - targetLength)
+
+    antitargetX = Math.round(Math.random() * canvas.width - targetLength);
+    antitargetY = Math.round(Math.random() * canvas.height - targetLength)
 }
 
 // Clear the canvas
@@ -159,18 +167,34 @@ function draw() {
     // Collide with the target
     if (isWithin(targetX, x, x + sideLength) || isWithin(targetX + targetLength, x, x + sideLength)) { // X
         if (isWithin(targetY, y, y + sideLength) || isWithin(targetY + targetLength, y, y + sideLength)) { // Y
-            // Respawn the target
+            // Respawn the targets
             moveTarget();
             // Increase the score
             score++;
         }
     }
+    // Collide with the antitarget
+    if (isWithin(antitargetX, x, x + sideLength) || isWithin(antitargetX + antitargetLength, x, x + sideLength)) { // X
+        if (isWithin(antitargetY, y, y + sideLength) || isWithin(antitargetY + targetLength, y, y + sideLength)) { // Y
+            // Respawn the targets
+            moveTarget();
+            // Decrease the score
+            score--;
+        }
+    }
+
     // Draw the square
-    context.fillStyle = '#FF0000';
+    context.fillStyle = '#0000FF';
     context.fillRect(x, y, sideLength, sideLength);
+    
     // Draw the target
     context.fillStyle = '#00FF00';
     context.fillRect(targetX, targetY, targetLength, targetLength);
+
+    // Draw the anti-target
+    context.fillStyle = '#FF0000';
+    context.fillRect(antitargetX, antitargetY, antitargetLength, antitargetLength);
+
     // Draw the score and time remaining
     context.fillStyle = '#000000';
     context.font = '24px Arial';
