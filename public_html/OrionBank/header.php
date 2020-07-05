@@ -1,6 +1,8 @@
 <?php
-session_start();
+    require("config.php");
+    session_start();
 ?>
+
 <head>
     <title>Orion Bank</title>
     <link rel="stylesheet" type="text/css" href="style.css"
@@ -18,7 +20,3 @@ session_start();
     endif;
     ?>
 </nav>
-
-<?php
-require("config.php");
-?>
