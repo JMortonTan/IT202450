@@ -230,7 +230,7 @@ function draw() {
     context.fillRect(x, y, sideLength, sideLength);
 
     // Draw the target
-    context.fillStyle = '#00FF00';
+    context.fillStyle = '#228B22';
     context.fillRect(targetX, targetY, targetLength, targetLength);
 
     // Draw the anti-target
@@ -238,7 +238,13 @@ function draw() {
     context.fillRect(antitargetX, antitargetY, antitargetLength, antitargetLength);
 
     // Draw the score and time remaining
-    context.fillStyle = '#000000';
+    if (poison = true) {
+        context.fillStyle = '#00FF00';
+    }
+    else {
+        context.fillStyle = '#000000';
+    }
+
     context.font = '24px Arial';
     context.textAlign = 'left';
     context.fillText('Score: ' + score, 10, 24);
