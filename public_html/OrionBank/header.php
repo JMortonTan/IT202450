@@ -11,6 +11,7 @@ $logged_in = Common::is_logged_in(false);
     <ul>
         <li><a href="home.php">Home</a></li>
         <?php if($logged_in):?>
+            <li><a href="accounts.php">My Accounts</a></li>
             <li><a href="logout.php">Logout</a></li>
         <?php endif; ?>
         <?php if(!$logged_in):?>
