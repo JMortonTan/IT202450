@@ -4,13 +4,20 @@ include("header.php");
 <h4>Register</h4>
 <form method="POST">
     <label for="email">Email
-    <input type="email" name="email"/>
+        <input type="email" name="email"/>
     </label>
-    <label for="email">Password
-    <input type="password" name="password"/>
+    <label for="password">Password
+        <input type="password" name="password"/>
     </label>
-    <label for="email">Confirm Password
-    <input type="password" name="cpassword"/>
+    <label for="password">Confirm Password
+        <input type="password" name="cpassword"/>
+    </label>
+    <br>
+    <label for="name">First Name
+        <input type="firstname" name="firstname"/>
+    </label>
+    <label for="name">Last Name
+        <input type="lastname" name="lastname"/>
     </label>
     <input type="submit" name="register" value="Register"/>
 </form>
@@ -27,6 +34,9 @@ if(isset($_POST["register"])){
         $password = $_POST["password"];
         $cpassword = $_POST["cpassword"];
         $email = $_POST["email"];
+        $firstname = $_POST["firstname"];
+        $lastname = $_POST["lastname"];
+
         $validFlag = true;
 
         //Validate Input
@@ -50,10 +60,12 @@ if(isset($_POST["register"])){
             try{
                 $db = new PDO($connection_string, $dbuser, $dbpass);
                 $hash = password_hash($password, PASSWORD_BCRYPT);
-                $stmt = $db->prepare("INSERT INTO Users (email, password) VALUES(:email, :password)");
+                $stmt = $db->prepare("INSERT INTO Users (email, password, first_name, last_name) VALUES(:email, :password, :firstname, :lastname)");
                 $stmt->execute(array(
                         ":email" => $email,
-                        ":password" => $hash //$password -> saving hash not password
+                        ":password" => $hash, //$password -> saving hash not password
+                        ":firstname" => $firstname,
+                        ":lastname" => $lastname
                 ));
                 $e = $stmt->errorInfo();
                 if($e[0] != "00000"){
