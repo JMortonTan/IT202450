@@ -246,15 +246,15 @@ function draw() {
 
     // Draw the square
     context.fillStyle = '#0000FF';
-    context.rotate(30 * Math.PI/180);
+    context.fillRect(x, y, sideLength, sideLength);
 
     // Draw the target
     context.fillStyle = '#228B22';
-    context.rotate(30 * Math.PI/180);
+    context.fillRect(targetX, targetY, targetLength, targetLength);
 
     // Draw the anti-target
     context.fillStyle = '#FF0000';
-    context.rotate(30 * Math.PI/180);
+    context.fillRect(antitargetX, antitargetY, antitargetLength, antitargetLength);
 
     // Draw the score and time remaining
     context.fillStyle = '#000000';
@@ -266,7 +266,7 @@ function draw() {
     if (poison) {
         context.fillText('You are poisoned!', 10, 100)
     }
-    
+
     // End the game or keep playing
     if (countdown <= 0) {
         endGame();
