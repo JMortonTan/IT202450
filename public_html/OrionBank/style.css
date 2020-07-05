@@ -6,10 +6,10 @@
     background-color: #101044;
     display: inline-block;
     width: 100%;
+    vertical-align: middle;
 }
 .menu > ul > li {
     float: left;
-    vertical-align: middle;
 }
 .menu > ul > li > a {
     display: block;
