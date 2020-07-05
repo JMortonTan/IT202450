@@ -4,7 +4,7 @@ include("header.php");
 <h4>My Accounts</h4>
 
 <?php
-print $_SESSION["user"]["first_name"];
+print $_SESSION["user"]["id"];
 $search = $_SESSION["user"]["id"];
 
 if(isset($search)) {
