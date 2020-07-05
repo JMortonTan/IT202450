@@ -7,7 +7,7 @@ $logged_in = Common::is_logged_in(false);
     <title>Orion Bank</title>
     <link rel="stylesheet" type="text/css" href="style.css"
 </head>
-<nav id="menu">
+<nav class="menu">
     <ul>
         <li><a href="home.php">Home</a></li>
         <?php if($logged_in):?>

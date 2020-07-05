@@ -1,5 +1,5 @@
 <?php
-include_once(__DIR__."/partials/header.partial.php");
+include_once("header.php");
 ?>
 <h4>Home</h4>
 <?php
