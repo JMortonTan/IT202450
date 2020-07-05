@@ -171,6 +171,8 @@ function draw() {
             moveTarget();
             // Increase the score
             score++;
+            // Increase the player speed
+            speed++;
         }
     }
     // Collide with the antitarget
@@ -180,13 +182,15 @@ function draw() {
             moveTarget();
             // Decrease the score
             score--;
+            // Decrease the player speed
+            speed--;
         }
     }
 
     // Draw the square
     context.fillStyle = '#0000FF';
     context.fillRect(x, y, sideLength, sideLength);
-    
+
     // Draw the target
     context.fillStyle = '#00FF00';
     context.fillRect(targetX, targetY, targetLength, targetLength);
