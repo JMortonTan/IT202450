@@ -1,3 +1,6 @@
+<?php
+include("header.php")
+?>
 <h4>Login</h4>
 <form method="POST">
     <label for="email">Email
@@ -10,6 +13,7 @@
 </form>
 
 <?php
+session_start();
 //echo var_export($_GET, true);
 //echo var_export($_POST, true);
 //echo var_export($_REQUEST, true);
@@ -20,6 +24,7 @@ if(isset($_POST["login"])){
         $password = $_POST["password"];
         $email = $_POST["email"];
 
+        //require("config.php");
         $connection_string = "mysql:host=$dbhost;dbname=$dbdatabase;charset=utf8mb4";
         try{
             $db = new PDO($connection_string, $dbuser, $dbpass);
@@ -60,4 +65,5 @@ if(isset($_POST["login"])){
         }
     }
 }
+
 ?>

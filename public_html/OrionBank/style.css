@@ -1,26 +1,33 @@
-.logo {
-    display: inline-block;
-    vertical-align: top;
-    width: 80px;
-    height: 80x;
-    margin-right: 20px;
-    margin-top: 0px;
+input {
+    background-color: beige;
 }
 
-.menu {
-    background-color: mediumpurple;
-    font-size: 16px;
-    font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+label {
+    border: none;
+}
+
+form {
+    width: 80%;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 5%;
+    text-align: center;
+}
+
+nav ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: dimgrey;
+}
+nav li {
+    float: left;
+}
+nav li a {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 11px;
     text-decoration: none;
-    line-height: 70px;
-    padding: 5px 15px;
-}
-
-.menu > a {
-    color: black;
-    display: inline-block;
-    vertical-align: top;
-    margin-right: 20px;
-    height: 80px;        /* if you want it to take the full height of the bar */
-    line-height: 80px;    /* if you want it vertically middle of the navbar */
 }
