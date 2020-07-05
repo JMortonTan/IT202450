@@ -1,3 +1,22 @@
+.menu {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: rebeccapurple;
+}
+
+.menu > li > a {
+    padding: 11px;
+}
+
+.logo {
+    display: inline-block;
+    vertical-align: top;
+    width: 80px;
+    height: 80px;
+}
+
 input {
     background-color: beige;
 }
@@ -12,22 +31,4 @@ form {
     margin-right: auto;
     margin-top: 5%;
     text-align: center;
-}
-
-nav ul {
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
-    overflow: hidden;
-    background-color: dimgrey;
-}
-nav li {
-    float: left;
-}
-nav li a {
-    display: block;
-    color: white;
-    text-align: center;
-    padding: 11px;
-    text-decoration: none;
 }

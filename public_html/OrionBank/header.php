@@ -9,6 +9,7 @@ $logged_in = Common::is_logged_in(false);
 </head>
 <nav class="menu">
     <ul>
+        <li><img src="media/Logo.png" class="logo"></li>
         <li><a href="home.php">Home</a></li>
         <?php if($logged_in):?>
             <li><a href="accounts.php">My Accounts</a></li>
