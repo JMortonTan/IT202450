@@ -29,7 +29,8 @@ if(isset($results) && count($results) > 0){
         <th>Account #</th>
         <th>Type</th>
         <th>Balance</th>
-        <th>Date Created</th>";
+        <th>Date Created</th>
+        <th>Admin</th>";
         foreach($results as $row) {
             echo "<tr>
                 <td>";
@@ -57,6 +58,9 @@ if(isset($results) && count($results) > 0){
                 echo "</td>
                 <td>";
                 echo $row["opened_date"];
+                echo "</td>
+                <td>";
+                echo "<a href='makeitrain.php?account=<?php echo $row[account_number] ?>'>Make It Rain</a>";
                 echo "/<td>
             </tr>";
         }
