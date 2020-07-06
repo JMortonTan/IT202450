@@ -26,12 +26,9 @@ if(isset($_POST["created"])){
     $connection_string = "mysql:host=$dbhost;dbname=$dbdatabase;charset=utf8mb4";
     if(!empty($account_number) && !empty($account_type)){
 
-        echo "Entered the if statement";
         $db = new PDO($connection_string, $dbuser, $dbpass);
-        echo "PDO is legit";
         $stmt = $db->prepare("INSERT INTO Accounts (account_number, user_id, account_type) VALUES (:account_number, :user_id, :account_type)");
 
-        echo "Statement prepared";
         $result = $stmt->execute(array(
             ":account_number" => $account_number,
             ":user_id" => $user_id,
@@ -46,8 +43,7 @@ if(isset($_POST["created"])){
         }
         else{
             if ($result){
-                echo "Successfully created account: " . $account_number;
-                echo "Account Type: " . $account_type;
+                echo "Successfully created account: " . $account_number . "<br>";
             }
             else{
                 echo "Error creating account";
