@@ -6,7 +6,7 @@ include("header.php");
 <?php
 $search = $_SESSION["user"]["id"];
 if(isset($search)) {
-    $query = file_get_contents("queries/SEARCH_TABLE_ACCOUNTS_ACCOUNTID.sql");
+    $query = file_get_contents("queries/LISTBYID.sql");
     if (isset($query) && !empty($query)) {
         try {
             echo "The prep execute is executing  <br>";
