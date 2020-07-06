@@ -77,7 +77,7 @@ class Common {
         if (!isset($this->db)) {
             //Initialize all of these at once just to make the IDE happy
             $dbdatabase = $dbuser = $dbpass = $dbhost = NULL;
-            require_once(__DIR__ . "../config.php");
+            require_once("config.php");
             if (isset($dbhost) && isset($dbdatabase) && isset($dbpass) && isset($dbuser)) {
                 $connection_string = "mysql:host=$dbhost;dbname=$dbdatabase;charset=utf8mb4";
                 $this->db = new PDO($connection_string, $dbuser, $dbpass);
