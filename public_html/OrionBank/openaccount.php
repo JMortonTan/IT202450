@@ -23,10 +23,8 @@ if(isset($_POST["created"])){
     $account_type = $_POST["account_type"];
     $user_id = $_SESSION["user"]["id"];
 
-    echo "Get ready to PDO!";
     $connection_string = "mysql:host=$dbhost;dbname=$dbdatabase;charset=utf8mb4";
     if(!empty($account_number) && !empty($account_type)){
-        require("includes/common.inc.php");
 
         echo "Entered the if statement";
         $db = new PDO($connection_string, $dbuser, $dbpass);
