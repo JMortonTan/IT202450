@@ -16,7 +16,6 @@ if(isset($search)) {
             $stmt->execute([":search" => $search]);
             //Note the fetchAll(), we need to use it over fetch() if we expect >1 record
             $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
-            echo '<pre>'; print_r($results); echo '</pre>';
         } catch (Exception $e) {
             echo $e->getMessage();
         }
@@ -30,30 +29,30 @@ if(isset($results) && count($results) > 0){
         <th>Type</th>
         <th>Balance</th>";
         echo '<pre>'; print_r($results); echo '</pre>';
-        foreach($results as $row):
-            echo"<tr>
+        foreach($results as $row) {
+            echo "<tr>
                 <td>";
-                    echo get($row, "account_number");
-                echo"</td>
+            echo get($row, "account_number");
+            echo "</td>
                 <td>";
-                    $type_holder = get($row, "account_type");
-                    switch ($type_holder) {
-                        case 1:
-                            echo "Checking";
-                            break;
-                        case 2:
-                            echo "Savings";
-                            break;
-                        case 3:
-                            echo "Loan";
-                            break;
-                        default:
-                            echo "There is an error";
-                            break;
-                    };
-                echo "</td>
+            $type_holder = get($row, "account_type");
+            switch ($type_holder) {
+                case 1:
+                    echo "Checking";
+                    break;
+                case 2:
+                    echo "Savings";
+                    break;
+                case 3:
+                    echo "Loan";
+                    break;
+                default:
+                    echo "There is an error";
+                    break;
+            };
+            echo "</td>
             </tr>";
-        endforeach;
+        }
     echo"</table>";
 }
 else {
