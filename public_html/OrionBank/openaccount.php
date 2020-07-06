@@ -35,7 +35,6 @@ if(isset($_POST["created"])){
             ":account_type" => $account_type
         ));
 
-        echo "Statement executed";
         //Error Handling
         $e = $stmt->errorInfo();
         if($e[0] != "00000"){
@@ -44,6 +43,7 @@ if(isset($_POST["created"])){
         else{
             if ($result){
                 echo "Successfully created account: " . $account_number . "<br>";
+                echo "We are happy to serve you.";
             }
             else{
                 echo "Error creating account";
