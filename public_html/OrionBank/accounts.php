@@ -61,7 +61,7 @@ if(isset($results) && count($results) > 0){
                 echo "</td>
                 <td>";
                 echo "<a href='makeitrain.php?account=<?php echo $row[account_number] ?>'>Make It Rain</a>";
-                echo "/<td>
+                echo "<td>
             </tr>";
         }
     echo"</table>";
