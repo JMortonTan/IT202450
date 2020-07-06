@@ -19,11 +19,7 @@ if (isset($_GET['account'])){
         $stmt = $db->prepare($query);
         $stmt->execute([":account_number" => $account_number]);
 
-        header("Location: accounts.php");
     }
-
-
-
 }
 
 
