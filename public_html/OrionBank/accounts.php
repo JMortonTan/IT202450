@@ -29,13 +29,12 @@ if(isset($results) && count($results) > 0){
         <th>Type</th>
         <th>Balance</th>";
         foreach($results as $row) {
-            echo '<pre>'; print_r($results); echo '</pre>';
             echo "<tr>
                 <td>";
-            echo get($row, "account_number");
+            echo $row["account_number"];
             echo "</td>
                 <td>";
-            $type_holder = get($row, "account_type");
+            $type_holder = $row["account_type"];;
             switch ($type_holder) {
                 case 1:
                     echo "Checking";
@@ -51,6 +50,10 @@ if(isset($results) && count($results) > 0){
                     break;
             };
             echo "</td>
+                <td>";
+                echo $row["balance"];
+                echo "</td>
+                
             </tr>";
         }
     echo"</table>";
