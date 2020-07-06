@@ -10,7 +10,7 @@ if(isset($search)) {
     if (isset($query) && !empty($query)) {
         try {
             echo "The prep execute is executing  <br>";
-            $stmt = Common::getDB()->prepare($query);
+            $stmt = (new Common)->getDB()->prepare($query);
             //Note: With a LIKE query, we must pass the % during the mapping
             echo "The try execute is executing  <br>";
             $stmt->execute([":search"=>$search]);
