@@ -1,1 +1,1 @@
-SELECT * FROM Accounts WHERE user_id LIKE :search;
+SELECT * FROM Accounts where user_id = :search;
