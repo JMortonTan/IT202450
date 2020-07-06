@@ -16,6 +16,8 @@ if(isset($search)) {
             $stmt->execute([":search" => $search]);
             //Note the fetchAll(), we need to use it over fetch() if we expect >1 record
             $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
+            echo '<pre>'; print_r($results); echo '</pre>';
+            print 'success';
         } catch (Exception $e) {
             echo $e->getMessage();
         }
@@ -28,6 +30,7 @@ if(isset($search)) {
     <table>
         <th>Account #</th>
         <th>Type</th>
+        <th>Balance</th>
         <?php foreach($results as $row):?>
             <tr>
                 <td>
