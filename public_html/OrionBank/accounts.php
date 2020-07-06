@@ -13,7 +13,6 @@ if(isset($search)) {
         try {
             $db = new PDO($connection_string, $dbuser, $dbpass);
             $stmt = $db->prepare($query);
-            //Note: With a LIKE query, we must pass the % during the mapping
             $stmt->execute([":search" => $search]);
             //Note the fetchAll(), we need to use it over fetch() if we expect >1 record
             $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
@@ -60,7 +59,7 @@ if(isset($results) && count($results) > 0){
                 echo $row["opened_date"];
                 echo "</td>
                 <td>";
-                echo "<a href='makeitrain.php?account=<?php echo $row[account_number] ?>'>Make It Rain</a>";
+                echo "<a href='makeitrain.php?account=$row[account_number]>'>Make It Rain</a>";
                 echo "<td>
             </tr>";
         }
