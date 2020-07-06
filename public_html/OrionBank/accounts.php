@@ -9,6 +9,7 @@ if(isset($search)) {
     $query = file_get_contents("queries/SEARCH_TABLE_ACCOUNTS_ACCOUNTID.sql");
     if (isset($query) && !empty($query)) {
         try {
+            echo "The prep execute is executing  <br>";
             $stmt = Common::getDB()->prepare($query);
             //Note: With a LIKE query, we must pass the % during the mapping
             echo "The try execute is executing  <br>";
