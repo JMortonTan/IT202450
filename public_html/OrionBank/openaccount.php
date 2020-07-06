@@ -34,13 +34,15 @@ include("header.php");
 if(isset($_POST["created"])){
     $account_number = $_POST["account_number"];
     $account_type = $_POST["account_type"];
+    $user_id = $_SESSION["user"]["id"];
     if(!empty($account_number) && !empty($account_type)){
-        require("common.inc.php");
+        require("includes/common.inc.php");
         $db = getDB();
 
-        $stmt = $db->prepare("INSERT INTO Accounts (account_number, account_type) VALUES (:account_number, :account_type)");
+        $stmt = $db->prepare("INSERT INTO Accounts (account_number, user_id, account_type) VALUES (:account_number, :user_id, :account_type)");
         $result = $stmt->execute(array(
             ":account_number" => $account_number,
+            ":user_id" => $user_id,
             ":account_type" => $account_type
         ));
         //Error Handling
