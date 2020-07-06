@@ -17,7 +17,7 @@ if (isset($_GET['account'])){
         $db = new PDO($connection_string, $dbuser, $dbpass);
         $stmt = $db->prepare($query);
         $stmt->execute([":account_number" => $account_number]);
-        echo "Statement executed <br>";
+        header("Location: accounts.php");
 
     } catch (Exception $e) {
     echo $e->getMessage();
