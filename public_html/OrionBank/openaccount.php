@@ -35,6 +35,7 @@ if(isset($_POST["created"])){
     $account_number = $_POST["account_number"];
     $account_type = $_POST["account_type"];
     $user_id = $_SESSION["user"]["id"];
+
     $connection_string = "mysql:host=$dbhost;dbname=$dbdatabase;charset=utf8mb4";
     if(!empty($account_number) && !empty($account_type)){
         require("includes/common.inc.php");

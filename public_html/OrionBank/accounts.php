@@ -1,7 +1,8 @@
 <?php
 include("header.php");
+
+print $_SESSION["user"]["first_name"] . " " . $_SESSION["user"]["last_name"] . "'s Accounts";
 ?>
-<h4>My Accounts</h4>
 
 <?php
 $search = $_SESSION["user"]["id"];
