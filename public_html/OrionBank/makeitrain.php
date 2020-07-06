@@ -13,10 +13,10 @@ if (isset($_GET['account'])){
 
     $connection_string = "mysql:host=$dbhost;dbname=$dbdatabase;charset=utf8mb4";
     if(!empty($account_number)) {
-
+        echo "I love PDO  <br>";
         $db = new PDO($connection_string, $dbuser, $dbpass);
+        echo "It works everytime I want it to. <br>";
         $stmt = $db->prepare("queries/MAKEITRAIN.sql");
-        $stmt = $db->prepare($query);
         $stmt->execute([":account_number" => $account_number]);
 
     }
