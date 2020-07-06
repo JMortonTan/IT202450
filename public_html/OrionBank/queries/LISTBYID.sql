@@ -1,1 +1,1 @@
-SELECT * FROM Accounts where user_id = :search;
+SELECT * FROM Accounts WHERE user_id LIKE CONCAT('%', :search, '%');

@@ -10,14 +10,11 @@ if(isset($search)) {
     if (isset($query) && !empty($query)) {
         $connection_string = "mysql:host=$dbhost;dbname=$dbdatabase;charset=utf8mb4";
         try {
-            echo "The prep execute is executing  <br>";
             $db = new PDO($connection_string, $dbuser, $dbpass);
             $stmt = $db->prepare($query);
             //Note: With a LIKE query, we must pass the % during the mapping
-            echo "The try execute is executing  <br>";
             $stmt->execute([":search" => $search]);
             //Note the fetchAll(), we need to use it over fetch() if we expect >1 record
-            echo "The fetch statement is executing  <br>";
             $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
         } catch (Exception $e) {
             echo $e->getMessage();
