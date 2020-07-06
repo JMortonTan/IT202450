@@ -8,6 +8,7 @@ $search = $_SESSION["user"]["id"];
 if(isset($search)) {
     $query = file_get_contents("queries/LISTBYID.sql");
     if (isset($query) && !empty($query)) {
+        $connection_string = "mysql:host=$dbhost;dbname=$dbdatabase;charset=utf8mb4";
         try {
             echo "The prep execute is executing  <br>";
             $db = new PDO($connection_string, $dbuser, $dbpass);
