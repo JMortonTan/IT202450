@@ -28,8 +28,9 @@ if(isset($results) && count($results) > 0){
         <th>Account #</th>
         <th>Type</th>
         <th>Balance</th>";
-        echo '<pre>'; print_r($results); echo '</pre>';
+
         foreach($results as $row) {
+            echo '<pre>'; print_r($results); echo '</pre>';
             echo "<tr>
                 <td>";
             echo get($row, "account_number");
