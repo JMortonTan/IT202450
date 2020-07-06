@@ -59,7 +59,7 @@ if(isset($results) && count($results) > 0){
                 echo $row["opened_date"];
                 echo "</td>
                 <td>";
-                echo "<a href='makeitrain.php?account=$row[account_number]>'>Make It Rain</a>";
+                echo "<a href='makeitrain.php?account=$row[account_number]'>Make It Rain</a>";
                 echo "<td>
             </tr>";
         }

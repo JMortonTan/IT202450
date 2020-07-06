@@ -1,3 +1,9 @@
+.menu {
+    font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+    margin: auto;
+
+}
+
 .menu > ul {
     list-style-type: none;
     margin: auto;
