@@ -2,8 +2,8 @@
 include("header.php");
 ?>
 <h4>Open Account</h4>
-<script src="js/script.js"></script>
-<form method="POST" onsubmit ="return validate(this);">
+
+<form method="POST">
     <label for="Account">Account Number
         <input type="text" id="acc_number" name="account_number" required/>
     </label>
@@ -16,19 +16,6 @@ include("header.php");
     </label>
     <input type="submit" name="created" value="Open Account"/>
 </form>
-<div>
-    **Account Type need to be automatically generated<br>
-    ...Perhaps using hash based on user_id?  Perhaps not secure?<br>
-    <br>
-    In Account Type:<br>
-    Enter 1 for Checking<br>
-    Enter 2 for Savings<br>
-    Enter 3 for Loan<br>
-
-    **Validate input, Account Number 12 integers,<br>
-    **Validate input, Account type 1-2-3.<br>
-    <br><br>
-</div>
 
 <?php
 if(isset($_POST["created"])){
