@@ -22,22 +22,20 @@ if(isset($search)) {
         }
     }
 }
-?>
 
-<?php if(isset($results) && count($results) > 0):?>
-    <p>Here are your results:</p>
+if(isset($results) && count($results) > 0){
+    echo "<p>Here are your results:</p>
     <table>
         <th>Account #</th>
         <th>Type</th>
-        <th>Balance</th>
+        <th>Balance</th>";
         echo '<pre>'; print_r($results); echo '</pre>';
-        <?php foreach($results as $row):?>
-            <tr>
-                <td>
-                    <?php echo get($row, "account_number");?>
-                </td>
-                <td>
-                    <?php
+        foreach($results as $row):
+            echo"<tr>
+                <td>";
+                    echo get($row, "account_number");
+                echo"</td>
+                <td>";
                     $type_holder = get($row, "account_type");
                     switch ($type_holder) {
                         case 1:
@@ -52,12 +50,16 @@ if(isset($search)) {
                         default:
                             echo "There is an error";
                             break;
-                    };?>
-                </td>
-            </tr>
-        <?php endforeach;?>
-    </table>
-<?php else:?>
+                    };
+                echo "</td>
+            </tr>";
+        endforeach;
+    echo"</table>";
+}
+else {
+    echo "
     <p>You have not opened an account!</p><br>
-    <a href="openaccount.php">Open an account today!</a>
-<?php endif;?>
+    <a href=\"openaccount.php\">Open an account today!</a>
+    ";
+}
+?>
