@@ -28,7 +28,6 @@ if(isset($results) && count($results) > 0){
         <th>Account #</th>
         <th>Type</th>
         <th>Balance</th>";
-
         foreach($results as $row) {
             echo '<pre>'; print_r($results); echo '</pre>';
             echo "<tr>
