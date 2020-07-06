@@ -8,4 +8,8 @@ include("header.php");
 $luckyaccount = $_GET['account'];
 
 echo $luckyaccount;
+
+
+
+
 ?>
