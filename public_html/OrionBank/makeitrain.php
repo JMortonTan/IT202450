@@ -13,15 +13,16 @@ if (isset($_GET['account'])){
     $query = file_get_contents("queries/MAKEITRAIN.sql");
 
     $connection_string = "mysql:host=$dbhost;dbname=$dbdatabase;charset=utf8mb4";
-    if(!empty($account_number)) {
-        echo "I love PDO  <br>";
+    try {
         $db = new PDO($connection_string, $dbuser, $dbpass);
-        echo "It works everytime I want it to. <br>";
         $stmt = $db->prepare($query);
-        echo "Its not anyone's fault but mine.";
+        echo "Its not anyone's fault but mine. <br>";
         $stmt->execute([":account_number" => $account_number]);
+        echo "Statement executed <br>";
 
-    }
+    } catch (Exception $e) {
+    echo $e->getMessage();
+}
 }
 
 
