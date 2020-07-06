@@ -1,1 +1,1 @@
-UPDATE Accounts set balance = balance+1000 where account_number = (:search);
+UPDATE Accounts SET balance = balance+1000 WHERE account_number = (:account_number);

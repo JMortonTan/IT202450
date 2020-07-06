@@ -16,7 +16,6 @@ if (isset($_GET['account'])){
     try {
         $db = new PDO($connection_string, $dbuser, $dbpass);
         $stmt = $db->prepare($query);
-        echo "Its not anyone's fault but mine. <br>";
         $stmt->execute([":account_number" => $account_number]);
         echo "Statement executed <br>";
 
