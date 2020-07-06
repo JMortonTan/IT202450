@@ -27,7 +27,8 @@ if(isset($results) && count($results) > 0){
     <table>
         <th>Account #</th>
         <th>Type</th>
-        <th>Balance</th>";
+        <th>Balance</th>
+        <th>Date Created</th>";
         foreach($results as $row) {
             echo "<tr>
                 <td>";
@@ -53,7 +54,9 @@ if(isset($results) && count($results) > 0){
                 <td>";
                 echo $row["balance"];
                 echo "</td>
-                
+                <td>";
+                echo $row["opened_date"];
+                echo "/<td>
             </tr>";
         }
     echo"</table>";
