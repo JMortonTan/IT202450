@@ -17,7 +17,7 @@ if (isset($_GET['account'])){
         $db = new PDO($connection_string, $dbuser, $dbpass);
         $stmt = $db->prepare($query);
         $result = $stmt->execute([":account_number" => $account_number]);
-
+        echo $result;
     } catch (Exception $e) {
         echo $e->getMessage();
     }
