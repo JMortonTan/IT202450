@@ -29,7 +29,7 @@ if(isset($results) && count($results) > 0){
         <th>Type</th>
         <th>Balance</th>
         <th>Date Created</th>
-        <th>Admin</th>";
+        <th>Actions</th>";
         foreach($results as $row) {
             echo "<tr>
                 <td>";
@@ -59,7 +59,17 @@ if(isset($results) && count($results) > 0){
                 echo $row["opened_date"];
                 echo "</td>
                 <td>";
-                echo "<a href='makeitrain.php?account=$row[account_number]'>Make It Rain</a>";
+            switch ($type_holder) {
+                case 1:
+                    echo "<a href='checking.php?account=$row[account_number]'>Enter</a>";
+                    break;
+                case 2:
+                    echo "<a href='savings.php?account=$row[account_number]'>Enter</a>";
+                    break;
+                case 3:
+                    echo "<a href='loan.php?account=$row[account_number]'>Enter</a>";
+                    break;
+            };
                 echo "<td>
             </tr>";
         }
