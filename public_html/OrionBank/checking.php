@@ -73,6 +73,11 @@ if (isset($_GET['account'])) {
                     ));
 
                     $results = $stmt->fetch(PDO::FETCH_ASSOC);
+
+                    ##########
+                    echo $stmt;
+                    ##########
+
                     $e = $stmt->errorInfo();
 
                     if (isset($results) && count($results) > 0) {
