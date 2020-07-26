@@ -77,13 +77,13 @@ if (isset($_GET['account'])) {
                     echo "FETCH RESULTS";
                     ##########
 
-                    $results = $stmt->fetch(PDO::FETCH_ASSOC);
+                    $transaction_history = $stmt->fetch(PDO::FETCH_ASSOC);
                     $e = $stmt->errorInfo();
 
-                    if (isset($results) && count($results) > 0) {
+                    if (isset($transaction_history) && count($transaction_history) > 0) {
                         ##########
                         echo "YA GOT RESULTS";
-                        echo $results[0]["account_src"];
+                        echo $transaction_history;
                         ##########
                         echo "
                             <table>
@@ -92,7 +92,7 @@ if (isset($_GET['account'])) {
                                 <th>Amount</th>
                                 <th>Memo</th>
                                 <th>Date</th>";
-                        foreach ($results as $row) {
+                        foreach ($transaction_history as $row) {
                             echo "<tr><td>";
                             echo $row["account_src"];
                             echo "</td><td>";
