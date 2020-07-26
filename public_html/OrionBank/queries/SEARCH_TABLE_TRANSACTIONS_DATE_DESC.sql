@@ -1,1 +1,1 @@
-SELECT * FROM Accounts WHERE account_type LIKE :search ORDER BY balance ASC;
+SELECT * FROM Transactions WHERE account_src = :account_number AND date => :startdate AND date <= :enddate

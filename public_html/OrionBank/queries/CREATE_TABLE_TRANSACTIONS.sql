@@ -1,8 +1,8 @@
-CREATE TABLE Users(
+CREATE TABLE Transactions(
     id int AUTO_INCREMENT UNIQUE,
     account_src varchar(12) NOT NULL,
     account_dest varchar(12) NOT NULL,
-    change int decimal(12,2) NOT NULL,
+    amount decimal(12,2) NOT NULL,
     memo varchar(9) NOT NULL,
     date timestamp default current_timestamp on update current_timestamp,
     PRIMARY KEY(id),

@@ -39,21 +39,22 @@ if (isset($_GET['account'])){
         echo "</h5></br>";
 
         echo "
-    <form method='post'>
-    <label for=\"startdate\">Start Date:</label>
-    <input type=\"date\" id=\"startdate\" name=\"startdate\">
-    <label for=\"enddate\">End Date:</label>
-    <input type=\"date\" id=\"enddate\" name=\"enddate\">
-    <label for=\"result_num\">Results</label>
-    <select name=\"result_num\" id=\"result_num\">
-        <option value=\"10\">10</option>
-        <option value=\"25\">25</option>
-        <option value=\"100\">100</option>
-        <option value=\"All\" selected>All</option>
-    </select>
-    <input type=\"submit\" value='Search'>
-    </form>
-    ";
+            <form method='post' name='transaction_search'>
+            <label for=\"startdate\">Start Date:</label>
+            <input type=\"date\" id=\"startdate\" name=\"startdate\">
+            <label for=\"enddate\">End Date:</label>
+            <input type=\"date\" id=\"enddate\" name=\"enddate\">
+            <label for=\"result_num\">Results</label>
+            <select name=\"result_num\" id=\"result_num\">
+                <option value=\"10\">10</option>
+                <option value=\"25\">25</option>
+                <option value=\"100\">100</option>
+                <option value=\"All\" selected>All</option>
+            </select>
+            <input type=\"submit\" value='Search'>
+            </form>
+            ";
+        echo "<body onload=\"document.forms['transaction_search'].submit()\">";
     }
 }
 
@@ -70,6 +71,7 @@ if(isset($_POST["Search"])){
             $query = file_get_contents("queries/SEARCH_TABLE_TRANSACTIONS_DATE_DESC.sql");
             $stmt = $db->prepare($query);
             $stmt->execute(array(
+                ":account_number" => $account_number,
                 ":startdate" => $startdate,
                 ":enddate" => $enddate
             ));

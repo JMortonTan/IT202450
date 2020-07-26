@@ -1,0 +1,1 @@
+INSERT INTO Transactions (`account_src`,`account_dest`,`amount`,`memo`) VALUES(000000000000, 000000000001, 5, "Create Checking")
