@@ -8,7 +8,6 @@ echo "<h4>" . $_SESSION["user"]["first_name"] . " " . $_SESSION["user"]["last_na
 
 if (isset($_GET['account'])){
     $account_number = $_GET['account'];
-    echo $account_number;
     $query = file_get_contents("queries/SELECT_TABLE_ACCOUNTS_ACCOUNTNUM.sql");
     $connection_string = "mysql:host=$dbhost;dbname=$dbdatabase;charset=utf8mb4";
     try {
@@ -16,18 +15,13 @@ if (isset($_GET['account'])){
         $stmt = $db->prepare($query);
         $stmt->execute([":account_number" => $account_number]);
         $result = $stmt->fetch(PDO::FETCH_ASSOC);
-
-        echo $result;
     } catch (Exception $e) {
         echo $e->getMessage();
     }
-
     if(isset($result)){
         $this_account = $result[0];
-        echo "<h5>Account Number: </h5>";
-        echo "<h5>" . $result["account_number"] . "</h5></br>";
-        echo "<h5>Account Type: </h5>";
-        echo "<h5>";
+        echo "<h5>Account Number: " . $result["account_number"] . "</h5>";
+        echo "<h5>Account Type: ";
         switch ($result["account_type"]) {
             case 1:
                 echo "Checking";
@@ -57,9 +51,45 @@ if (isset($_GET['account'])){
         <option value=\"100\">100</option>
         <option value=\"All\" selected>All</option>
     </select>
-    <input type=\"submit\" value='Submit'>
+    <input type=\"submit\" value='Search'>
     </form>
     ";
+    }
+}
+
+if(isset($_POST["Search"])){
+    if(isset($_POST["startdate"]) && isset($_POST["enddate"]) && isset($_POST["result_num"])){
+
+        $startdate = $_POST["startdate"];
+        $enddate = $_POST["enddate"];
+        $result_num = $_POST["result_num"];
+
+        $connection_string = "mysql:host=$dbhost;dbname=$dbdatabase;charset=utf8mb4";
+        try{
+            $db = new PDO($connection_string, $dbuser, $dbpass);
+            $query = file_get_contents("queries/SEARCH_TABLE_TRANSACTIONS_DATE_DESC.sql");
+            $stmt = $db->prepare($query);
+            $stmt->execute(array(
+                ":email" => $email,
+                ":password" => $hash, //$password -> saving hash not password
+                ":firstname" => $firstname,
+                ":lastname" => $lastname
+            ));
+            $e = $stmt->errorInfo();
+            if($e[0] != "00000"){
+                echo var_export($e, true);
+            }
+            else{
+                echo "<div>Successfully registered!</div>";
+            }
+        }
+        catch (Exception $e){
+            echo $e->getMessage();
+        }
+        }
+        elseif($validFlag) {
+            echo "<div>Passwords don't match</div>";
+        }
     }
 }
 ?>
