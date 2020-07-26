@@ -2,12 +2,14 @@
 include("header.php");
 ?>
 
-    <h4>My Checking Account</h4>
-
 <?php
+
+echo "<h4>" . $_SESSION["user"]["first_name"] . " " . $_SESSION["user"]["last_name"] . "'s Checking Account</h4>";
 
 if (isset($_GET['account'])){
     $account_number = $_GET['account'];
+    echo $account_number;
+
     $query = file_get_contents("queries/SEARCH_TABLE_ACCOUNTS_ACCOUNTNUM.sql");
 
     $connection_string = "mysql:host=$dbhost;dbname=$dbdatabase;charset=utf8mb4";
