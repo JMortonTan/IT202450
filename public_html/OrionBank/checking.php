@@ -68,20 +68,22 @@ if (isset($_GET['account'])) {
                 $result_num = $_POST["result_num"];
                 $connection_string = "mysql:host=$dbhost;dbname=$dbdatabase;charset=utf8mb4";
                 try {
+                    $db = new PDO($connection_string, $dbuser, $dbpass);
+                    $query = file_get_contents("queries/SEARCH_TABLE_TRANSACTIONS_DATE_DESC.sql");
                     ##########
                     echo "ATTEMPTING QUERY";
                     ##########
-                    $db = new PDO($connection_string, $dbuser, $dbpass);
-                    $query = file_get_contents("queries/SEARCH_TABLE_TRANSACTIONS_DATE_DESC.sql");
                     $stmt = $db->prepare($query);
+                    ##########
+                    echo "ATTEMPTING QUERY";
+                    ##########
                     $stmt->execute(array(
                         ":account_number" => $account_number,
                         ":startdate" => $startdate,
                         ":enddate" => $enddate
                     ));
-
                     ##########
-                    echo $stmt;
+                    echo "FETCH RESULTS";
                     ##########
 
                     $results = $stmt->fetch(PDO::FETCH_ASSOC);
@@ -105,6 +107,8 @@ if (isset($_GET['account'])) {
                             echo $row["account_dest"];
                             echo "</td><td>";
                             echo $row["amount"];
+                            echo "</td><td>";
+                            echo $row["memo"];
                             echo "</td><td>";
                             echo $row["date"];
                             echo "</td><td>";
