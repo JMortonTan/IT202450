@@ -6,7 +6,7 @@ include("header.php");
 
 echo "<h4>" . $_SESSION["user"]["first_name"] . " " . $_SESSION["user"]["last_name"] . "'s Checking Account</h4>";
 
-if (isset($_GET['account'])){
+if (isset($_GET['account'])) {
     $account_number = $_GET['account'];
     $query = file_get_contents("queries/SELECT_TABLE_ACCOUNTS_ACCOUNTNUM.sql");
     $connection_string = "mysql:host=$dbhost;dbname=$dbdatabase;charset=utf8mb4";
@@ -18,7 +18,7 @@ if (isset($_GET['account'])){
     } catch (Exception $e) {
         echo $e->getMessage();
     }
-    if(isset($result)){
+    if (isset($result)) {
         $this_account = $result[0];
         echo "<h5>Account Number: " . $result["account_number"] . "</h5>";
         echo "<h5>Account Type: ";
@@ -51,12 +51,12 @@ if (isset($_GET['account'])){
                 <option value=\"100\">100</option>
                 <option value=\"All\" selected>All</option>
             </select>
-            <input type=\"submit\" name=\'submit\' value=\'Submit\'>
+            <input type=\"submit\" name=\'submit\' value='Submit'>
             </form>
             ";
 
-        if(isset($_POST["submit"])){
-            if(isset($_POST["startdate"]) && isset($_POST["enddate"]) && isset($_POST["result_num"])){
+        if (isset($_POST["submit"])) {
+            if (isset($_POST["startdate"]) && isset($_POST["enddate"]) && isset($_POST["result_num"])) {
                 ##########################
                 echo "search activated";
                 ############################
@@ -65,7 +65,7 @@ if (isset($_GET['account'])){
                 $result_num = $_POST["result_num"];
 
                 $connection_string = "mysql:host=$dbhost;dbname=$dbdatabase;charset=utf8mb4";
-                try{
+                try {
                     ##########################
                     echo "querying";
                     ############################
@@ -81,7 +81,7 @@ if (isset($_GET['account'])){
                     $results = $stmt->fetch(PDO::FETCH_ASSOC);
                     $e = $stmt->errorInfo();
 
-                    if(isset($results) && count($results) > 0){
+                    if (isset($results) && count($results) > 0) {
                         ##########################
                         echo "try to display results";
                         ############################
@@ -92,7 +92,7 @@ if (isset($_GET['account'])){
                                 <th>Amount</th>
                                 <th>Memo</th>
                                 <th>Date</th>";
-                        foreach($results as $row) {
+                        foreach ($results as $row) {
                             echo "<tr><td>";
                             echo $row["account_src"];
                             echo "</td><td>";
@@ -106,12 +106,14 @@ if (isset($_GET['account'])){
                             echo "</td><td>";
                             echo "</tr>";
                         }
-                        echo"</table>";
+                        echo "</table>";
                     }
 
                 } catch (Exception $e) {
                     echo $e->getMessage();
                 }
             }
+        }
+    }
 }
 ?>
