@@ -80,12 +80,11 @@ if (isset($_GET['account'])) {
                         ":enddate" => $enddate
                     ));
 
-                    $results = $stmt->fetch(PDO::FETCH_ASSOC);
-
                     ##########
                     echo $stmt;
                     ##########
 
+                    $results = $stmt->fetch(PDO::FETCH_ASSOC);
                     $e = $stmt->errorInfo();
 
                     if (isset($results) && count($results) > 0) {
