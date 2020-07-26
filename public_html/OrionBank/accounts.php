@@ -1,7 +1,7 @@
 <?php
 include("header.php");
 
-print $_SESSION["user"]["first_name"] . " " . $_SESSION["user"]["last_name"] . "'s Accounts";
+print "Hello!" . $_SESSION["user"]["first_name"] . " " . $_SESSION["user"]["last_name"];
 ?>
 
 <?php
@@ -23,7 +23,7 @@ if(isset($search)) {
 }
 
 if(isset($results) && count($results) > 0){
-    echo "<p>Here are your results:</p>
+    echo "<p>Here are your accounts:</p>
     <table>
         <th>Account #</th>
         <th>Type</th>

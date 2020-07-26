@@ -10,7 +10,7 @@ if (isset($_GET['account'])){
     $account_number = $_GET['account'];
 
     echo $account_number;
-    $query = file_get_contents("queries/MAKEITRAIN.sql");
+    $query = file_get_contents("queries/SEARCH_TABLE_ACCOUNTS_ACCOUNTNUM.sql");
 
     $connection_string = "mysql:host=$dbhost;dbname=$dbdatabase;charset=utf8mb4";
     try {
@@ -21,8 +21,9 @@ if (isset($_GET['account'])){
     } catch (Exception $e) {
         echo $e->getMessage();
     }
-}
 
+
+}
 
 
 ?>
