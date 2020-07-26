@@ -74,7 +74,35 @@ if(isset($_POST["Search"])){
                 ":startdate" => $startdate,
                 ":enddate" => $enddate
             ));
+
+            $results = $stmt->fetch(PDO::FETCH_ASSOC);
             $e = $stmt->errorInfo();
+
+            if(isset($results) && count($results) > 0){
+                echo "
+                    <table>
+                        <th>Account Source</th>
+                        <th>Account Destination</th>
+                        <th>Amount</th>
+                        <th>Memo</th>
+                        <th>Date</th>";
+                foreach($results as $row) {
+                    echo "<tr><td>";
+                    echo $row["account_src"];
+                    echo "</td><td>";
+                    echo "<tr><td>";
+                    echo $row["account_dest"];
+                    echo "</td><td>";
+                    echo "<tr><td>";
+                    echo $row["amount"];
+                    echo "</td><td>";
+                    echo $row["date"];
+                    echo "</td><td>";
+                    echo "</tr>";
+                }
+                echo"</table>";
+            }
+
         } catch (Exception $e) {
             echo $e->getMessage();
         }
