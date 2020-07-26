@@ -54,66 +54,64 @@ if (isset($_GET['account'])){
             <input type=\"submit\" name=\'submit\' value=\'Submit\'>
             </form>
             ";
-    }
-}
 
-if(isset($_POST["submit"])){
-    if(isset($_POST["startdate"]) && isset($_POST["enddate"]) && isset($_POST["result_num"])){
-        ##########################
-        echo "search activated";
-        ############################
-        $startdate = $_POST["startdate"];
-        $enddate = $_POST["enddate"];
-        $result_num = $_POST["result_num"];
-
-        $connection_string = "mysql:host=$dbhost;dbname=$dbdatabase;charset=utf8mb4";
-        try{
-            ##########################
-            echo "querying";
-            ############################
-            $db = new PDO($connection_string, $dbuser, $dbpass);
-            $query = file_get_contents("queries/SEARCH_TABLE_TRANSACTIONS_DATE_DESC.sql");
-            $stmt = $db->prepare($query);
-            $stmt->execute(array(
-                ":account_number" => $account_number,
-                ":startdate" => $startdate,
-                ":enddate" => $enddate
-            ));
-
-            $results = $stmt->fetch(PDO::FETCH_ASSOC);
-            $e = $stmt->errorInfo();
-
-            if(isset($results) && count($results) > 0){
+        if(isset($_POST["submit"])){
+            if(isset($_POST["startdate"]) && isset($_POST["enddate"]) && isset($_POST["result_num"])){
                 ##########################
-                echo "try to display results";
+                echo "search activated";
                 ############################
-                echo "
-                    <table>
-                        <th>Account Source</th>
-                        <th>Account Destination</th>
-                        <th>Amount</th>
-                        <th>Memo</th>
-                        <th>Date</th>";
-                foreach($results as $row) {
-                    echo "<tr><td>";
-                    echo $row["account_src"];
-                    echo "</td><td>";
-                    echo "<tr><td>";
-                    echo $row["account_dest"];
-                    echo "</td><td>";
-                    echo "<tr><td>";
-                    echo $row["amount"];
-                    echo "</td><td>";
-                    echo $row["date"];
-                    echo "</td><td>";
-                    echo "</tr>";
-                }
-                echo"</table>";
-            }
+                $startdate = $_POST["startdate"];
+                $enddate = $_POST["enddate"];
+                $result_num = $_POST["result_num"];
 
-        } catch (Exception $e) {
-            echo $e->getMessage();
-        }
-    }
+                $connection_string = "mysql:host=$dbhost;dbname=$dbdatabase;charset=utf8mb4";
+                try{
+                    ##########################
+                    echo "querying";
+                    ############################
+                    $db = new PDO($connection_string, $dbuser, $dbpass);
+                    $query = file_get_contents("queries/SEARCH_TABLE_TRANSACTIONS_DATE_DESC.sql");
+                    $stmt = $db->prepare($query);
+                    $stmt->execute(array(
+                        ":account_number" => $account_number,
+                        ":startdate" => $startdate,
+                        ":enddate" => $enddate
+                    ));
+
+                    $results = $stmt->fetch(PDO::FETCH_ASSOC);
+                    $e = $stmt->errorInfo();
+
+                    if(isset($results) && count($results) > 0){
+                        ##########################
+                        echo "try to display results";
+                        ############################
+                        echo "
+                            <table>
+                                <th>Account Source</th>
+                                <th>Account Destination</th>
+                                <th>Amount</th>
+                                <th>Memo</th>
+                                <th>Date</th>";
+                        foreach($results as $row) {
+                            echo "<tr><td>";
+                            echo $row["account_src"];
+                            echo "</td><td>";
+                            echo "<tr><td>";
+                            echo $row["account_dest"];
+                            echo "</td><td>";
+                            echo "<tr><td>";
+                            echo $row["amount"];
+                            echo "</td><td>";
+                            echo $row["date"];
+                            echo "</td><td>";
+                            echo "</tr>";
+                        }
+                        echo"</table>";
+                    }
+
+                } catch (Exception $e) {
+                    echo $e->getMessage();
+                }
+            }
 }
 ?>
