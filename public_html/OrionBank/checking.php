@@ -56,13 +56,7 @@ if (isset($_GET['account'])) {
             ";
 
         if (isset($_POST["submit"])) {
-            ##########
-            echo "SUBMIT POST";
-            ##########
             if (isset($_POST["startdate"]) && isset($_POST["enddate"]) && isset($_POST["result_num"])) {
-                ##########
-                echo "ITSALL SET";
-                ##########
                 $startdate = $_POST["startdate"];
                 $enddate = $_POST["enddate"];
                 $result_num = $_POST["result_num"];
@@ -70,9 +64,6 @@ if (isset($_GET['account'])) {
                 try {
                     $db = new PDO($connection_string, $dbuser, $dbpass);
                     $query = file_get_contents("queries/SEARCH_TABLE_TRANSACTIONS_DATE_DESC.sql");
-                    ##########
-                    echo "ATTEMPTING QUERY";
-                    ##########
                     $stmt = $db->prepare($query);
                     ##########
                     echo "ATTEMPTING QUERY";
@@ -92,6 +83,7 @@ if (isset($_GET['account'])) {
                     if (isset($results) && count($results) > 0) {
                         ##########
                         echo "YA GOT RESULTS";
+                        echo $results[0]["account_src"];
                         ##########
                         echo "
                             <table>
