@@ -54,7 +54,6 @@ if (isset($_GET['account'])){
             <input type=\"submit\" value='Search'>
             </form>
             ";
-        echo "<body onload=\"document.forms['transaction_search'].submit()\">";
     }
 }
 
