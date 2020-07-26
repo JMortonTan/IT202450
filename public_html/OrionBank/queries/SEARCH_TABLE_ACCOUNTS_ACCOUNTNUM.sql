@@ -1,1 +1,1 @@
-SELECT Accounts WHERE account_number = (:account_number);
+SELECT Accounts WHERE account_number LIKE (:account_number);

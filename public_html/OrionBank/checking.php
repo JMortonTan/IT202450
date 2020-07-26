@@ -7,7 +7,7 @@ include("header.php");
 <?php
 
 if (isset($_GET['account'])){
-    echo $account_number;
+    $account_number = $account;
     $query = file_get_contents("queries/SEARCH_TABLE_ACCOUNTS_ACCOUNTNUM.sql");
 
     $connection_string = "mysql:host=$dbhost;dbname=$dbdatabase;charset=utf8mb4";
