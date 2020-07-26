@@ -68,9 +68,9 @@ if(isset($results) && count($results) > 0){
                     break;
             };
                 echo "<td>
-            </tr>";
-        }
-    echo"</table>";
+                    </tr>";
+                }
+            echo"</table>";
 }
 else {
     echo "
