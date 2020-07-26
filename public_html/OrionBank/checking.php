@@ -23,7 +23,7 @@ if (isset($_GET['account'])){
 
 if(isset($result) && count($result) == 0){
     echo "<h5>Account Number: </h5>";
-    echo "<h5>" . $result["account_number"] . "</h5>";
+    echo "<h5>" . $result["account_number"] . "</h5></br>";
 
     echo "<h5>Account Type: </h5>";
     echo "<h5>";
@@ -41,8 +41,21 @@ if(isset($result) && count($result) == 0){
             echo "There is an error";
             break;
     };
-    echo "</h5>";
+    echo "</h5></br>";
 
+    echo "
+    <form action=\"/action_page.php\">
+    <label for=\"startdate\">Start Date:</label>
+    <input type=\"date\" id=\"startdate\" name=\"startdate\">
+    <input type=\"submit\">
+    </form>
+
+    <form action=\"/action_page.php\">
+    <label for=\"enddate\">End Date:</label>
+    <input type=\"date\" id=\"enddate\" name=\"enddate\">
+    <input type=\"submit\">
+    </form>
+    ";
 }
 
 ?>
