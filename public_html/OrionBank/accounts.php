@@ -1,7 +1,7 @@
 <?php
 include("header.php");
 
-print "Hello!" . $_SESSION["user"]["first_name"] . " " . $_SESSION["user"]["last_name"];
+print "Hello! " . $_SESSION["user"]["first_name"] . " " . $_SESSION["user"]["last_name"];
 ?>
 
 <?php
