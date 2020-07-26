@@ -70,25 +70,12 @@ if(isset($_POST["Search"])){
             $query = file_get_contents("queries/SEARCH_TABLE_TRANSACTIONS_DATE_DESC.sql");
             $stmt = $db->prepare($query);
             $stmt->execute(array(
-                ":email" => $email,
-                ":password" => $hash, //$password -> saving hash not password
-                ":firstname" => $firstname,
-                ":lastname" => $lastname
+                ":startdate" => $startdate,
+                ":enddate" => $enddate
             ));
             $e = $stmt->errorInfo();
-            if($e[0] != "00000"){
-                echo var_export($e, true);
-            }
-            else{
-                echo "<div>Successfully registered!</div>";
-            }
-        }
-        catch (Exception $e){
+        } catch (Exception $e) {
             echo $e->getMessage();
-        }
-        }
-        elseif($validFlag) {
-            echo "<div>Passwords don't match</div>";
         }
     }
 }
