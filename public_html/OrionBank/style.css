@@ -1,5 +1,5 @@
 .menu {
-    font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+    font-family: monospace;
     margin: auto;
 
 }
@@ -47,4 +47,8 @@ form {
     margin-right: auto;
     margin-top: 5%;
     text-align: center;
+}
+
+* {
+    font-family: monospace;
 }
