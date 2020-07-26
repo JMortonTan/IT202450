@@ -1,5 +1,5 @@
 <h4>Login</h4>
-<form method="POST">
+<form method="POST" class="loginform">
     <label for="email">Email
     <input type="email" name="email"/>
     </label>
