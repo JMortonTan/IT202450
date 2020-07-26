@@ -1,12 +1,28 @@
 <?php
 include("header.php");
 ?>
-<h4>Home</h4>
+
+    <h4>My Loan</h4>
+
 <?php
-echo '<p>Welcome to Orion Bank!</p>';
-if($logged_in){
-    print $_SESSION["user"]["first_name"] . " " . $_SESSION["user"]["last_name"];
-} else {
-    include 'login.php';
+
+if (isset($_GET['account'])){
+    $account_number = $_GET['account'];
+
+    echo $account_number;
+    $query = file_get_contents("queries/MAKEITRAIN.sql");
+
+    $connection_string = "mysql:host=$dbhost;dbname=$dbdatabase;charset=utf8mb4";
+    try {
+        $db = new PDO($connection_string, $dbuser, $dbpass);
+        $stmt = $db->prepare($query);
+        $stmt->execute([":account_number" => $account_number]);
+
+    } catch (Exception $e) {
+        echo $e->getMessage();
+    }
 }
+
+
+
 ?>
