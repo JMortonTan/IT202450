@@ -23,7 +23,7 @@ if (isset($_GET['account'])){
     }
 }
 
-if(isset($result) && count($result) == 0){
+if(isset($result) && count($result) == 1){
     echo "<h5>Account Number: </h5>";
     echo "<h5>" . $result["account_number"] . "</h5></br>";
 
