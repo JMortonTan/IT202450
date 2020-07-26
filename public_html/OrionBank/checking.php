@@ -40,22 +40,25 @@ if (isset($_GET['account'])) {
 
         echo "
             <form method='post'>
-            <label for=\"startdate\">Start Date:</label>
-            <input type=\"date\" id=\"startdate\" name=\"startdate\">
-            <label for=\"enddate\">End Date:</label>
-            <input type=\"date\" id=\"enddate\" name=\"enddate\">
-            <label for=\"result_num\">Results</label>
-            <select name=\"result_num\" id=\"result_num\">
-                <option value=\"10\">10</option>
-                <option value=\"25\">25</option>
-                <option value=\"100\">100</option>
-                <option value=\"All\" selected>All</option>
+            <label for='startdate'>Start Date:</label>
+            <input type='date' id='startdate' name='startdate'>
+            <label for='enddate'>End Date:</label>
+            <input type='date' id='enddate' name='enddate'>
+            <label for='result_num'>Results</label>
+            <select name='result_num' id='result_num'>
+                <option value='10'>10</option>
+                <option value='25'>25</option>
+                <option value='100'>100</option>
+                <option value='All' selected>All</option>
             </select>
-            <input type=\"submit\" name=\'submit\' value='Submit'>
+            <input type='submit' name='submit' value='Submit'>
             </form>
             ";
 
         if (isset($_POST["submit"])) {
+            ##########################
+            echo "search pressed";
+            ############################
             if (isset($_POST["startdate"]) && isset($_POST["enddate"]) && isset($_POST["result_num"])) {
                 ##########################
                 echo "search activated";
