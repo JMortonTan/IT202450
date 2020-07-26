@@ -31,11 +31,9 @@ if(isset($results) && count($results) > 0){
         <th>Date Created</th>
         <th>Actions</th>";
         foreach($results as $row) {
-            echo "<tr>
-                <td>";
+            echo "<tr><td>";
             echo $row["account_number"];
-            echo "</td>
-                <td>";
+            echo "</td><td>";
             $type_holder = $row["account_type"];;
             switch ($type_holder) {
                 case 1:
@@ -51,8 +49,7 @@ if(isset($results) && count($results) > 0){
                     echo "There is an error";
                     break;
             };
-            echo "</td>
-                <td>";
+            echo "</td><td>";
                 echo $row["balance"];
                 echo "</td>
                 <td>";
