@@ -51,7 +51,9 @@ if(isset($result) && count($result) == 1){
     <input type=\"date\" id=\"startdate\" name=\"startdate\">
     <label for=\"enddate\">End Date:</label>
     <input type=\"date\" id=\"enddate\" name=\"enddate\">
-    <input type=\"submit\">
+    <label for=\"lname\">How many results?</label><br>
+    <input type=\"int\" id=\"result_count\" name=\"result_count\">
+    <input type=\"submit\" value='Submit'>
     </form>
     ";
 }
