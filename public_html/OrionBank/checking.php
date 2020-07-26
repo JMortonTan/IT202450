@@ -59,13 +59,18 @@ if (isset($_GET['account'])){
 
 if(isset($_POST["Search"])){
     if(isset($_POST["startdate"]) && isset($_POST["enddate"]) && isset($_POST["result_num"])){
-
+        ##########################
+        echo "search activated";
+        ############################
         $startdate = $_POST["startdate"];
         $enddate = $_POST["enddate"];
         $result_num = $_POST["result_num"];
 
         $connection_string = "mysql:host=$dbhost;dbname=$dbdatabase;charset=utf8mb4";
         try{
+            ##########################
+            echo "querying";
+            ############################
             $db = new PDO($connection_string, $dbuser, $dbpass);
             $query = file_get_contents("queries/SEARCH_TABLE_TRANSACTIONS_DATE_DESC.sql");
             $stmt = $db->prepare($query);
@@ -79,6 +84,9 @@ if(isset($_POST["Search"])){
             $e = $stmt->errorInfo();
 
             if(isset($results) && count($results) > 0){
+                ##########################
+                echo "try to display results";
+                ############################
                 echo "
                     <table>
                         <th>Account Source</th>
