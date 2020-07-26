@@ -10,7 +10,7 @@ if (isset($_GET['account'])){
     $account_number = $_GET['account'];
     echo $account_number;
 
-    $query = file_get_contents("queries/SEARCH_TABLE_ACCOUNTS_ACCOUNTNUM.sql");
+    $query = file_get_contents("queries/SELECT_TABLE_ACCOUNTS_ACCOUNTNUM.sql");
 
     $connection_string = "mysql:host=$dbhost;dbname=$dbdatabase;charset=utf8mb4";
     try {
@@ -46,13 +46,9 @@ if(isset($result) && count($result) == 1){
     echo "</h5></br>";
 
     echo "
-    <form action=\"/action_page.php\">
+    <form method='post'>
     <label for=\"startdate\">Start Date:</label>
     <input type=\"date\" id=\"startdate\" name=\"startdate\">
-    <input type=\"submit\">
-    </form>
-
-    <form action=\"/action_page.php\">
     <label for=\"enddate\">End Date:</label>
     <input type=\"date\" id=\"enddate\" name=\"enddate\">
     <input type=\"submit\">
