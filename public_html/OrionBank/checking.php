@@ -39,7 +39,7 @@ if (isset($_GET['account'])){
         echo "</h5></br>";
 
         echo "
-            <form method='post' name='transaction_search'>
+            <form method='post'>
             <label for=\"startdate\">Start Date:</label>
             <input type=\"date\" id=\"startdate\" name=\"startdate\">
             <label for=\"enddate\">End Date:</label>
@@ -51,13 +51,13 @@ if (isset($_GET['account'])){
                 <option value=\"100\">100</option>
                 <option value=\"All\" selected>All</option>
             </select>
-            <input type=\"submit\" value='Search'>
+            <input type=\"submit\" name=\'submit\' value=\'Submit\'>
             </form>
             ";
     }
 }
 
-if(isset($_POST["Search"])){
+if(isset($_POST["submit"])){
     if(isset($_POST["startdate"]) && isset($_POST["enddate"]) && isset($_POST["result_num"])){
         ##########################
         echo "search activated";
