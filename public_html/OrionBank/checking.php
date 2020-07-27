@@ -75,12 +75,13 @@ if (isset($_GET['account'])) {
                             ":enddate" => $enddate
                         ));
 
-                        $transaction_history = $stmt->fetch(PDO::FETCH_ASSOC);
+                        $transaction_history = $stmt->fetchAll(PDO::FETCH_ASSOC);
                         $e = $stmt->errorInfo();
 
                         if (isset($transaction_history) && count($transaction_history) > 0) {
                             ##########
                             echo "YA GOT RESULTS";
+                            echo count($transaction_history);
                             ##########
                             echo "
                                 <table>
