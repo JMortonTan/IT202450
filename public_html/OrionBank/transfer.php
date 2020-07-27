@@ -9,18 +9,32 @@ echo "<h4>" . $_SESSION["user"]["first_name"] . " " . $_SESSION["user"]["last_na
 if (isset($_GET['account'])) {
     $account_number = $_GET['account'];
     $balance = $_GET['balance'];
+
+    $connection_string = "mysql:host=$dbhost;dbname=$dbdatabase;charset=utf8mb4";
+    try {
+        $db = new PDO($connection_string, $dbuser, $dbpass);
+        $stmt = $db->prepare($query);
+        $stmt->execute([":search" => $search]);
+        //Note the fetchAll(), we need to use it over fetch() if we expect >1 record
+        $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
+    } catch (Exception $e) {
+        echo $e->getMessage();
+    }
+
     echo "
         <form method='post'>
-        <select name='from_account' id='from_account'>
-            <option value='000000000000' selected>World</option>
-        </select>
+        <select name='from_account' id='from_account'>";
+        foreach($results as $accounts_array){
+            echo "<option value=" . $accounts_array["account_number"] . "selected>" . $accounts_array["account_number"] . "</option>";
+        }
+    echo "</select>
         <label for='amount'>Amount: 
             <input type='number' name='amount'/>
         </label>
-        <input type='submit' name='withdraw' value='Withdraw'>
+        <input type='submit' name='transfer' value='Transfer'>
         </form>";
 
-    if (isset($_POST["withdraw"])) {
+    if (isset($_POST["transfer"])) {
         $amount = $_POST["amount"];
         $account_src = $account_number;
         $account_dest = $_POST["from_account"];
@@ -28,16 +42,16 @@ if (isset($_GET['account'])) {
         $new_balance = $balance - $amount;
 
         if ($amount > $balance) {
-            echo "You cannot withdraw more than the current balance!";
+            echo "You cannot transfer more than the current balance!";
             exit;
         }
 
         $connection_string = "mysql:host=$dbhost;dbname=$dbdatabase;charset=utf8mb4";
         try {
             $db = new PDO($connection_string, $dbuser, $dbpass);
-            $query = file_get_contents("queries/GET_WORLD_BALANCE.sql");
+            $query = file_get_contents("queries/GET_ACCOUNT_BALANCE.sql");
             $stmt = $db->prepare($query);
-            $stmt->execute();
+            $stmt->execute([":account_number" => $account_dest]);
             $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
             $world_total = $result[0]['balance'];
         } catch (Exception $e) {
@@ -69,7 +83,7 @@ if (isset($_GET['account'])) {
 
                 echo "Withdrawal value of " . $amount . " to 000000000000 was unsuccessful";
             }
-            echo "Withdrawal value of $" . $amount . " to 000000000000 was successful <br>";
+            echo "Transfer value of $" . $amount . " to " . $account_dest . " was successful <br>";
             $balance = $balance - $amount;
             echo "New balance $" . $balance;
 
