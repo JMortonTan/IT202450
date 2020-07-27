@@ -48,7 +48,7 @@ if (isset($_GET['account'])) {
                 <option value='withdraw'>Withdraw</option>
                 <option value='transfer'>Transfer</option>
             </select>
-            <input type='submit' name='submit' value='Submit'>
+            <input type='submit' name='submit' value='Submit' form='Form1'>
             </form>";
 
         if (isset($_POST["submit"])) {
@@ -60,11 +60,11 @@ if (isset($_GET['account'])) {
                         <select name='from_account' id='from_account'>
                             <option value='000000000000' selected>World</option>
                         </select>
-                        <input type='text' name='amount'>
-                        <input type='submit' name='submit' value='Deposit'>
+                        <input type='text' name='amount' form='Form2'>
+                        <input type='submit' name='deposit' value='Deposit' form='Form2'>
                         </form>";
 
-                    if(isset($_POST["submit"])) {
+                    if(isset($_POST["deposit"])) {
                         #######
                         echo "action posted <br>";
                         #######
