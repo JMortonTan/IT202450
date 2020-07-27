@@ -50,6 +50,9 @@ if (isset($_GET['account'])) {
             $query = file_get_contents("queries/WITHDRAW.sql");
             try {
                 $db = new PDO($connection_string, $dbuser, $dbpass);
+                #######
+                echo $query . "<br>";
+                #######
                 $stmt = $db->prepare($query);
                 $stmt->execute(array(
                     ":account_src" => $account_src,

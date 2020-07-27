@@ -62,14 +62,7 @@ if (isset($_GET['account'])) {
                     header("Location: withdraw.php?account=$account_number&balance=$balance");
 
                 case 'transfer':
-                    echo "
-                        <form method='post'>
-                        <select name='to_account' id='to_account'>
-                            <option value='000000000000' selected>World</option>
-                        </select>
-                        <label for='amount'>Amount<input type='amount' name='amount'></label>
-                        <input type='submit' name='transfer' value='Transfer'>
-                        </form>";
+                    header("Location: transfer.php?account=$account_number&balance=$balance");
                     break;
             };
         }

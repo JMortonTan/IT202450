@@ -83,8 +83,8 @@ if (isset($_GET['account'])) {
                         if (isset($transaction_history) && count($transaction_history) > 0) {
                             echo "
                                 <table class='transaction'>
-                                    <th>Account Source</th>
-                                    <th>Account Destination</th>
+                                    <th>Action Source</th>
+                                    <th>Action Destination</th>
                                     <th>Amount</th>
                                     <th>Memo</th>
                                     <th>Date</th>";
