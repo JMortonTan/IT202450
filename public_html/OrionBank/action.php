@@ -48,60 +48,14 @@ if (isset($_GET['account'])) {
                 <option value='withdraw'>Withdraw</option>
                 <option value='transfer'>Transfer</option>
             </select>
-            <input type='submit' name='submit' value='Submit' form='Form1'>
+            <input type='submit' name='submit' value='Submit'>
             </form>";
 
         if (isset($_POST["submit"])) {
             $action = $_POST["transact_type"];
             switch ($action) {
                 case 'deposit':
-                    echo "
-                        <form method='post'>
-                        <select name='from_account' id='from_account'>
-                            <option value='000000000000' selected>World</option>
-                        </select>
-                        <input type='text' name='amount' form='Form2'>
-                        <input type='submit' name='deposit' value='Deposit' form='Form2'>
-                        </form>";
-
-                    if(isset($_POST["deposit"])) {
-                        #######
-                        echo "action posted <br>";
-                        #######
-                        $amount = $_POST["amount"];
-                        $account_dest = $_POST["from_account"];
-
-                        try {
-                            #######
-                            echo "attempting query <br>";
-                            #######
-                            $query = file_get_contents("queries/DEPOSIT.sql");
-                            $stmt = $db->prepare($query);
-                            $stmt->execute(array(
-                                ":account_src" => $result["account_number"],
-                                ":account_dest" => $account_dest,
-                                ":amount" => $amount,
-                            ));
-                            $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
-                            #######
-                            echo "fetch attempted <br>";
-                            #######
-                        } catch (Exception $e) {
-                            echo $e->getMessage();
-                        }
-
-                        if(isset($result)){
-                            #######
-                            echo "result set <br>";
-                            #######
-                            echo "Deposit value of " . $amount . " from 000000000000 was successful";
-                        }else{
-                            #######
-                            echo "result not set <br>";
-                            #######
-                            echo "Deposit value of " . $amount . " from 000000000000 was unsuccessful";
-                        }
-                    }
+                    header("Location: deposit.php?account=$row[account_number]&balance=$row[balance]");
 
                     break;
                 case 'withdraw':
