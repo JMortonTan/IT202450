@@ -59,8 +59,8 @@ if(isset($_POST["created"])){
                 $result = $stmt->execute(array(
                     ":user_id" => $user_id,
                 ));
-                $user_account_count += 1;
-                
+                $_SESSION['user']['accounts_count'] += 1;
+
                 echo "Successfully created account: " . $account_number . "<br>";
                 echo "We are happy to serve you.";
             }
