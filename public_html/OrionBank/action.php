@@ -56,11 +56,10 @@ if (isset($_GET['account'])) {
             switch ($action) {
                 case 'deposit':
                     header("Location: deposit.php?account=$account_number&balance=$balance");
-
                     break;
                 case 'withdraw':
                     header("Location: withdraw.php?account=$account_number&balance=$balance");
-
+                    break;
                 case 'transfer':
                     header("Location: transfer.php?account=$account_number&balance=$balance");
                     break;

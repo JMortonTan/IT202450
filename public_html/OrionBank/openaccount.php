@@ -115,7 +115,7 @@ if(isset($_POST["created"])){
                 }
 
                 echo "Successfully created account: " . $account_number . "<br>";
-                echo "We are happy to serve you.";
+                echo "We are happy to serve you. <br>";
                 if ($account_type == 2) {
                     echo "The current interest rate is 2%.<br>
                            Your accrued interest will be added on the first of each month.";
