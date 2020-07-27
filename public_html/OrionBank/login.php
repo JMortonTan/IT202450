@@ -43,7 +43,8 @@ if(isset($_POST["login"])){
                             "id"=>$result["id"],
                             "email"=>$result["email"],
                             "first_name"=>$result["first_name"],
-                            "last_name"=>$result["last_name"]
+                            "last_name"=>$result["last_name"],
+                            "accounts_count"=>$result["accounts_count"]
                         );
                         echo var_export($_SESSION, true);
                         header("Location: home.php");

@@ -1,0 +1,2 @@
+INSERT INTO Transactions (`account_src`,`account_dest`,`amount`,`memo`) VALUES('000000000000', :init_account, -5, "Open Checking");
+INSERT INTO Transactions (`account_src`,`account_dest`,`amount`,`memo`) VALUES(:init_account, '000000000000', 5, "Open Checking")
