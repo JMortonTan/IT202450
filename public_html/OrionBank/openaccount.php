@@ -73,7 +73,7 @@ if(isset($_POST["created"])){
                 #######
 
                 switch($account_type) {
-                    case 'Checking':
+                    case 1:
                         #######
                         echo'case is checking <br>';
                         #######
@@ -107,7 +107,7 @@ if(isset($_POST["created"])){
                         #######
 
                         break;
-                    case'Savings':
+                    case 2:
 
                         #######
                         echo'case is savings <br>';
