@@ -35,6 +35,10 @@ if(isset($_POST["created"])){
 
     $account_number = next_avail_account_num($user_id,$user_account_count);
 
+    ###
+    echo "attempting " . $account_number . "<br>";
+    ###
+
     $connection_string = "mysql:host=$dbhost;dbname=$dbdatabase;charset=utf8mb4";
     if(!empty($account_number) && !empty($account_type)){
         $db = new PDO($connection_string, $dbuser, $dbpass);
