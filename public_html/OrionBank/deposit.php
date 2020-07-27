@@ -65,7 +65,7 @@ if (isset($_GET['account'])) {
 
             echo "Deposit value of $" . $amount . " from 000000000000 was successful <br>";
             $balance = $balance + $amount;
-            echo "New balance " . $balance;
+            echo "New balance $" . $balance;
 
         }catch (Exception $e) {
             echo $e->getMessage();
