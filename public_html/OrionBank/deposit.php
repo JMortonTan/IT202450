@@ -47,7 +47,7 @@ if (isset($_GET['account'])) {
             #######
             echo " try get world<br>";
             #######
-
+            $db = new PDO($connection_string, $dbuser, $dbpass);
             $query = file_get_contents("queries/GET_WORLD_BALANCE.sql");
             $stmt = $db->prepare($query);
             $stmt->execute();
