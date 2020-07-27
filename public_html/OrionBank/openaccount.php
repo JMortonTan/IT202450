@@ -68,18 +68,18 @@ if(isset($_POST["created"])){
                             $query = file_get_contents("queries/GET_WORLD_BALANCE.sql");
                             $stmt = $db->prepare($query);
                             $stmt->execute();
-                            $result = $stmt->fetch(PDO::FETCH_ASSOC);
+                            $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
                         } catch (Exception $e) {
                             echo $e->getMessage();
                         }
                         #######
-                        echo $result[0] . '<br>';
+                        echo $result[0] . ' just array <br>';
                         #######
                         #######
-                        echo $result . '<br>';
+                        echo $result[0]['balance'] . ' array and selector <br>';
                         #######
 
-                        $world_total = $result[0] - 5;
+                        $world_total = $result[0]['balance'] - 5;
 
                         #######
                         echo $world_total . "<br>";
