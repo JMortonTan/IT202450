@@ -57,6 +57,11 @@ if (isset($_GET['account'])) {
             try {
                 $db = new PDO($connection_string, $dbuser, $dbpass);
                 $stmt = $db->prepare($query);
+
+                #######
+                echo $stmt . "STMT <br>";
+                #######
+                
                 $stmt->execute(array(
                     ":account_src" => $account_src,
                     ":account_dest" => $account_dest,
