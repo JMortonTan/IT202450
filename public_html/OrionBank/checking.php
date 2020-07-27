@@ -69,18 +69,11 @@ if (isset($_GET['account'])) {
                         $db = new PDO($connection_string, $dbuser, $dbpass);
                         $query = file_get_contents("queries/SEARCH_TABLE_TRANSACTIONS_DATE_DESC.sql");
                         $stmt = $db->prepare($query);
-                        ##########
-                        echo $startdate;
-                        echo $enddate;
-                        ##########
                         $stmt->execute(array(
                             ":account_number" => $account_number,
                             ":startdate" => $startdate,
                             ":enddate" => $enddate
                         ));
-                        ##########
-                        echo "FETCH RESULTS";
-                        ##########
 
                         $transaction_history = $stmt->fetch(PDO::FETCH_ASSOC);
                         $e = $stmt->errorInfo();
@@ -88,7 +81,6 @@ if (isset($_GET['account'])) {
                         if (isset($transaction_history) && count($transaction_history) > 0) {
                             ##########
                             echo "YA GOT RESULTS";
-                            echo $transaction_history;
                             ##########
                             echo "
                                 <table>

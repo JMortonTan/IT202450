@@ -34,7 +34,7 @@ if(isset($results) && count($results) > 0){
             echo "<tr><td>";
             echo $row["account_number"];
             echo "</td><td>";
-            $type_holder = $row["account_type"];;
+            $type_holder = $row["account_type"];
             switch ($type_holder) {
                 case 1:
                     echo "Checking";
