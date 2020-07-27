@@ -52,6 +52,10 @@ if(isset($_POST["created"])){
             echo var_export($e, true);
         }
         else{
+            #######
+            echo'entered block of hell <br>';
+            #######
+
             if ($result){
                 $query = file_get_contents("queries/INCREMENT_USERS_ACCOUNT_COUNT.sql");
                 $stmt = $db->prepare($query);
@@ -60,8 +64,19 @@ if(isset($_POST["created"])){
                 ));
                 $_SESSION['user']['accounts_count'] += 1;
 
+                #######
+                echo'Incremented count <br>';
+                #######
+
+                #######
+                echo $account_type . '<br>';
+                #######
+
                 switch($account_type) {
                     case 'Checking':
+                        #######
+                        echo'case is checking <br>';
+                        #######
                         $query = file_get_contents("queries/GET_WORLD_BALANCE.sql");
                         $stmt = $db->prepare($query);
                         $world_total = $stmt->execute();
@@ -74,6 +89,10 @@ if(isset($_POST["created"])){
                             ":new_world_total" => $world_total
                         ));
 
+                        #######
+                        echo'Transactions should be set. <br>';
+                        #######
+
                         $query = file_get_contents("queries/UPDATE_TRANSACTION_BALANCES.sql");
                         $stmt = $db->prepare($query);
                         $result = $stmt->execute(array(
@@ -83,8 +102,16 @@ if(isset($_POST["created"])){
                             ":new_balance_dest" => $world_total
                         ));
 
+                        #######
+                        echo'Account balances updated. <br>';
+                        #######
+
                         break;
                     case'Savings':
+
+                        #######
+                        echo'case is savings <br>';
+                        #######
                         $query = file_get_contents("queries/GET_WORLD_BALANCE.sql");
                         $stmt = $db->prepare($query);
                         $world_total = $stmt->execute();
@@ -97,6 +124,10 @@ if(isset($_POST["created"])){
                             ":new_world_total" => $world_total
                         ));
 
+                        #######
+                        echo'Transactions should be set. <br>';
+                        #######
+
                         $query = file_get_contents("queries/UPDATE_TRANSACTION_BALANCES.sql");
                         $stmt = $db->prepare($query);
                         $result = $stmt->execute(array(
@@ -105,7 +136,12 @@ if(isset($_POST["created"])){
                             ":new_balance_src" => 5,
                             ":new_balance_dest" => $world_total
                         ));
-                    break;
+
+                        #######
+                        echo'Account balances updated. <br>';
+                        #######
+
+                        break;
                 }
 
                 echo "Successfully created account: " . $account_number . "<br>";
