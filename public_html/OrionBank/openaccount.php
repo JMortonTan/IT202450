@@ -24,12 +24,12 @@ function next_avail_account_num($id, $count) {
     echo "generating account num <br>";
 ########
     $left10 = (string)$id;
-    while (strln($left10) < 10) {
+    while (strlen($left10) < 10) {
         $left10 = '0' . $left10;
     }
 
     $right2 = (string)$count;
-    while (strln($right2) < 2) {
+    while (strlen($right2) < 2) {
         $right2 = '0' . $right2;
     };
     $returnstr = $left10 . $right2;
