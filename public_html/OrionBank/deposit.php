@@ -52,44 +52,40 @@ if (isset($_GET['account'])) {
             #######
             echo "attempting query <br>";
             #######
-            $query = file_get_contents("queries/DEPOSIT.sql");
+
             $connection_string = "mysql:host=$dbhost;dbname=$dbdatabase;charset=utf8mb4";
             try {
                 $db = new PDO($connection_string, $dbuser, $dbpass);
+                $query = file_get_contents("queries/DEPOSIT.sql");
+                #######
+                echo $query . "<br>";
+                #######
                 $stmt = $db->prepare($query);
-
-                #######
-                echo $stmt . "STMT <br>";
-                #######
-                
                 $stmt->execute(array(
                     ":account_src" => $account_src,
                     ":account_dest" => $account_dest,
                     ":amount" => $amount,
-                    ":negamount" => $negamount,
+                    ":negamount" => $negamount
                 ));
-                $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+                $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+                $e = $stmt->errorInfo();
                 #######
                 echo "fetch attempted <br>";
                 #######
             } catch (Exception $e) {
                 echo $e->getMessage();
-            }
 
-            if (isset($result)) {
-                #######
-                echo "result set <br>";
-                #######
-                echo "Deposit value of " . $amount . " from 000000000000 was successful <br>";
-                $balance = $balance + $amount;
-                echo "New balance " . $balance;
-            } else {
-                #######
-                echo "result not set <br>";
-                #######
                 echo "Deposit value of " . $amount . " from 000000000000 was unsuccessful";
-
             }
+
+            #######
+            echo "result set <br>";
+            #######
+            echo "Deposit value of " . $amount . " from 000000000000 was successful <br>";
+            $balance = $balance + $amount;
+            echo "New balance " . $balance;
+
         }catch (Exception $e) {
             echo $e->getMessage();
         }
