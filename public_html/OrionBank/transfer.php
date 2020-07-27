@@ -6,7 +6,10 @@ include("header.php");
 
 echo "<h4>" . $_SESSION["user"]["first_name"] . " " . $_SESSION["user"]["last_name"] . "'s Account</h4>";
 
-if (isset($_GET['account'])) {
+
+$search = $_SESSION["user"]["id"];
+
+if (isset($_GET['account']) && isset($search)) {
     $account_number = $_GET['account'];
     $balance = $_GET['balance'];
 
