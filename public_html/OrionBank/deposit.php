@@ -62,8 +62,8 @@ if (isset($_GET['account'])) {
                 #######
                 $stmt = $db->prepare($query);
                 $stmt->execute(array(
-                    ":account_src" => $account_src,
-                    ":account_dest" => $account_dest,
+                    ":account_src" => strval($account_src),
+                    ":account_dest" => strval($account_dest),
                     ":amount" => $amount,
                     ":negamount" => $negamount
                 ));
