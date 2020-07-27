@@ -11,18 +11,9 @@ if (isset($_GET['account']) && isset($search)) {
     $account_number = $_GET['account'];
     $balance = $_GET['balance'];
 
-    ######
-    echo "its all set <br>";
-    ######
-
-    ######
-    echo $search . "<br>";
-    ######
-
     $connection_string = "mysql:host=$dbhost;dbname=$dbdatabase;charset=utf8mb4";
     $query = file_get_contents("queries/LISTBYID.sql");
     try {
-        echo "I'm trying <br>";
         $db = new PDO($connection_string, $dbuser, $dbpass);
         $stmt = $db->prepare($query);
         $stmt->execute([":search" => $search]);
@@ -30,16 +21,14 @@ if (isset($_GET['account']) && isset($search)) {
     } catch (Exception $e) {
         echo $e->getMessage();
     }
-    ############
-    foreach($results as $accounts_array){
-        echo $accounts_array["account_number"] . "<br>";
-    }
-    ############
+
     echo "
         <form method='post'>
         <select name='from_account' id='from_account'>";
         foreach($results as $accounts_array){
-            echo "<option value=" . $accounts_array["account_number"] . ">" . $accounts_array["account_number"] . "</option>";
+            if ($accounts_array["account_number"] != $account_number){
+                echo "<option value=" . $accounts_array["account_number"] . ">" . $accounts_array["account_number"] . "</option>";
+            }
         }
     echo "</select>
         <label for='amount'>Amount: 
@@ -75,7 +64,7 @@ if (isset($_GET['account']) && isset($search)) {
         $new_world_balance = $world_total + $amount;
 
         try {
-            $query = file_get_contents("queries/WITHDRAW.sql");
+            $query = file_get_contents("queries/TRANSFER.sql");
             try {
                 $db = new PDO($connection_string, $dbuser, $dbpass);
                 #######
