@@ -59,6 +59,11 @@ if (isset($_GET['account'])) {
             if (isset($_POST["startdate"]) && isset($_POST["enddate"]) && isset($_POST["result_num"])) {
                 $startdate = $_POST["startdate"];
                 $enddate = $_POST["enddate"];
+
+                if ($startdate > $enddate){
+                    goto date_error;
+                }
+
                 $result_num = $_POST["result_num"];
                 $connection_string = "mysql:host=$dbhost;dbname=$dbdatabase;charset=utf8mb4";
                 try {
@@ -66,7 +71,8 @@ if (isset($_GET['account'])) {
                     $query = file_get_contents("queries/SEARCH_TABLE_TRANSACTIONS_DATE_DESC.sql");
                     $stmt = $db->prepare($query);
                     ##########
-                    echo "ATTEMPTING QUERY";
+                    echo $startdate;
+                    echo $enddate;
                     ##########
                     $stmt->execute(array(
                         ":account_number" => $account_number,
@@ -116,4 +122,7 @@ if (isset($_GET['account'])) {
         }
     }
 }
+
+date_error:
+    echo "Your start date must be equal to or before your end date!";
 ?>
