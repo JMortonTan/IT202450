@@ -1,1 +1,1 @@
-UPDATE Users SET accounts_count = accounts_count + 1 WHERE account_number = :account_number
+UPDATE Users SET accounts_count = accounts_count + 1 WHERE :user_id = $user_id

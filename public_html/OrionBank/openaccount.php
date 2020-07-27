@@ -57,7 +57,7 @@ if(isset($_POST["created"])){
                 $query = file_get_contents("queries/INCREMENT_USERS_ACCOUNT_COUNT.sql");
                 $stmt = $db->prepare($query);
                 $result = $stmt->execute(array(
-                    ":account_number" => $account_number
+                    ":user_id" => $user_id,
                 ));
 
                 echo "Successfully created account: " . $account_number . "<br>";
