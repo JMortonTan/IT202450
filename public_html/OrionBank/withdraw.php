@@ -25,10 +25,10 @@ if (isset($_GET['account'])) {
         <label for='amount'>Amount: 
             <input type='number' name='amount'/>
         </label>
-        <input type='submit' name='deposit' value='Deposit'>
+        <input type='submit' name='withdraw' value='Withdraw'>
         </form>";
 
-    if (isset($_POST["deposit"])) {
+    if (isset($_POST["withdraw"])) {
         $amount = $_POST["amount"];
         $account_src = $account_number;
         $account_dest = $_POST["from_account"];
@@ -60,7 +60,7 @@ if (isset($_GET['account'])) {
         echo $world_total . " world total<br>";
         #######
 
-        $new_world_balance = $world_total - $amount;
+        $new_world_balance = $world_total + $amount;
 
         try {
             #######
@@ -90,14 +90,14 @@ if (isset($_GET['account'])) {
             } catch (Exception $e) {
                 echo $e->getMessage();
 
-                echo "Deposit value of " . $amount . " from 000000000000 was unsuccessful";
+                echo "Withdrawal value of " . $amount . " from 000000000000 was unsuccessful";
             }
 
             #######
             echo "result set <br>";
             #######
-            echo "Deposit value of $" . $amount . " from 000000000000 was successful <br>";
-            $balance = $balance + $amount;
+            echo "Withdrawal value of $" . $amount . " from 000000000000 was successful <br>";
+            $balance = $balance - $amount;
             echo "New balance " . $balance;
 
         }catch (Exception $e) {
