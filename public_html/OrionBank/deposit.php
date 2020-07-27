@@ -29,24 +29,24 @@ if (isset($_GET['account'])) {
         </form>";
 
     if (isset($_POST["deposit"])) {
-        #######
-        echo "action posted <br>";
-        #######
         $amount = $_POST["amount"];
         $account_src = $account_number;
         $account_dest = $_POST["from_account"];
         $negamount = (-1) * $amount;
+        $new_balance = $balance + $amount;
 
+        $connection_string = "mysql:host=$dbhost;dbname=$dbdatabase;charset=utf8mb4";
+        try {
+            $query = file_get_contents("queries/GET_WORLD_BALANCE.sql");
+            $stmt = $db->prepare($query);
+            $stmt->execute();
+            $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        } catch (Exception $e) {
+            echo $e->getMessage();
+        }
+        $world_total = $result[0]['balance'];
 
-        #######
-        echo $account_dest . " DESTINATION<br>";
-        #######
-        #######
-        echo $account_src . " SRC<br>";
-        #######
-        #######
-        echo $amount . " AMNT<br>";
-        #######
+        $new_world_balance = $world_total - $amount;
 
         try {
             #######
@@ -54,18 +54,20 @@ if (isset($_GET['account'])) {
             #######
 
             $query = file_get_contents("queries/DEPOSIT.sql");
-            $connection_string = "mysql:host=$dbhost;dbname=$dbdatabase;charset=utf8mb4";
             try {
                 $db = new PDO($connection_string, $dbuser, $dbpass);
                 #######
                 echo $query . "<br>";
                 #######
                 $stmt = $db->prepare($query);
-                $stmt->bindValue(":account_src", $account_src);
-                $stmt->bindValue(":account_dest", $account_dest);
-                $stmt->bindValue(":amount", $amount);
-                $stmt->bindValue(":negamount", $negamount);
-                $stmt->execute();
+                $stmt->execute(array(
+                    ":account_src" => $account_src,
+                    ":account_dest" => $account_dest,
+                    ":amount" => $amount,
+                    ":negamount" => $negamount,
+                    ":new_balance" => $new_balance,
+                    ":new_world_balance" => $new_world_balance
+                ));
 
                 $e = $stmt->errorInfo();
                 #######
