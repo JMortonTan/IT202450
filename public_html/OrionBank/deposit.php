@@ -10,6 +10,13 @@ if (isset($_GET['account'])) {
     $account_number = $_GET['account'];
     $balance = $_GET['balance'];
 
+    #######
+    echo $account_number . " number<br>";
+    #######
+    #######
+    echo $balance . " the lance<br>";
+    #######
+
     echo "
         <form method='post'>
         <select name='from_account' id='from_account'>
@@ -24,9 +31,10 @@ if (isset($_GET['account'])) {
         echo "action posted <br>";
         #######
         $amount = $_POST["amount"];
+        $account_src = $account_number;
         $account_dest = $_POST["from_account"];
         $negamount = (-1) * $amount;
-        $account_src = $account_number;
+
 
         #######
         echo $account_dest . " DESTINATION<br>";
