@@ -1,0 +1,1 @@
+SELECT * FROM Accounts WHERE account_number = :account_number;

@@ -21,7 +21,7 @@ if (isset($_GET['account'])) {
         echo $e->getMessage();
     }
     if (isset($result)) {
-        $this_account = $result[0];
+        #$this_account = $result[0];
         echo "<h5>Account Number: " . $result["account_number"] . "</h5>";
         echo "<h5>Account Type: ";
         switch ($result["account_type"]) {
@@ -63,6 +63,30 @@ if (isset($_GET['account'])) {
                         <label for='amount'>Amount<input type='amount' name='amount'></label>
                         <input type='submit' name='deposit' value='Deposit'>
                         </form>";
+
+                    if(isset($_POST["deposit"])) {
+                        $amount = $_POST["amount"];
+
+                        try {
+                            $query = file_get_contents("queries/DEPOSIT.sql");
+                            $stmt = $db->prepare($query);
+                            $stmt->execute(array(
+                                ":account_src" => $result["account_number"],
+                                ":account_dest" => '000000000000',
+                                ":amount" => $amount,
+                            ));
+                            $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+                        } catch (Exception $e) {
+                            echo $e->getMessage();
+                        }
+
+                        if(isset($result)){
+                            echo "Deposit value of " . $amount . " from 000000000000 was successful";
+                        }else{
+                            echo "Deposit value of " . $amount . " from 000000000000 was unsuccessful";
+                        }
+                    }
+
                     break;
                 case 'withdraw':
                     echo "
