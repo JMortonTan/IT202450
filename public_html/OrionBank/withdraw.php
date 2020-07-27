@@ -35,6 +35,11 @@ if (isset($_GET['account'])) {
         $negamount = (-1) * $amount;
         $new_balance = $balance - $amount;
 
+        if ($amount > $balance) {
+            echo "You cannot withdraw more than the current balance!";
+            exit;
+        }
+
         #######
         echo $account_src . " SRC<br>";
         #######
