@@ -58,7 +58,7 @@ if (isset($_GET['account'])) {
                 $db = new PDO($connection_string, $dbuser, $dbpass);
                 $stmt = $db->prepare($query);
                 $stmt->execute(array(
-                    ":account_src" => $result["account_number"],
+                    ":account_src" => $account_src,
                     ":account_dest" => $account_dest,
                     ":amount" => $amount,
                     ":negamount" => $negamount,
@@ -75,7 +75,7 @@ if (isset($_GET['account'])) {
                 #######
                 echo "result set <br>";
                 #######
-                echo "Deposit value of " . $amount . " from 000000000000 was successful";
+                echo "Deposit value of " . $amount . " from 000000000000 was successful <br>";
                 $balance = $balance + $amount;
                 echo "New balance " . $balance;
             } else {
