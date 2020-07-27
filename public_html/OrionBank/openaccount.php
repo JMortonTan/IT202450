@@ -52,10 +52,6 @@ if(isset($_POST["created"])){
             echo var_export($e, true);
         }
         else{
-            #######
-            echo'entered block of hell <br>';
-            #######
-
             if ($result){
                 $query = file_get_contents("queries/INCREMENT_USERS_ACCOUNT_COUNT.sql");
                 $stmt = $db->prepare($query);
@@ -63,15 +59,6 @@ if(isset($_POST["created"])){
                     ":user_id" => $user_id,
                 ));
                 $_SESSION['user']['accounts_count'] += 1;
-
-                #######
-                echo'Incremented count <br>';
-                #######
-
-                #######
-                echo $account_type . '<br>';
-                #######
-
                 switch($account_type) {
                     case 1:
                         #######
@@ -80,7 +67,11 @@ if(isset($_POST["created"])){
                         $query = file_get_contents("queries/GET_WORLD_BALANCE.sql");
                         $stmt = $db->prepare($query);
                         $world_total = $stmt->execute();
-                        $world_total -= 5;
+                        $world_total = $world_total - 5;
+
+                        #######
+                        echo $world_total . "<br>";
+                        #######
 
                         $query = file_get_contents("queries/OPEN_CHECKING_PROMOTION.sql");
                         $stmt = $db->prepare($query);
