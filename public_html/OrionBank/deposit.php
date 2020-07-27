@@ -66,7 +66,6 @@ if (isset($_GET['account'])) {
                 $stmt->bindValue(":amount", $amount);
                 $stmt->bindValue(":negamount", $negamount);
                 $stmt->execute();
-                $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
                 $e = $stmt->errorInfo();
                 #######
