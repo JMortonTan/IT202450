@@ -1,2 +1,2 @@
-INSERT INTO Transactions (`account_src`,`account_dest`,`amount`,`memo`,`total`) VALUES('000000000000', :init_account, -5, "Open Savings". :new_world_total);
+INSERT INTO Transactions (`account_src`,`account_dest`,`amount`,`memo`,`total`) VALUES('000000000000', :init_account, -5, "Open Savings", :new_world_total);
 INSERT INTO Transactions (`account_src`,`account_dest`,`amount`,`memo`,`total`) VALUES(:init_account, '000000000000', 5, "Open Savings", 5)
