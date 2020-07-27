@@ -4,10 +4,11 @@ include("header.php");
 
 <?php
 
-echo "<h4>" . $_SESSION["user"]["first_name"] . " " . $_SESSION["user"]["last_name"] . "'s Checking Account</h4>";
+echo "<h4>" . $_SESSION["user"]["first_name"] . " " . $_SESSION["user"]["last_name"] . "'s Account</h4>";
 
 if (isset($_GET['account'])) {
     $account_number = $_GET['account'];
+    $balance = $_GET['balance'];
     $query = file_get_contents("queries/SELECT_TABLE_ACCOUNTS_ACCOUNTNUM.sql");
     $connection_string = "mysql:host=$dbhost;dbname=$dbdatabase;charset=utf8mb4";
     try {
@@ -36,7 +37,8 @@ if (isset($_GET['account'])) {
                 echo "There is an error";
                 break;
         };
-        echo "</h5></br>";
+        echo "</h5>";
+        echo "<h5>Account Balance: " . $balance . "</h5><br>";
 
         echo "
             <form method='post'>

@@ -29,7 +29,8 @@ if(isset($results) && count($results) > 0){
         <th>Type</th>
         <th>Balance</th>
         <th>Date Created</th>
-        <th>Actions</th>";
+        <th>History</th>
+        <th>Action</th>";
         foreach($results as $row) {
             echo "<tr><td>";
             echo $row["account_number"];
@@ -56,8 +57,11 @@ if(isset($results) && count($results) > 0){
                 echo $row["opened_date"];
                 echo "</td>
                 <td>";
-                echo "<a href='transactions.php?account=$row[account_number]'>History</a>";
-                echo "<td>
+                echo "<a href='transactions.php?account=$row[account_number]&balance=$row[balance]'>History</a>";
+                echo "</td>
+                <td>";
+                echo "<a href='action.php?account=$row[account_number]&balance=$row[balance]'>Transact</a>";
+                echo "</td>
                     </tr>";
                 }
             echo"</table>";
