@@ -33,7 +33,7 @@ if (isset($_GET['account'])) {
         $account_src = $account_number;
         $account_dest = $_POST["from_account"];
         $negamount = (-1) * $amount;
-        $new_balance = $balance + $amount;
+        $new_balance = $balance - $amount;
 
         #######
         echo $account_src . " SRC<br>";
