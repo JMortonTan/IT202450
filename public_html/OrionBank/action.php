@@ -55,7 +55,7 @@ if (isset($_GET['account'])) {
             $action = $_POST["transact_type"];
             switch ($action) {
                 case 'deposit':
-                    header("Location: deposit.php?account=$row[account_number]&balance=$row[balance]");
+                    header("Location: deposit.php?account=$account_number&balance=$balance");
 
                     break;
                 case 'withdraw':
