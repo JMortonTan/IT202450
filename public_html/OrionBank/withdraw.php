@@ -67,7 +67,7 @@ if (isset($_GET['account'])) {
             echo "attempting query <br>";
             #######
 
-            $query = file_get_contents("queries/DEPOSIT.sql");
+            $query = file_get_contents("queries/WITHDRAW.sql");
             try {
                 $db = new PDO($connection_string, $dbuser, $dbpass);
                 #######
@@ -90,13 +90,13 @@ if (isset($_GET['account'])) {
             } catch (Exception $e) {
                 echo $e->getMessage();
 
-                echo "Withdrawal value of " . $amount . " from 000000000000 was unsuccessful";
+                echo "Withdrawal value of " . $amount . " to 000000000000 was unsuccessful";
             }
 
             #######
             echo "result set <br>";
             #######
-            echo "Withdrawal value of $" . $amount . " from 000000000000 was successful <br>";
+            echo "Withdrawal value of $" . $amount . " to 000000000000 was successful <br>";
             $balance = $balance - $amount;
             echo "New balance " . $balance;
 
