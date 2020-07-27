@@ -61,12 +61,11 @@ if (isset($_GET['account'])) {
                 echo $query . "<br>";
                 #######
                 $stmt = $db->prepare($query);
-                $stmt->execute([
-                    ":account_src" => $account_src,
-                    ":account_dest" => $account_dest,
-                    ":amount" => $amount,
-                    ":negamount" => $negamount
-                ]);
+                $stmt->bindValue(":account_src", $account_src);
+                $stmt->bindValue(":account_dest", $account_dest);
+                $stmt->bindValue(":amount", $amount);
+                $stmt->bindValue(":negamount", $negamount);
+                $stmt->execute();
                 $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
                 $e = $stmt->errorInfo();
