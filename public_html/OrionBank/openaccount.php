@@ -66,9 +66,9 @@ if(isset($_POST["created"])){
                         #######
                         $query = file_get_contents("queries/GET_WORLD_BALANCE.sql");
                         $stmt = $db->prepare($query);
-                        $result = $stmt->execute();
-                        $world_total = $stmt->fetch(PDO::FETCH_ASSOC);
-                        $world_total = $world_total - 5;
+                        $stmt->execute();
+                        $result = $stmt->fetch(PDO::FETCH_ASSOC);
+                        $world_total = $result - 5;
 
                         #######
                         echo $world_total . "<br>";
