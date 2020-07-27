@@ -1,1 +1,1 @@
-SELECT * FROM Accounts WHERE account_number = '000000000000';
+SELECT balance FROM Accounts WHERE account_number = '000000000000';
