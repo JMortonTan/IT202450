@@ -8,7 +8,6 @@ include("header.php");
         <select type="number" id="acc_type" name="account_type" required>
             <option value=1>Checking</option>
             <option value=2>Savings</option>
-            <option value=3>Loan</option>
         </select>
     </label>
     <input type="submit" name="created" value="Open Account"/>
@@ -60,6 +59,54 @@ if(isset($_POST["created"])){
                     ":user_id" => $user_id,
                 ));
                 $_SESSION['user']['accounts_count'] += 1;
+
+                switch($account_type) {
+                    case 'Checking':
+                        $query = file_get_contents("queries/GET_WORLD_BALANCE.sql");
+                        $stmt = $db->prepare($query);
+                        $world_total = $stmt->execute();
+                        $world_total -= 5;
+
+                        $query = file_get_contents("queries/OPEN_CHECKING_PROMOTION.sql");
+                        $stmt = $db->prepare($query);
+                        $result = $stmt->execute(array(
+                            ":init_account" => $account_number,
+                            ":new_world_total" => $world_total
+                        ));
+
+                        $query = file_get_contents("queries/UPDATE_TRANSACTION_BALANCES.sql");
+                        $stmt = $db->prepare($query);
+                        $result = $stmt->execute(array(
+                            ":account_number_src" => $account_number,
+                            ":account_number_dest" => '000000000000',
+                            ":new_balance_src" => 5,
+                            ":new_balance_dest" => $world_total
+                        ));
+
+                        break;
+                    case'Savings':
+                        $query = file_get_contents("queries/GET_WORLD_BALANCE.sql");
+                        $stmt = $db->prepare($query);
+                        $world_total = $stmt->execute();
+                        $world_total -= 5;
+
+                        $query = file_get_contents("queries/OPEN_SAVINGS_PROMOTION.sql");
+                        $stmt = $db->prepare($query);
+                        $result = $stmt->execute(array(
+                            ":init_account" => $account_number,
+                            ":new_world_total" => $world_total
+                        ));
+
+                        $query = file_get_contents("queries/UPDATE_TRANSACTION_BALANCES.sql");
+                        $stmt = $db->prepare($query);
+                        $result = $stmt->execute(array(
+                            ":account_number_src" => $account_number,
+                            ":account_number_dest" => '000000000000',
+                            ":new_balance_src" => 5,
+                            ":new_balance_dest" => $world_total
+                        ));
+                    break;
+                }
 
                 echo "Successfully created account: " . $account_number . "<br>";
                 echo "We are happy to serve you.";

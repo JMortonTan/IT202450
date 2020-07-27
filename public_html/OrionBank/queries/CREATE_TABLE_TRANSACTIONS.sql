@@ -4,7 +4,7 @@ CREATE TABLE Transactions(
     account_dest varchar(12) NOT NULL,
     amount decimal(12,2) NOT NULL,
     memo varchar(128) NOT NULL,
-    src_result_balance decimal(12,2) NOT NULL,
+    total decimal(12,2) NOT NULL,
     date timestamp default current_timestamp on update current_timestamp,
     PRIMARY KEY(id),
     FOREIGN KEY(account_src) REFERENCES Accounts(account_number)

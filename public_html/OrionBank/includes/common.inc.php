@@ -95,7 +95,18 @@ class Common {
      * @return null
      */
     public function update_balance($account_number, $new_balance) {
-
+        $query = file_get_contents("queries/MAKEITRAIN.sql");
+        $dbdatabase = $dbuser = $dbpass = $dbhost = NULL;
+        require_once("config.php");
+        $connection_string = "mysql:host=$dbhost;dbname=$dbdatabase;charset=utf8mb4";
+        try {
+            $db = new PDO($connection_string, $dbuser, $dbpass);
+            $stmt = $db->prepare($query);
+            $stmt->execute([":account_number" => $account_number]);
+            header("Location: accounts.php");
+        }catch (Exception $e) {
+            echo $e->getMessage();
+        }
     }
 }
 
