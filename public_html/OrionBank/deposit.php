@@ -35,16 +35,30 @@ if (isset($_GET['account'])) {
         $negamount = (-1) * $amount;
         $new_balance = $balance + $amount;
 
+        #######
+        echo $account_src . " SRC<br>";
+        #######
+        #######
+        echo $account_dest . " DEST<br>";
+        #######
+
         $connection_string = "mysql:host=$dbhost;dbname=$dbdatabase;charset=utf8mb4";
         try {
+            #######
+            echo " try get world<br>";
+            #######
+
             $query = file_get_contents("queries/GET_WORLD_BALANCE.sql");
             $stmt = $db->prepare($query);
             $stmt->execute();
             $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+            $world_total = $result[0]['balance'];
         } catch (Exception $e) {
             echo $e->getMessage();
         }
-        $world_total = $result[0]['balance'];
+        #######
+        echo $world_total . " world total<br>";
+        #######
 
         $new_world_balance = $world_total - $amount;
 
