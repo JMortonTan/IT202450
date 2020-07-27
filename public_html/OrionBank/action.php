@@ -60,7 +60,6 @@ if (isset($_GET['account'])) {
                         <select name='from_account' id='from_account'>
                             <option value='000000000000' selected>World</option>
                         </select>
-                        <label for='amount'>Amount</label>
                         <input type='text' name='amount'>
                         <input type='submit' name='deposit' value='Deposit'>
                         </form>";
@@ -70,6 +69,7 @@ if (isset($_GET['account'])) {
                         echo "action posted <br>";
                         #######
                         $amount = $_POST["amount"];
+                        $account_dest = $_POST["from_account"];
 
                         try {
                             #######
@@ -79,7 +79,7 @@ if (isset($_GET['account'])) {
                             $stmt = $db->prepare($query);
                             $stmt->execute(array(
                                 ":account_src" => $result["account_number"],
-                                ":account_dest" => '000000000000',
+                                ":account_dest" => $account_dest,
                                 ":amount" => $amount,
                             ));
                             $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
