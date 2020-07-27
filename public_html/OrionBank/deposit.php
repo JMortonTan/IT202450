@@ -22,7 +22,9 @@ if (isset($_GET['account'])) {
         <select name='from_account' id='from_account'>
             <option value='000000000000' selected>World</option>
         </select>
-        <input type='text' name='amount' form='Form2'>
+        <label for='amount'>Amount: 
+            <input type='number' name='amount'/>
+        </label>
         <input type='submit' name='deposit' value='Deposit'>
         </form>";
 
