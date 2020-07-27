@@ -73,6 +73,11 @@ if(isset($_POST["created"])){
                         #######
 
                         $result = $stmt->fetch(PDO::FETCH_ASSOC);
+
+                        #######
+                        echo $result . '<br>';
+                        #######
+
                         $world_total = $result - 5;
 
                         #######
