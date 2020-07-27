@@ -6,28 +6,33 @@ include("header.php");
 
 echo "<h4>" . $_SESSION["user"]["first_name"] . " " . $_SESSION["user"]["last_name"] . "'s Account</h4>";
 
-
 $search = $_SESSION["user"]["id"];
-
 if (isset($_GET['account']) && isset($search)) {
     $account_number = $_GET['account'];
     $balance = $_GET['balance'];
+
+    ######
+    echo "its all set <br>";
+    ######
+
+    ######
+    echo $search . "<br>";
+    ######
 
     $connection_string = "mysql:host=$dbhost;dbname=$dbdatabase;charset=utf8mb4";
     try {
         $db = new PDO($connection_string, $dbuser, $dbpass);
         $stmt = $db->prepare($query);
         $stmt->execute([":search" => $search]);
-        //Note the fetchAll(), we need to use it over fetch() if we expect >1 record
         $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
     } catch (Exception $e) {
         echo $e->getMessage();
     }
-
+    ############
     foreach($results as $accounts_array){
         echo $accounts_array["account_number"] . "<br>";
     }
-
+    ############
     echo "
         <form method='post'>
         <select name='from_account' id='from_account'>";
