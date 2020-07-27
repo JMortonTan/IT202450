@@ -20,7 +20,9 @@ if (isset($_GET['account']) && isset($search)) {
     ######
 
     $connection_string = "mysql:host=$dbhost;dbname=$dbdatabase;charset=utf8mb4";
+    $query = file_get_contents("queries/LISTBYID.sql");
     try {
+        echo "I'm trying <br>";
         $db = new PDO($connection_string, $dbuser, $dbpass);
         $stmt = $db->prepare($query);
         $stmt->execute([":search" => $search]);
