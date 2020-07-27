@@ -14,6 +14,7 @@ $logged_in = Common::is_logged_in(false);
         <?php if($logged_in):?>
             <li><a href="accounts.php">My Accounts</a></li>
             <li><a href="openaccount.php">Open New</a></li>
+            <li><a href="newloan.php">Loans</a></li>
             <li><a href="logout.php">Logout</a></li>
         <?php endif; ?>
         <?php if(!$logged_in):?>

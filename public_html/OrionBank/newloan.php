@@ -1,7 +1,7 @@
 <?php
 include("header.php");
 ?>
-<h4>Open Account</h4>
+<h4>New Loan</h4>
 
 <form method="POST">
     <label for="Account_Type">Account Type
