@@ -72,6 +72,9 @@ if(isset($_POST["created"])){
                         #######
                         echo $result[0] . '<br>';
                         #######
+                        #######
+                        echo $result[0]['balance'] . '<br>';
+                        #######
 
                         $world_total = $result[0] - 5;
 
