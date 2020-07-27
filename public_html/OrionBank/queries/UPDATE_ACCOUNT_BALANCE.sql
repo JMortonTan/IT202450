@@ -1,0 +1,1 @@
+UPDATE Accounts SET balance = :new_balance WHERE :account_number = account_number

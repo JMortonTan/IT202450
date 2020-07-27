@@ -12,9 +12,8 @@ if (isset($_GET['account'])){
     echo $account_number;
     $query = file_get_contents("queries/MAKEITRAIN.sql");
 
-    $connection_string = "mysql:host=$dbhost;dbname=$dbdatabase;charset=utf8mb4";
     try {
-        $db = new PDO($connection_string, $dbuser, $dbpass);
+        $db = getDB();
         $stmt = $db->prepare($query);
         $stmt->execute([":account_number" => $account_number]);
         header("Location: accounts.php");

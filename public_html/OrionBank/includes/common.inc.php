@@ -88,6 +88,15 @@ class Common {
         }
         return $this->db;
     }
+
+    /*** Update Accounts balance value when given a transaction
+     * @param $account_number
+     * @param $new_balance
+     * @return null
+     */
+    public function update_balance($account_number, $new_balance) {
+
+    }
 }
 
 $common = new Common();
