@@ -60,11 +60,12 @@ if (isset($_GET['account'])) {
                         <select name='from_account' id='from_account'>
                             <option value='000000000000' selected>World</option>
                         </select>
-                        <label for='amount'>Amount<input type='amount' name='amount'></label>
-                        <input type='submit' name='deposit_activate' value='Deposit'>
+                        <label for='amount'>Amount</label>
+                        <input type='text' name='amount'>
+                        <input type='submit' name='deposit' value='Deposit'>
                         </form>";
 
-                    if(isset($_POST["deposit_activate"])) {
+                    if(isset($_POST["deposit"])) {
                         #######
                         echo "action posted <br>";
                         #######
