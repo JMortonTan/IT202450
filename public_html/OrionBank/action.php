@@ -71,7 +71,7 @@ if (isset($_GET['account'])) {
                             <option value='000000000000' selected>World</option>
                         </select>
                         <label for='amount'>Amount<input type='amount' name='amount'></label>
-                        <input type='submit' name='withdraw' value='withdraw'>
+                        <input type='submit' name='withdraw' value='Withdraw'>
                         </form>";
                     break;
                 case 'transfer':
@@ -81,7 +81,7 @@ if (isset($_GET['account'])) {
                             <option value='000000000000' selected>World</option>
                         </select>
                         <label for='amount'>Amount<input type='amount' name='amount'></label>
-                        <input type='submit' name='transfer' value='transfer'>
+                        <input type='submit' name='transfer' value='Transfer'>
                         </form>";
                     break;
             };
