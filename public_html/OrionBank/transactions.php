@@ -79,12 +79,8 @@ if (isset($_GET['account'])) {
                         $e = $stmt->errorInfo();
 
                         if (isset($transaction_history) && count($transaction_history) > 0) {
-                            ##########
-                            echo "YA GOT RESULTS";
-                            echo count($transaction_history);
-                            ##########
                             echo "
-                                <table>
+                                <table class='transaction'>
                                     <th>Account Source</th>
                                     <th>Account Destination</th>
                                     <th>Amount</th>

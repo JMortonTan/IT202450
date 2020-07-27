@@ -56,17 +56,7 @@ if(isset($results) && count($results) > 0){
                 echo $row["opened_date"];
                 echo "</td>
                 <td>";
-            switch ($type_holder) {
-                case 1:
-                    echo "<a href='checking.php?account=$row[account_number]'>Enter</a>";
-                    break;
-                case 2:
-                    echo "<a href='savings.php?account=$row[account_number]'>Enter</a>";
-                    break;
-                case 3:
-                    echo "<a href='loan.php?account=$row[account_number]'>Enter</a>";
-                    break;
-            };
+                echo "<a href='transactions.php?account=$row[account_number]'>History</a>";
                 echo "<td>
                     </tr>";
                 }
