@@ -60,69 +60,66 @@ if (isset($_GET['account'])) {
                 $startdate = $_POST["startdate"];
                 $enddate = $_POST["enddate"];
 
-                if ($startdate > $enddate){
-                    goto date_error;
-                }
-
-                $result_num = $_POST["result_num"];
-                $connection_string = "mysql:host=$dbhost;dbname=$dbdatabase;charset=utf8mb4";
-                try {
-                    $db = new PDO($connection_string, $dbuser, $dbpass);
-                    $query = file_get_contents("queries/SEARCH_TABLE_TRANSACTIONS_DATE_DESC.sql");
-                    $stmt = $db->prepare($query);
-                    ##########
-                    echo $startdate;
-                    echo $enddate;
-                    ##########
-                    $stmt->execute(array(
-                        ":account_number" => $account_number,
-                        ":startdate" => $startdate,
-                        ":enddate" => $enddate
-                    ));
-                    ##########
-                    echo "FETCH RESULTS";
-                    ##########
-
-                    $transaction_history = $stmt->fetch(PDO::FETCH_ASSOC);
-                    $e = $stmt->errorInfo();
-
-                    if (isset($transaction_history) && count($transaction_history) > 0) {
+                if ($startdate > $enddate) {
+                    echo "The start date needs to be before or equal to the end date.";
+                } else {
+                    $result_num = $_POST["result_num"];
+                    $connection_string = "mysql:host=$dbhost;dbname=$dbdatabase;charset=utf8mb4";
+                    try {
+                        $db = new PDO($connection_string, $dbuser, $dbpass);
+                        $query = file_get_contents("queries/SEARCH_TABLE_TRANSACTIONS_DATE_DESC.sql");
+                        $stmt = $db->prepare($query);
                         ##########
-                        echo "YA GOT RESULTS";
-                        echo $transaction_history;
+                        echo $startdate;
+                        echo $enddate;
                         ##########
-                        echo "
-                            <table>
-                                <th>Account Source</th>
-                                <th>Account Destination</th>
-                                <th>Amount</th>
-                                <th>Memo</th>
-                                <th>Date</th>";
-                        foreach ($transaction_history as $row) {
-                            echo "<tr><td>";
-                            echo $row["account_src"];
-                            echo "</td><td>";
-                            echo $row["account_dest"];
-                            echo "</td><td>";
-                            echo $row["amount"];
-                            echo "</td><td>";
-                            echo $row["memo"];
-                            echo "</td><td>";
-                            echo $row["date"];
-                            echo "</td><td>";
-                            echo "</tr>";
+                        $stmt->execute(array(
+                            ":account_number" => $account_number,
+                            ":startdate" => $startdate,
+                            ":enddate" => $enddate
+                        ));
+                        ##########
+                        echo "FETCH RESULTS";
+                        ##########
+
+                        $transaction_history = $stmt->fetch(PDO::FETCH_ASSOC);
+                        $e = $stmt->errorInfo();
+
+                        if (isset($transaction_history) && count($transaction_history) > 0) {
+                            ##########
+                            echo "YA GOT RESULTS";
+                            echo $transaction_history;
+                            ##########
+                            echo "
+                                <table>
+                                    <th>Account Source</th>
+                                    <th>Account Destination</th>
+                                    <th>Amount</th>
+                                    <th>Memo</th>
+                                    <th>Date</th>";
+                            foreach ($transaction_history as $row) {
+                                echo "<tr><td>";
+                                echo $row["account_src"];
+                                echo "</td><td>";
+                                echo $row["account_dest"];
+                                echo "</td><td>";
+                                echo $row["amount"];
+                                echo "</td><td>";
+                                echo $row["memo"];
+                                echo "</td><td>";
+                                echo $row["date"];
+                                echo "</td><td>";
+                                echo "</tr>";
+                            }
+                            echo "</table>";
                         }
-                        echo "</table>";
-                    }
 
-                } catch (Exception $e) {
-                    echo $e->getMessage();
+                    } catch (Exception $e) {
+                        echo $e->getMessage();
+                    }
                 }
             }
         }
     }
 }
-
-date_error:
-    echo "Your start date must be equal to or before your end date!";
 ?>
