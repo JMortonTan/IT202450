@@ -64,16 +64,19 @@ if(isset($_POST["created"])){
                         #######
                         echo'case is checking <br>';
                         #######
-                        $query = file_get_contents("queries/GET_WORLD_BALANCE.sql");
-                        $stmt = $db->prepare($query);
-                        $stmt->execute([]);
-                        $result = $stmt->fetch(PDO::FETCH_ASSOC);
-
+                        try {
+                            $query = file_get_contents("queries/GET_WORLD_BALANCE.sql");
+                            $stmt = $db->prepare($query);
+                            $stmt->execute();
+                            $result = $stmt->fetch(PDO::FETCH_ASSOC);
+                        } catch (Exception $e) {
+                            echo $e->getMessage();
+                        }
                         #######
                         echo $result[0] . '<br>';
                         #######
                         #######
-                        echo $result[0]['balance'] . '<br>';
+                        echo $result . '<br>';
                         #######
 
                         $world_total = $result[0] - 5;
