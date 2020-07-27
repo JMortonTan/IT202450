@@ -65,9 +65,15 @@ if (isset($_GET['account'])) {
                         </form>";
 
                     if(isset($_POST["deposit"])) {
+                        #######
+                        echo "action posted <br>";
+                        #######
                         $amount = $_POST["amount"];
 
                         try {
+                            #######
+                            echo "attempting query <br>";
+                            #######
                             $query = file_get_contents("queries/DEPOSIT.sql");
                             $stmt = $db->prepare($query);
                             $stmt->execute(array(
@@ -76,13 +82,22 @@ if (isset($_GET['account'])) {
                                 ":amount" => $amount,
                             ));
                             $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+                            #######
+                            echo "fetch attempted <br>";
+                            #######
                         } catch (Exception $e) {
                             echo $e->getMessage();
                         }
 
                         if(isset($result)){
+                            #######
+                            echo "result set <br>";
+                            #######
                             echo "Deposit value of " . $amount . " from 000000000000 was successful";
                         }else{
+                            #######
+                            echo "result not set <br>";
+                            #######
                             echo "Deposit value of " . $amount . " from 000000000000 was unsuccessful";
                         }
                     }
