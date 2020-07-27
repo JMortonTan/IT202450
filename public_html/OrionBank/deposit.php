@@ -19,12 +19,24 @@ if (isset($_GET['account'])) {
         <input type='submit' name='deposit' value='Deposit'>
         </form>";
 
-    if(isset($_POST["deposit"])) {
+    if (isset($_POST["deposit"])) {
         #######
         echo "action posted <br>";
         #######
         $amount = $_POST["amount"];
         $account_dest = $_POST["from_account"];
+        $negamount = (-1) * $amount;
+        $account_src = $account_number;
+
+        #######
+        echo $account_dest . " DESTINATION<br>";
+        #######
+        #######
+        echo $account_src . " SRC<br>";
+        #######
+        #######
+        echo $amount . " AMNT<br>";
+        #######
 
         try {
             #######
@@ -35,35 +47,36 @@ if (isset($_GET['account'])) {
             try {
                 $db = new PDO($connection_string, $dbuser, $dbpass);
                 $stmt = $db->prepare($query);
-                $stmt->execute([":account_number" => $account_number]);
-                $result = $stmt->fetch(PDO::FETCH_ASSOC);
+                $stmt->execute(array(
+                    ":account_src" => $result["account_number"],
+                    ":account_dest" => $account_dest,
+                    ":amount" => $amount,
+                    ":negamount" => $negamount,
+                ));
+                $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+                #######
+                echo "fetch attempted <br>";
+                #######
             } catch (Exception $e) {
                 echo $e->getMessage();
             }
-            $stmt = $db->prepare($query);
-            $stmt->execute(array(
-                ":account_src" => $result["account_number"],
-                ":account_dest" => $account_dest,
-                ":amount" => $amount,
-            ));
-            $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
-            #######
-            echo "fetch attempted <br>";
-            #######
-        } catch (Exception $e) {
-            echo $e->getMessage();
-        }
 
-        if(isset($result)){
-            #######
-            echo "result set <br>";
-            #######
-            echo "Deposit value of " . $amount . " from 000000000000 was successful";
-        }else{
-            #######
-            echo "result not set <br>";
-            #######
-            echo "Deposit value of " . $amount . " from 000000000000 was unsuccessful";
+            if (isset($result)) {
+                #######
+                echo "result set <br>";
+                #######
+                echo "Deposit value of " . $amount . " from 000000000000 was successful";
+                $balance = $balance + $amount;
+                echo "New balance " . $balance;
+            } else {
+                #######
+                echo "result not set <br>";
+                #######
+                echo "Deposit value of " . $amount . " from 000000000000 was unsuccessful";
+
+            }
+        }catch (Exception $e) {
+            echo $e->getMessage();
         }
     }
 }
