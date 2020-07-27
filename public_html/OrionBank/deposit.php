@@ -64,6 +64,7 @@ if (isset($_GET['account'])) {
                 $stmt->bindValue(":account_src", $account_src);
                 $stmt->bindValue(":account_dest", $account_dest);
                 $stmt->bindValue(":amount", $amount);
+                $stmt->bindValue(":negamount", $negamount);
                 $stmt->execute();
 
                 $e = $stmt->errorInfo();
