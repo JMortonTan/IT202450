@@ -53,20 +53,20 @@ if (isset($_GET['account'])) {
             echo "attempting query <br>";
             #######
 
+            $query = file_get_contents("queries/DEPOSIT.sql");
             $connection_string = "mysql:host=$dbhost;dbname=$dbdatabase;charset=utf8mb4";
             try {
                 $db = new PDO($connection_string, $dbuser, $dbpass);
-                $query = file_get_contents("queries/DEPOSIT.sql");
                 #######
                 echo $query . "<br>";
                 #######
                 $stmt = $db->prepare($query);
-                $stmt->execute(array(
-                    ":account_src" => strval($account_src),
-                    ":account_dest" => strval($account_dest),
+                $stmt->execute([
+                    ":account_src" => $account_src,
+                    ":account_dest" => $account_dest,
                     ":amount" => $amount,
                     ":negamount" => $negamount
-                ));
+                ]);
                 $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
                 $e = $stmt->errorInfo();
