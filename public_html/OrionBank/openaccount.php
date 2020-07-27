@@ -35,10 +35,6 @@ if(isset($_POST["created"])){
 
     $account_number = next_avail_account_num($user_id,$user_account_count);
 
-    ###
-    echo "attempting " . $account_number . "<br>";
-    ###
-
     $connection_string = "mysql:host=$dbhost;dbname=$dbdatabase;charset=utf8mb4";
     if(!empty($account_number) && !empty($account_type)){
         $db = new PDO($connection_string, $dbuser, $dbpass);
@@ -121,7 +117,8 @@ if(isset($_POST["created"])){
                 echo "Successfully created account: " . $account_number . "<br>";
                 echo "We are happy to serve you.";
                 if ($account_type == 2) {
-                    echo "The current interest rate is 2%. Your interested will be added on the first of each month.";
+                    echo "The current interest rate is 2%.<br>
+                           Your accrued interest will be added on the first of each month.";
                 }
             }
             else{

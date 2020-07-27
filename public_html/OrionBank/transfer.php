@@ -21,11 +21,15 @@ if (isset($_GET['account'])) {
         echo $e->getMessage();
     }
 
+    foreach($results as $accounts_array){
+        echo $accounts_array["account_number"] . "<br>";
+    }
+
     echo "
         <form method='post'>
         <select name='from_account' id='from_account'>";
         foreach($results as $accounts_array){
-            echo "<option value=" . $accounts_array["account_number"] . "selected>" . $accounts_array["account_number"] . "</option>";
+            echo "<option value=" . $accounts_array["account_number"] . ">" . $accounts_array["account_number"] . "</option>";
         }
     echo "</select>
         <label for='amount'>Amount: 
