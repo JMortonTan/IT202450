@@ -67,9 +67,6 @@ if (isset($_GET['account']) && isset($search)) {
             $query = file_get_contents("queries/TRANSFER.sql");
             try {
                 $db = new PDO($connection_string, $dbuser, $dbpass);
-                #######
-                echo $query . "<br>";
-                #######
                 $stmt = $db->prepare($query);
                 $stmt->execute(array(
                     ":account_src" => $account_src,
@@ -83,7 +80,6 @@ if (isset($_GET['account']) && isset($search)) {
                 $e = $stmt->errorInfo();
             } catch (Exception $e) {
                 echo $e->getMessage();
-
                 echo "Withdrawal value of " . $amount . " to 000000000000 was unsuccessful";
             }
             echo "Transfer value of $" . $amount . " to " . $account_dest . " was successful <br>";
