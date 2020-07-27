@@ -53,9 +53,38 @@ if (isset($_GET['account'])) {
 
         if (isset($_POST["submit"])) {
             $action = $_POST["transact_type"];
-            ############
-            echo $action;
-            ############
+            switch ($action) {
+                case 'deposit':
+                    echo "
+                        <form method='post'>
+                        <select name='from_account' id='from_account'>
+                            <option value='000000000000' selected>World</option>
+                        </select>
+                        <label for='amount'>Amount<input type='amount' name='amount'></label>
+                        <input type='submit' name='deposit' value='Deposit'>
+                        </form>";
+                    break;
+                case 'withdraw':
+                    echo "
+                        <form method='post'>
+                        <select name='to_account' id='to_account'>
+                            <option value='000000000000' selected>World</option>
+                        </select>
+                        <label for='amount'>Amount<input type='amount' name='amount'></label>
+                        <input type='submit' name='withdraw' value='withdraw'>
+                        </form>";
+                    break;
+                case 'transfer':
+                    echo "
+                        <form method='post'>
+                        <select name='to_account' id='to_account'>
+                            <option value='000000000000' selected>World</option>
+                        </select>
+                        <label for='amount'>Amount<input type='amount' name='amount'></label>
+                        <input type='submit' name='transfer' value='transfer'>
+                        </form>";
+                    break;
+            };
         }
     }
 }
