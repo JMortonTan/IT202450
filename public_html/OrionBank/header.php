@@ -12,6 +12,7 @@ $logged_in = Common::is_logged_in(false);
         <li><img src="media/Logo.png" class="logo"></li>
         <li><a href="home.php">Home</a></li>
         <?php if($logged_in):?>
+            <li><a href="profile.php">Profile</a></li>
             <li><a href="accounts.php">My Accounts</a></li>
             <li><a href="openaccount.php">Open New</a></li>
             <li><a href="newloan.php">Loans</a></li>
