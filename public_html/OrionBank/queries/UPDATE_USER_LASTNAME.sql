@@ -1,0 +1,1 @@
+UPDATE Users SET last_name = :new_last_name WHERE id = :user_id;
