@@ -7,7 +7,7 @@ if($logged_in){
     print '<p>What would you like to edit today?</p>';
     echo '<form method="POST">
             <label for="edit_profile">Edit Profile
-            <select type="number" id="acc_type" name="account_type" required>
+            <select type="number" id="reset_menu" name="reset_menu" required>
                 <option value=1>Username</option>
                 <option value=2>Password</option>
                 <option value=3>Email</option>
@@ -17,7 +17,8 @@ if($logged_in){
            </form>';
 
     if(isset($_POST["user_edit"])) {
-
+        $reset_menu = $_POST["reset_menu"];
+        header("Location: resetfield.php?reset_menu=$reset_menu");
     }
 } else {
     include 'login.php';
