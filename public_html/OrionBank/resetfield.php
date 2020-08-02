@@ -9,11 +9,11 @@ if($logged_in){
             case 1:
                 echo "Enter new Firstname</br>
                 <form method='post'>
-                <label for='amount'>Amount: 
-                    <input type='number' name='amount'/>
-                 </label>
-                <input type='submit' name='Reset' value='Reset'>
+                <label for='first_name'>New First Name: </label>
+                <input type='submit' name='reset' value='Reset'>
                 </form>";
+
+                $query = file_get_contents("queries/UPDATE_USER_FIRSTNAME.sql");
                 break;
             case 2:
                 echo "Enter new Lastname</br>";
@@ -28,6 +28,10 @@ if($logged_in){
                 echo "There is an error</br>";
                 break;
         };
+
+        if(isset($_POST['reset'])){
+            echo $query;
+        }
 
     }
 } else {
