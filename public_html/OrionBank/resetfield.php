@@ -9,7 +9,9 @@ if($logged_in){
             case 1:
                 echo "Enter new Firstname</br>
                 <form method='post'>
-                <label for='first_name'>New First Name: </label>
+                <label for='first_name'>New First Name: 
+                    <input type='first_name' name='first_name'>
+                </label>
                 <input type='submit' name='reset' value='Reset'>
                 </form>";
 
