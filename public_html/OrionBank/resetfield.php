@@ -10,7 +10,7 @@ if($logged_in){
                 echo "Enter new Firstname</br>
                 <form method='post'>
                 <label for='first_name'>New First Name: 
-                    <input type='first_name' name='first_name'>
+                    <input type='first_name' name='input'>
                 </label>
                 <input type='submit' name='reset' value='Reset'>
                 </form>";
@@ -19,8 +19,8 @@ if($logged_in){
             case 2:
                 echo "Enter new Lastname</br>
                 <form method='post'>
-                <label for='last_name_label'>New Last Name: 
-                    <input type='last_name' name='last_name_name'>
+                <label for='last_name'>New Last Name: 
+                    <input type='last_name' name='input'>
                 </label>
                 <input type='submit' name='reset' value='Reset'>
                 </form>";
@@ -30,7 +30,7 @@ if($logged_in){
                 echo "Enter new Password</br>
                 <form method='post'>
                 <label for='password'>New Password: 
-                    <input type='password' name='password'>
+                    <input type='password' name='input'>
                 </label>
                 <input type='submit' name='reset' value='Reset'>
                 </form>";
@@ -40,7 +40,7 @@ if($logged_in){
                 echo "Enter new Email</br>
                 <form method='post'>
                 <label for='email'>New Email: 
-                    <input type='email' name='email'>
+                    <input type='email' name='input'>
                 </label>
                 <input type='submit' name='reset' value='Reset'>
                 </form>";
@@ -53,7 +53,25 @@ if($logged_in){
 
         if(isset($_POST['reset'])){
             echo $query;
-            echo $_POST['last_name_name'];
+            $input = $_POST['input'];
+
+            if($GET_['reset_menu'] == 3){
+                $input = password_hash($input, PASSWORD_BCRYPT);
+            }
+
+            $connection_string = "mysql:host=$dbhost;dbname=$dbdatabase;charset=utf8mb4";
+            try {
+                $db = new PDO($connection_string, $dbuser, $dbpass);
+                $stmt = $db->prepare($query);
+                $stmt->execute([
+                        ":input" => $input,
+                        ":user_id" => $_SESSION["user"]["id"]
+                ]);
+                $result = $stmt->fetch(PDO::FETCH_ASSOC);
+            } catch (Exception $e) {
+                echo $e->getMessage();
+            }
+            echo "Success! </br>";
         }
 
     }

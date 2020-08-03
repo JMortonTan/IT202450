@@ -1,1 +1,1 @@
-UPDATE Users SET password = :new_password WHERE id = :user_id;
+UPDATE Users SET password = :input WHERE id = :user_id;

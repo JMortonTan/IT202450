@@ -1,1 +1,1 @@
-UPDATE Users SET last_name = :new_last_name WHERE id = :user_id;
+UPDATE Users SET last_name = :input WHERE id = :user_id;
