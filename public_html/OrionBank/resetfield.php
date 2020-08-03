@@ -14,17 +14,37 @@ if($logged_in){
                 </label>
                 <input type='submit' name='reset' value='Reset'>
                 </form>";
-
                 $query = file_get_contents("queries/UPDATE_USER_FIRSTNAME.sql");
                 break;
             case 2:
-                echo "Enter new Lastname</br>";
+                echo "Enter new Lastname</br>
+                <form method='post'>
+                <label for='last_name'>New First Name: 
+                    <input type='last_name' name='last_name'>
+                </label>
+                <input type='submit' name='reset' value='Reset'>
+                </form>";
+                $query = file_get_contents('queries/UPDATE_USER_LASTNAME.sql');
                 break;
             case 3:
-                echo "Enter new Password</br>";
+                echo "Enter new Password</br>
+                <form method='post'>
+                <label for='password'>New Password: 
+                    <input type='password' name='password'>
+                </label>
+                <input type='submit' name='reset' value='Reset'>
+                </form>";
+                $query = file_get_contents('queries/UPDATE_USER_FIRSTNAME.sql');
                 break;
             case 4:
-                echo "Enter new Email</br>";
+                echo "Enter new Email</br>
+                <form method='post'>
+                <label for='email'>New Email: 
+                    <input type='email' name='email'>
+                </label>
+                <input type='submit' name='reset' value='Reset'>
+                </form>";
+                $query = file_get_contents('queries/UPDATE_USER_EMAIL.sql');
                 break;
             default:
                 echo "There is an error</br>";
@@ -33,6 +53,7 @@ if($logged_in){
 
         if(isset($_POST['reset'])){
             echo $query;
+            echo $_POST['reset'];
         }
 
     }
