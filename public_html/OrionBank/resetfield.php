@@ -19,7 +19,7 @@ if($logged_in){
             case 2:
                 echo "Enter new Lastname</br>
                 <form method='post'>
-                <label for='last_name'>New First Name: 
+                <label for='last_name'>New Last Name: 
                     <input type='last_name' name='last_name'>
                 </label>
                 <input type='submit' name='reset' value='Reset'>
@@ -53,7 +53,7 @@ if($logged_in){
 
         if(isset($_POST['reset'])){
             echo $query;
-            echo $_POST['reset'];
+            echo $_POST['last_name'];
         }
 
     }
