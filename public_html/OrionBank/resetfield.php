@@ -52,7 +52,6 @@ if($logged_in){
         };
 
         if(isset($_POST['reset'])){
-            echo $query;
             $input = $_POST['input'];
 
             if($GET_['reset_menu'] == 3){
@@ -71,7 +70,23 @@ if($logged_in){
             } catch (Exception $e) {
                 echo $e->getMessage();
             }
-            echo "Success! </br>";
+            echo "Success! Log back in!</br>";
+
+            session_unset();
+            session_destroy();
+            echo "You have been logged out";
+            echo var_export($_SESSION, true);
+            //get session cookie and delete/clear it for this session
+            if (ini_get("session.use_cookies")) {
+                $params = session_get_cookie_params();
+                //clones then destroys since it makes it's lifetime
+                //negative (in the past)
+                setcookie(session_name(), '', time() - 42000,
+                    $params["path"], $params["domain"],
+                    $params["secure"], $params["httponly"]
+                );
+}
+?>
         }
 
     }
