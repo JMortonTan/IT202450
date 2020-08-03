@@ -1,1 +1,1 @@
-UPDATE Users SET email = :new_email WHERE id = :user_id;
+UPDATE Users SET email = :input WHERE id = :user_id;

@@ -54,7 +54,7 @@ if($logged_in){
         if(isset($_POST['reset'])){
             $input = $_POST['input'];
 
-            if($GET_['reset_menu'] == 3){
+            if($_GET['reset_menu'] == 3){
                 $input = password_hash($input, PASSWORD_BCRYPT);
             }
 
