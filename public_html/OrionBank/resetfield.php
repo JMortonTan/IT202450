@@ -34,7 +34,7 @@ if($logged_in){
                 </label>
                 <input type='submit' name='reset' value='Reset'>
                 </form>";
-                $query = file_get_contents('queries/UPDATE_USER_FIRSTNAME.sql');
+                $query = file_get_contents('queries/UPDATE_USER_PASSWORD.sql');
                 break;
             case 4:
                 echo "Enter new Email</br>
@@ -75,7 +75,7 @@ if($logged_in){
             session_unset();
             session_destroy();
             echo "You have been logged out";
-            echo var_export($_SESSION, true);
+
             //get session cookie and delete/clear it for this session
             if (ini_get("session.use_cookies")) {
                 $params = session_get_cookie_params();
