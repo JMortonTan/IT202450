@@ -36,7 +36,7 @@ if (isset($_GET['account']) && isset($search)) {
         <input type='submit' name='transfer' value='Transfer'>
         </form>";
 
-    if (isset($_POST["transfer"]) && $_POST["transfer"] > 0 && $_POST["transfer"] <= $_GET['balance']){
+    if (isset($_POST["transfer"]) && $_POST["transfer"] > 0 && $_POST["transfer"] <= $balance){
         $amount = $_POST["amount"];
         $account_src = $account_number;
         $account_dest = $_POST["from_account"];
@@ -88,7 +88,7 @@ if (isset($_GET['account']) && isset($search)) {
         }catch (Exception $e) {
             echo $e->getMessage();
         }
-    }elseif($_POST['transfer'] > $_GET['balance']) {
+    }elseif($_POST['transfer'] > $balance) {
         echo "You are requesting above your balance!!! </br>";
     }elseif($_POST['transfer'] <= 0){
         echo "Enter a valid transfer amount. (Must be greater than zero). </br>";
