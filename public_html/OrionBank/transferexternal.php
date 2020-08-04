@@ -3,7 +3,6 @@ include("header.php");
 ?>
 
 <?php
-
 echo "<h4>" . $_SESSION["user"]["first_name"] . " " . $_SESSION["user"]["last_name"] . "'s Account</h4>";
 
 $search = $_SESSION["user"]["id"];
@@ -27,7 +26,7 @@ if (isset($_GET['account']) && isset($search)) {
         <select name='from_account' id='from_account'>";
     foreach($results as $accounts_array){
         if ($accounts_array["user_id"] != $search){
-            echo "<option value=" . $accounts_array["account_number"] . ">" . getlastname($accounts_array['user_id']) . substr($accounts_array["account_number"],-6) . "</option>";
+            echo "<option value=" . $accounts_array["account_number"] . ">" . substr($accounts_array["account_number"],-6) . "</option>";
         }
     }
     echo "</select>
