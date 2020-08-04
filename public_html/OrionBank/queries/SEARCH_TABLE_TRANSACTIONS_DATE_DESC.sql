@@ -1,1 +1,1 @@
-SELECT * FROM Accounts WHERE account_type LIKE :search ORDER BY balance ASC;
+SELECT * FROM Transactions WHERE account_src LIKE :account_number ORDER BY date DESC;
