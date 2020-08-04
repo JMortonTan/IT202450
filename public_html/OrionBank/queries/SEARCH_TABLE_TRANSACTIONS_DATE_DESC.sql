@@ -1,1 +1,1 @@
-SELECT * FROM Transactions WHERE account_src LIKE :account_number ORDER BY date DESC;
+SELECT * FROM Transactions WHERE account_src = :account_number;
