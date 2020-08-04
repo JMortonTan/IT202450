@@ -10,7 +10,7 @@ if (isset($_GET['account']) && isset($search)) {
     $account_number = $_GET['account'];
     $balance = $_GET['balance'];
 
-    echo "Current balance" . $balance . "for account: ". $account_number . "</br>";
+    echo "<h4>Current balance: " . $balance . " for account: ". $account_number . "</h4></br>";
 
     $connection_string = "mysql:host=$dbhost;dbname=$dbdatabase;charset=utf8mb4";
     $query = file_get_contents("queries/LIST_ACCOUNTS_ALL.sql");
@@ -38,7 +38,7 @@ if (isset($_GET['account']) && isset($search)) {
         <input type='submit' name='transfer' value='Transfer'>
         </form>";
 
-    if (isset($_POST["transfer"]) && $_POST["transfer"] > 0 && $_POST["transfer"] <= $balance){
+    if (isset($_POST["transfer"]) && $_POST["amount"] > 0 && $_POST["amount"] <= $balance){
         $amount = $_POST["amount"];
         $account_src = $account_number;
         $account_dest = $_POST["from_account"];
@@ -90,9 +90,9 @@ if (isset($_GET['account']) && isset($search)) {
         }catch (Exception $e) {
             echo $e->getMessage();
         }
-    }elseif($_POST['transfer'] > $balance) {
+    }elseif($_POST['amount'] > $balance) {
         echo "You are requesting above your balance!!! </br>";
-    }elseif($_POST['transfer'] <= 0){
+    }elseif($_POST['amount'] <= 0){
         echo "Enter a valid transfer amount. (Must be greater than zero). </br>";
     };
 }
