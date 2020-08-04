@@ -72,7 +72,7 @@ if (isset($_GET['account'])) {
                         $query = file_get_contents("queries/SEARCH_TABLE_TRANSACTIONS_DATE_DESC.sql");
                         $stmt = $db->prepare($query);
                         $stmt->execute(array(
-                            ":account_number" => $account_number,
+                            ":account_number" => $result["account_number"],
                             ":startdate" => $startdate,
                             ":enddate" => $enddate
                         ));
