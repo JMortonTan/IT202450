@@ -46,7 +46,9 @@ if (isset($_GET['account'])) {
             <select name='transact_type' id='transact_type'>
                 <option value='deposit' selected>Deposit</option>
                 <option value='withdraw'>Withdraw</option>
-                <option value='transfer'>Transfer</option>
+                <option value='transfer'>Transfer Internal</option>
+                <option value='external'>Transfer External</option>
+
             </select>
             <input type='submit' name='submit' value='Submit'>
             </form>";
@@ -62,6 +64,9 @@ if (isset($_GET['account'])) {
                     break;
                 case 'transfer':
                     header("Location: transfer.php?account=$account_number&balance=$balance");
+                    break;
+                case 'external':
+                    header("Location: transferexternal.php?account=$account_number&balance=$balance");
                     break;
             };
         }

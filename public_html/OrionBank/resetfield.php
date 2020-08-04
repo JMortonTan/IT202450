@@ -70,6 +70,8 @@ if($logged_in){
             } catch (Exception $e) {
                 echo $e->getMessage();
             }
+            echo $result;
+
             echo "Success! Log back in!</br>";
 
             session_unset();
