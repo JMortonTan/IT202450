@@ -37,7 +37,7 @@ if (isset($_GET['account']) && isset($search)) {
         <input type='submit' name='transfer' value='Transfer'>
         </form>";
 
-    if (isset($_POST["transfer"]) && $_POST["transfer"] > 0) {
+    if (isset($_POST["transfer"]) && $_POST["transfer"] > 0 && $_POST["transfer"] <= $_GET['balance']) {
         $amount = $_POST["amount"];
         $account_src = $account_number;
         $account_dest = $_POST["from_account"];
