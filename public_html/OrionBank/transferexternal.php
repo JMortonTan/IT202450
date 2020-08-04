@@ -37,7 +37,7 @@ if (isset($_GET['account']) && isset($search)) {
         <input type='submit' name='transfer' value='Transfer'>
         </form>";
 
-    if (isset($_POST["transfer"])) {
+    if (isset($_POST["transfer"]) && $_POST["transfer"] > 0) {
         $amount = $_POST["amount"];
         $account_src = $account_number;
         $account_dest = $_POST["from_account"];
@@ -89,6 +89,8 @@ if (isset($_GET['account']) && isset($search)) {
         }catch (Exception $e) {
             echo $e->getMessage();
         }
+    }elseif($_POST <= 0){
+        echo "Enter a valid transfer amount. (Must be greater than zero). </br>";
     }
 }
 ?>
