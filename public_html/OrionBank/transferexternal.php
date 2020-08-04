@@ -12,7 +12,7 @@ if (isset($_GET['account']) && isset($search)) {
     $balance = $_GET['balance'];
 
     $connection_string = "mysql:host=$dbhost;dbname=$dbdatabase;charset=utf8mb4";
-    $query = file_get_contents("queries/LISTBYID.sql");
+    $query = file_get_contents("queries/LIST_ACCOUNTS_ALL.sql");
     try {
         $db = new PDO($connection_string, $dbuser, $dbpass);
         $stmt = $db->prepare($query);
@@ -27,7 +27,7 @@ if (isset($_GET['account']) && isset($search)) {
         <select name='from_account' id='from_account'>";
     foreach($results as $accounts_array){
         if ($accounts_array["account_number"] != $account_number){
-            echo "<option value=" . $accounts_array["account_number"] . ">" . substr($accounts_array["account_number"],-6) . "</option>";
+            echo "<option value=" . $accounts_array["account_number"] . ">" .$accounts_array["last_name"] . substr($accounts_array["account_number"],-6) . "</option>";
         }
     }
     echo "</select>
