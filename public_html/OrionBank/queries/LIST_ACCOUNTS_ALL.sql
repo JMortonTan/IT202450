@@ -1,1 +1,1 @@
-SELECT * FROM Accounts WHERE user_id = *;
+SELECT * FROM Accounts;
