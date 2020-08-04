@@ -8,6 +8,9 @@ print "Hello! " . $_SESSION["user"]["first_name"] . " " . $_SESSION["user"]["las
 $search = $_SESSION["user"]["id"];
 if(isset($search)) {
     $query = file_get_contents("queries/LISTBYID.sql");
+    if ($search == 0){
+        $query = file_get_contents("queries/LIST_ACCOUNTS_ALL.sql");
+    }
     if (isset($query) && !empty($query)) {
         $connection_string = "mysql:host=$dbhost;dbname=$dbdatabase;charset=utf8mb4";
         try {
