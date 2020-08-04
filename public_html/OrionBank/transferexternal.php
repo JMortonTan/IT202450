@@ -10,6 +10,8 @@ if (isset($_GET['account']) && isset($search)) {
     $account_number = $_GET['account'];
     $balance = $_GET['balance'];
 
+    echo "Current balance" . $balance . "for account: ". $account_number . "</br>";
+
     $connection_string = "mysql:host=$dbhost;dbname=$dbdatabase;charset=utf8mb4";
     $query = file_get_contents("queries/LIST_ACCOUNTS_ALL.sql");
     try {
