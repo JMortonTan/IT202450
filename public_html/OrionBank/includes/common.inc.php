@@ -108,6 +108,26 @@ class Common {
             echo $e->getMessage();
         }
     }
+
+    public static function get_last_name($user_id){
+        $search = $user_id;
+        $connection_string = "mysql:host=$dbhost;dbname=$dbdatabase;charset=utf8mb4";
+        $query = file_get_contents("queries/SELECT_USERS_BY_ID.sql");
+        try {
+            $db = new PDO($connection_string, $dbuser, $dbpass);
+            $stmt = $db->prepare($query);
+            $stmt->execute([":search" => $search]);
+            $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+            foreach($results as $user) {
+                $final = $user['last_name'];
+            }
+
+            return($final);
+        } catch (Exception $e) {
+            echo $e->getMessage();
+        }
+    }
 }
 
 $common = new Common();
