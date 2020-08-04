@@ -89,8 +89,10 @@ if (isset($_GET['account']) && isset($search)) {
         }catch (Exception $e) {
             echo $e->getMessage();
         }
-    }elseif($_POST <= 0){
+    }elseif($_POST['transfer'] > $_GET['balance']) {
+        echo "You are requesting above your balance!!! </br>";
+    }elseif($_POST['transfer'] <= 0){
         echo "Enter a valid transfer amount. (Must be greater than zero). </br>";
-    }
+    };
 }
 ?>
