@@ -27,7 +27,7 @@ if (isset($_GET['account']) && isset($search)) {
         <select name='from_account' id='from_account'>";
     foreach($results as $accounts_array){
         if ($accounts_array["user_id"] != $search){
-            echo "<option value=" . $accounts_array["account_number"] . ">" .$accounts_array["last_name"] . substr($accounts_array["account_number"],-6) . "</option>";
+            echo "<option value=" . $accounts_array["account_number"] . ">" . $accounts_array["last_name"] . substr($accounts_array["account_number"],-6) . "</option>";
         }
     }
     echo "</select>
